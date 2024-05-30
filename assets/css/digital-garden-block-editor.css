@@ -1,0 +1,35 @@
+/* Editor styles for the Digital Garden Archive block */
+.wp-block-digital-garden-archive p {
+    background-color: #f3f4f6;
+    border: 1px dashed #d1d5db;
+    padding: 1em;
+}
+
+.digital-garden-tags {
+    margin-bottom: 1em;
+}
+
+.digital-garden-tag-button {
+    margin: 0.2em;
+    padding: 0.5em 1em;
+    background-color: #e2e8f0;
+    border: 1px solid #cbd5e0;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.digital-garden-tag-button.selected {
+    background-color: #3182ce;
+    color: white;
+    border-color: #2b6cb0;
+}
+
+.digital-garden-clear-button {
+    margin: 0.2em;
+    padding: 0.5em 1em;
+    background-color: #e53e3e;
+    color: white;
+    border: 1px solid #c53030;
+    border-radius: 4px;
+    cursor: pointer;
+}
