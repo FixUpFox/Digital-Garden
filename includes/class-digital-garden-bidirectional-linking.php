@@ -64,7 +64,7 @@ class Digital_Garden_Bidirectional_Linking {
 		// Remove links that no longer exist.
 		if ( ! empty( $existing_linked_posts ) ) {
 			foreach ( $existing_linked_posts as $existing_linked_post_id ) {
-				if ( ! in_array( $existing_linked_post_id, $new_linked_posts ) ) {
+				if ( ! in_array( $existing_linked_post_id, $new_linked_posts, true ) ) {
 					delete_post_meta( $existing_linked_post_id, '_linked_from', $post_id );
 				}
 			}
@@ -72,7 +72,7 @@ class Digital_Garden_Bidirectional_Linking {
 
 		// Add new links.
 		foreach ( $new_linked_posts as $new_linked_post_id ) {
-			if ( ! metadata_exists( 'post', $new_linked_post_id, '_linked_from' ) || ! in_array( $post_id, get_post_meta( $new_linked_post_id, '_linked_from' ) ) ) {
+			if ( ! metadata_exists( 'post', $new_linked_post_id, '_linked_from' ) || ! in_array( $post_id, get_post_meta( $new_linked_post_id, '_linked_from' ), true ) ) {
 				add_post_meta( $new_linked_post_id, '_linked_from', $post_id, false );
 			}
 		}
@@ -148,7 +148,7 @@ class Digital_Garden_Bidirectional_Linking {
 					$note_id   = $note->ID;
 
 					// Add backlink to the existing note if not already added.
-					if ( ! metadata_exists( 'post', $note_id, '_linked_from' ) || ! in_array( get_the_ID(), get_post_meta( $note_id, '_linked_from' ) ) ) {
+					if ( ! metadata_exists( 'post', $note_id, '_linked_from' ) || ! in_array( get_the_ID(), get_post_meta( $note_id, '_linked_from' ), true ) ) {
 						add_post_meta( $note_id, '_linked_from', get_the_ID(), false );
 					}
 				}
@@ -209,7 +209,7 @@ class Digital_Garden_Bidirectional_Linking {
 				}
 
 				// Add backlink to the created or existing note.
-				if ( ! metadata_exists( 'post', $note_id, '_linked_from' ) || ! in_array( $post_id, get_post_meta( $note_id, '_linked_from' ) ) ) {
+				if ( ! metadata_exists( 'post', $note_id, '_linked_from' ) || ! in_array( $post_id, get_post_meta( $note_id, '_linked_from' ), true ) ) {
 					add_post_meta( $note_id, '_linked_from', $post_id, false );
 				}
 			}
