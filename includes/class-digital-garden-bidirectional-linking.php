@@ -1,17 +1,7 @@
 <?php
-/**
- * Digital Garden Bidirectional Linking Class
- *
- * This class handles bidirectional linking between notes,
- * converting double-bracket links to actual links, and displaying
- * linked notes in the content.
- */
 
 class Digital_Garden_Bidirectional_Linking {
 
-	/**
-	 * Initialize the class.
-	 */
 	public static function init() {
 		add_action( 'save_post_note', array( __CLASS__, 'detect_links' ), 10, 2 );
 		add_filter( 'the_content', array( __CLASS__, 'display_linked_from_section' ) );
@@ -19,13 +9,13 @@ class Digital_Garden_Bidirectional_Linking {
 	}
 
 	/**
-	 * Detect links in the note content and handle bidirectional linking.
+	 * Detect and save bidirectional links when a note is saved.
 	 *
-	 * @param int     $post_id The ID of the post being saved.
-	 * @param WP_Post $post The post object.
+	 * @param int     $post_id Post ID.
+	 * @param WP_Post $post    Post object.
 	 */
 	public static function detect_links( $post_id, $post ) {
-		// Check if this is an autosave.
+		// Check if this is an autosave or a revision.
 		if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
 			return;
 		}
@@ -40,31 +30,60 @@ class Digital_Garden_Bidirectional_Linking {
 			return;
 		}
 
-		// Remove existing links to this note.
-		delete_post_meta( $post_id, '_linked_from' );
-
-		// Find all links to other notes in the content.
-		if ( preg_match_all( '/href="([^"]+)"/', $post->post_content, $matches ) ) {
-			foreach ( $matches[1] as $url ) {
-				$linked_post_id = url_to_postid( $url );
-
-				if ( $linked_post_id && get_post_type( $linked_post_id ) === 'note' ) {
-					if ( ! metadata_exists( 'post', $linked_post_id, '_linked_from' ) || ! in_array( $post_id, get_post_meta( $linked_post_id, '_linked_from' ), true ) ) {
-						add_post_meta( $linked_post_id, '_linked_from', $post_id, false );
-					}
-				}
-			}
-		}
+		// Process bidirectional links.
+		self::process_links( $post_id, $post->post_content );
 
 		// Process double bracket links.
 		self::process_double_brackets( $post_id, $post->post_content );
 	}
 
+
 	/**
-	 * Display linked notes in the content.
+	 * Process bidirectional links.
 	 *
-	 * @param string $content The post content.
-	 * @return string The modified post content.
+	 * @param int    $post_id   Post ID.
+	 * @param string $content   Post content.
+	 */
+	private static function process_links( $post_id, $content ) {
+		// Get existing linked posts.
+		$existing_linked_posts = get_post_meta( $post_id, '_linked_from', false );
+
+		// Collect new links from content.
+		$new_linked_posts = array();
+
+		if ( preg_match_all( '/href="([^"]+)"/', $content, $matches ) ) {
+			foreach ( $matches[1] as $url ) {
+				$linked_post_id = url_to_postid( $url );
+
+				if ( $linked_post_id && get_post_type( $linked_post_id ) === 'note' ) {
+					$new_linked_posts[] = $linked_post_id;
+				}
+			}
+		}
+
+		// Remove links that no longer exist.
+		if ( ! empty( $existing_linked_posts ) ) {
+			foreach ( $existing_linked_posts as $existing_linked_post_id ) {
+				if ( ! in_array( $existing_linked_post_id, $new_linked_posts ) ) {
+					delete_post_meta( $existing_linked_post_id, '_linked_from', $post_id );
+				}
+			}
+		}
+
+		// Add new links.
+		foreach ( $new_linked_posts as $new_linked_post_id ) {
+			if ( ! metadata_exists( 'post', $new_linked_post_id, '_linked_from' ) || ! in_array( $post_id, get_post_meta( $new_linked_post_id, '_linked_from' ) ) ) {
+				add_post_meta( $new_linked_post_id, '_linked_from', $post_id, false );
+			}
+		}
+	}
+
+
+	/**
+	 * Display "Linked From" section in the note content.
+	 *
+	 * @param string $content Post content.
+	 * @return string Modified post content.
 	 */
 	public static function display_linked_from_section( $content ) {
 		// Only apply to 'note' post type.
@@ -93,10 +112,10 @@ class Digital_Garden_Bidirectional_Linking {
 	}
 
 	/**
-	 * Convert double-bracket links to actual links in the content.
+	 * Convert double bracket links to actual links in the post content.
 	 *
-	 * @param string $content The post content.
-	 * @return string The modified post content.
+	 * @param string $content Post content.
+	 * @return string Modified post content.
 	 */
 	public static function convert_double_brackets_to_links( $content ) {
 		// Only apply to 'note' post type.
@@ -129,7 +148,7 @@ class Digital_Garden_Bidirectional_Linking {
 					$note_id   = $note->ID;
 
 					// Add backlink to the existing note if not already added.
-					if ( ! metadata_exists( 'post', $note_id, '_linked_from' ) || ! in_array( get_the_ID(), get_post_meta( $note_id, '_linked_from' ), true ) ) {
+					if ( ! metadata_exists( 'post', $note_id, '_linked_from' ) || ! in_array( get_the_ID(), get_post_meta( $note_id, '_linked_from' ) ) ) {
 						add_post_meta( $note_id, '_linked_from', get_the_ID(), false );
 					}
 				}
@@ -163,10 +182,10 @@ class Digital_Garden_Bidirectional_Linking {
 	}
 
 	/**
-	 * Process double-bracket links in the content.
+	 * Process double bracket links.
 	 *
-	 * @param int    $post_id The ID of the post being processed.
-	 * @param string $content The post content.
+	 * @param int    $post_id Post ID.
+	 * @param string $content Post content.
 	 */
 	public static function process_double_brackets( $post_id, $content ) {
 		// Find all instances of [[word]] in the content.
@@ -190,7 +209,7 @@ class Digital_Garden_Bidirectional_Linking {
 				}
 
 				// Add backlink to the created or existing note.
-				if ( ! metadata_exists( 'post', $note_id, '_linked_from' ) || ! in_array( $post_id, get_post_meta( $note_id, '_linked_from' ), true ) ) {
+				if ( ! metadata_exists( 'post', $note_id, '_linked_from' ) || ! in_array( $post_id, get_post_meta( $note_id, '_linked_from' ) ) ) {
 					add_post_meta( $note_id, '_linked_from', $post_id, false );
 				}
 			}
@@ -198,5 +217,4 @@ class Digital_Garden_Bidirectional_Linking {
 	}
 }
 
-// Initialize the class.
 Digital_Garden_Bidirectional_Linking::init();
