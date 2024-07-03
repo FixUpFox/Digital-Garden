@@ -135,7 +135,7 @@ class Digital_Garden_Frontend {
 
 			foreach ( $recently_viewed as $note_id ) {
 				if ( get_the_ID() !== $note_id ) {
-					$breadcrumbs .= '<li><a href="' . get_permalink( $note_id ) . '">' . get_the_title( $note_id ) . '</a> &raquo; </li>';
+					$breadcrumbs .= '<li><a href="' . get_permalink( $note_id ) . '">' . get_the_title( $note_id ) . '</a></li>';
 				} else {
 					$breadcrumbs .= '<li>' . get_the_title( $note_id ) . '</li>';
 				}

@@ -99,13 +99,13 @@ class Digital_Garden_Bidirectional_Linking {
 
 		if ( ! empty( $linked_from ) ) {
 			$linked_from = array_unique( $linked_from ); // Ensure there are no duplicate entries.
-			$content    .= '<h3>' . __( 'Linked From', 'digital-garden' ) . '</h3><ul>';
+			$content    .= '<div class="bidirectional-links"><div class="bidirectional-links-title">' . __( 'Linked From', 'digital-garden' ) . '</div><ul>';
 
 			foreach ( $linked_from as $linked_post_id ) {
 				$content .= '<li><a href="' . get_permalink( $linked_post_id ) . '">' . get_the_title( $linked_post_id ) . '</a></li>';
 			}
 
-			$content .= '</ul>';
+			$content .= '</ul></div>';
 		}
 
 		return $content;
