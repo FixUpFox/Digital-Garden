@@ -36,6 +36,8 @@ class Digital_Garden_Settings {
 		// Register the settings
 		register_setting( 'digital_garden_settings', 'digital_garden_display_last_edited' );
 		register_setting( 'digital_garden_settings', 'digital_garden_display_first_created' );
+		register_setting( 'digital_garden_settings', 'digital_garden_enable_breadcrumbs' );
+		register_setting( 'digital_garden_settings', 'digital_garden_breadcrumb_steps' );
 
 		// Add the settings section
 		add_settings_section(
@@ -62,6 +64,23 @@ class Digital_Garden_Settings {
 			'digital-garden-settings',
 			'digital_garden_settings_section'
 		);
+
+		add_settings_field(
+			'digital_garden_enable_breadcrumbs',
+			__( 'Enable Breadcrumbs', 'digital-garden' ),
+			array( __CLASS__, 'enable_breadcrumbs_callback' ),
+			'digital-garden-settings',
+			'digital_garden_settings_section'
+		);
+
+		// Add the Breadcrumb view field
+		add_settings_field(
+			'digital_garden_breadcrumb_steps',
+			__( 'Breadcrumb Steps', 'digital-garden' ),
+			array( __CLASS__, 'breadcrumb_steps_callback' ),
+			'digital-garden-settings',
+			'digital_garden_settings_section'
+		);
 	}
 
 	/**
@@ -78,6 +97,22 @@ class Digital_Garden_Settings {
 	public static function display_first_created_callback() {
 		$option = get_option( 'digital_garden_display_first_created' );
 		echo '<input type="checkbox" name="digital_garden_display_first_created" value="1"' . checked( 1, $option, false ) . '>';
+	}
+
+	/**
+	 * Callback for the "Enable Breadcrumbs" field.
+	 */
+	public static function enable_breadcrumbs_callback() {
+		$option = get_option( 'digital_garden_enable_breadcrumbs', 1 );
+		echo '<input type="checkbox" name="digital_garden_enable_breadcrumbs" value="1"' . checked( 1, $option, false ) . '>';
+	}
+
+	/**
+	 * Callback for the "Breadcrumb Steps" field.
+	 */
+	public static function breadcrumb_steps_callback() {
+		$option = get_option( 'digital_garden_breadcrumb_steps', 5 );
+		echo '<input type="number" name="digital_garden_breadcrumb_steps" value="' . esc_attr( $option ) . '" min="1" />';
 	}
 
 	/**

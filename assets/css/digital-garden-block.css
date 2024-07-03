@@ -17,6 +17,7 @@
 	text-decoration: underline;
 }
 
+/* Tags */
 .digital-garden-tags {
 	margin-bottom: 1em;
 }
@@ -68,6 +69,7 @@
 	border: 1px solid #c53030;
 }
 
+/* Preview Modal */
 .digital-garden-modal {
 	position: absolute;
 	z-index: 1000;
@@ -82,4 +84,34 @@
 	max-width: 300px;
 	max-height: 300px;
 	overflow: auto;
+}
+
+/* Breadcrumbs */
+.digital-garden-breadcrumbs {
+	padding: 10px;
+	border: 1px solid #ddd;
+	border-radius: 5px;
+}
+
+.digital-garden-breadcrumb-title {
+	margin-top: 0;
+}
+
+.digital-garden-breadcrumbs ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.digital-garden-breadcrumbs li {
+	display: inline;
+	margin-right: 10px;
+}
+
+.digital-garden-breadcrumbs a {
+	text-decoration: none;
+}
+
+.digital-garden-breadcrumbs a:hover {
+	text-decoration: underline;
 }
