@@ -24,6 +24,7 @@ require_once plugin_dir_path( __FILE__ ) . 'includes/class-digital-garden-fronte
 require_once plugin_dir_path( __FILE__ ) . 'includes/class-digital-garden-settings.php';
 require_once plugin_dir_path( __FILE__ ) . 'includes/class-digital-garden-bidirectional-linking.php';
 require_once plugin_dir_path( __FILE__ ) . 'includes/class-digital-garden-block.php';
+require_once plugin_dir_path( __FILE__ ) . 'includes/class-digital-garden-notes-list-table.php';
 
 // Initialize the custom post type, taxonomy, meta, and other classes
 add_action( 'init', array( 'Digital_Garden_CPT', 'init' ) );
