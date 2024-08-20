@@ -10,7 +10,5 @@ function completeness_list() {
 		'evergreen' => __( 'Evergreen', 'digital-garden' ),
 	);
 
-	$completeness = apply_filters( 'digital_garden_completeness_list', $completeness );
-
-	return $completeness;
+	return apply_filters( 'digital_garden_completeness_list', $completeness );
 }
