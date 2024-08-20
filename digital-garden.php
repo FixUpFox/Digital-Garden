@@ -26,6 +26,12 @@ require_once plugin_dir_path( __FILE__ ) . 'includes/class-digital-garden-bidire
 require_once plugin_dir_path( __FILE__ ) . 'includes/class-digital-garden-block.php';
 require_once plugin_dir_path( __FILE__ ) . 'includes/class-digital-garden-notes-list-table.php';
 
+// Include the helper functions
+$helpers = glob( plugin_dir_path( __FILE__ ) . 'includes/helpers/*.php' );
+foreach ( $helpers as $helper ) {
+	require_once $helper;
+}
+
 // Initialize the custom post type, taxonomy, meta, and other classes
 add_action( 'init', array( 'Digital_Garden_CPT', 'init' ) );
 add_action( 'init', array( 'Digital_Garden_Taxonomy', 'init' ) );
