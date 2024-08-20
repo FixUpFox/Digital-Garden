@@ -1,4 +1,7 @@
 <?php
+
+use function Digital_Garden\completeness_list;
+
 /**
  * Digital Garden Notes List Table
  *
@@ -42,19 +45,8 @@ class Digital_Garden_Notes_List_Table {
 	public static function render_completeness_column( $column, $post_id ) {
 		$value = get_post_meta( $post_id, '_note_completeness', true );
 
-		switch ( $value ) {
-			case 'seedling':
-				echo '<span style="color: #f1c40f;">&#x1F331;</span> Seedling';
-				break;
-			case 'sprout':
-				echo '<span style="color: #2ecc71;">&#x1F331;</span> Sprout';
-				break;
-			case 'sapling':
-				echo '<span style="color: #3498db;">&#x1F331;</span> Sapling';
-				break;
-			case 'evergreen':
-				echo '<span style="color: #27ae60;">&#x1F332;</span> Evergreen';
-				break;
+		if ( array_key_exists( $value, completeness_list() ) ) {
+			echo esc_html( completeness_list()[ $value ] );
 		}
 	}
 

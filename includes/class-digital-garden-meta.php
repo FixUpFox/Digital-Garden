@@ -1,4 +1,7 @@
 <?php
+
+use function Digital_Garden\completeness_list;
+
 /**
  * Digital Garden Meta Class
  *
@@ -18,7 +21,7 @@ class Digital_Garden_Meta {
 				'type'         => 'string',
 				'single'       => true,
 				'show_in_rest' => true,
-				'default'      => 'seedling',
+				'default'      => array_key_first( completeness_list() ),
 				'description'  => __( 'Note Completeness', 'digital-garden' ),
 			)
 		);
