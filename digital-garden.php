@@ -25,34 +25,12 @@ require_once plugin_dir_path( __FILE__ ) . 'includes/class-digital-garden-settin
 require_once plugin_dir_path( __FILE__ ) . 'includes/class-digital-garden-bidirectional-linking.php';
 require_once plugin_dir_path( __FILE__ ) . 'includes/class-digital-garden-block.php';
 
-// Initialize the custom post type, taxonomy, meta, and other classes
-add_action( 'init', array( 'Digital_Garden_CPT', 'init' ) );
-add_action( 'init', array( 'Digital_Garden_Taxonomy', 'init' ) );
-add_action( 'init', array( 'Digital_Garden_Meta', 'init' ) );
-add_action( 'init', array( 'Digital_Garden_Metabox', 'init' ) );
-add_action( 'init', array( 'Digital_Garden_Hashtags', 'init' ) );
-add_action( 'init', array( 'Digital_Garden_Frontend', 'init' ) );
-add_action( 'init', array( 'Digital_Garden_Settings', 'init' ) );
-add_action( 'init', array( 'Digital_Garden_Bidirectional_Linking', 'init' ) );
-add_action( 'init', array( 'Digital_Garden_Block', 'init' ) );
-
 // Activation and deactivation hooks
 register_activation_hook( __FILE__, 'digital_garden_activate' );
 register_deactivation_hook( __FILE__, 'digital_garden_deactivate' );
 
 // Activation function
 function digital_garden_activate() {
-	// Register custom post types and taxonomies
-	Digital_Garden_CPT::init();
-	Digital_Garden_Taxonomy::init();
-	Digital_Garden_Meta::init();
-	Digital_Garden_Metabox::init();
-	Digital_Garden_Hashtags::init();
-	Digital_Garden_Frontend::init();
-	Digital_Garden_Settings::init();
-	Digital_Garden_Bidirectional_Linking::init();
-	Digital_Garden_Block::init();
-
 	// Create the Digital Garden page
 	$page_id = get_option( 'digital_garden_page_id' );
 
