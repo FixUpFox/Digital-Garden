@@ -11,6 +11,13 @@ class Digital_Garden_CPT {
 	 * Initialize the class.
 	 */
 	public static function init() {
+		add_action( 'init', array( __CLASS__, 'register_post_type' ) );
+	}
+
+	/**
+	 * Register the custom post type.
+	 */
+	public static function register_post_type() {
 		// Set up labels for the custom post type
 		$labels = array(
 			'name'                  => _x( 'Notes', 'Post type general name', 'digital-garden' ),
@@ -83,3 +90,5 @@ class Digital_Garden_CPT {
 		register_post_type( 'note', $args );
 	}
 }
+
+Digital_Garden_CPT::init();

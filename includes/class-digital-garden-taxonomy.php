@@ -11,6 +11,13 @@ class Digital_Garden_Taxonomy {
 	 * Initialize the class.
 	 */
 	public static function init() {
+		add_action( 'init', array( __CLASS__, 'register_taxonomy' ) );
+	}
+
+	/**
+	 * Register the custom taxonomy.
+	 */
+	function register_taxonomy() {
 		// Set up labels for the custom taxonomy
 		$labels = array(
 			'name'                       => _x( 'Note Tags', 'taxonomy general name', 'digital-garden' ),
@@ -47,3 +54,6 @@ class Digital_Garden_Taxonomy {
 		register_taxonomy( 'note_tag', 'note', $args );
 	}
 }
+
+// Initialize the class.
+Digital_Garden_Taxonomy::init();

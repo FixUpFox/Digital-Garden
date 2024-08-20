@@ -11,6 +11,13 @@ class Digital_Garden_Meta {
 	 * Initialize the class.
 	 */
 	public static function init() {
+		add_action( 'init', array( __CLASS__, 'register_post_meta' ) );
+	}
+
+	/**
+	 * Register the custom post meta.
+	 */
+	public static function register_post_meta() {
 		register_post_meta(
 			'note',
 			'_note_completeness',
@@ -24,3 +31,6 @@ class Digital_Garden_Meta {
 		);
 	}
 }
+
+// Initialize the class.
+Digital_Garden_Meta::init();
