@@ -17,7 +17,7 @@ class Digital_Garden_Taxonomy {
 	/**
 	 * Register the custom taxonomy.
 	 */
-	function register_taxonomy() {
+	public static function register_taxonomy() {
 		// Set up labels for the custom taxonomy
 		$labels = array(
 			'name'                       => _x( 'Note Tags', 'taxonomy general name', 'digital-garden' ),
