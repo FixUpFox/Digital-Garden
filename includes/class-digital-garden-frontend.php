@@ -35,13 +35,21 @@ class Digital_Garden_Frontend {
 			'/#(\w+)/',
 			function ( $matches ) {
 				$tag      = sanitize_title( $matches[1] );
-				$tag_link = get_term_link( $tag, 'note_tag' );
 
-				if ( is_wp_error( $tag_link ) ) {
+				// Get the tag term
+				$tag_term = get_term_by( 'name', $tag, 'note_tag' );
+
+				if ( is_wp_error( $tag_term ) || ! is_a( $tag_term, WP_Term::class ) ) {
 					return $matches[0];
 				}
 
-				return '<a href="' . esc_url( $tag_link ) . '">#' . esc_html( $matches[1] ) . '</a>';
+				// Build the URL
+				$url = add_query_arg(
+					[ 'tags' => $tag_term->term_id ],
+					get_the_permalink( get_option( 'digital_garden_page_id' ) )
+				);
+
+				return '<a href="' . esc_url( $url ) . '">#' . esc_html( $matches[1] ) . '</a>';
 			},
 			$content
 		);
