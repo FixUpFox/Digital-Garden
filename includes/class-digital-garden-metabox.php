@@ -1,4 +1,7 @@
 <?php
+
+use function Digital_Garden\completeness_list;
+
 /**
  * Digital Garden Metabox Class
  *
@@ -44,10 +47,9 @@ class Digital_Garden_Metabox {
 		?>
 		<label for="digital_garden_note_completeness"><?php esc_html_e( 'Completeness:', 'digital-garden' ); ?></label>
 		<select name="digital_garden_note_completeness" id="digital_garden_note_completeness" class="postbox">
-			<option value="seedling" <?php selected( $value, 'seedling' ); ?>><?php esc_html_e( 'Seedling', 'digital-garden' ); ?></option>
-			<option value="sprout" <?php selected( $value, 'sprout' ); ?>><?php esc_html_e( 'Sprout', 'digital-garden' ); ?></option>
-			<option value="sapling" <?php selected( $value, 'sapling' ); ?>><?php esc_html_e( 'Sapling', 'digital-garden' ); ?></option>
-			<option value="evergreen" <?php selected( $value, 'evergreen' ); ?>><?php esc_html_e( 'Evergreen', 'digital-garden' ); ?></option>
+			<?php foreach ( completeness_list() as $completeness_key => $completeness_label ) : ?>
+				<option value="<?php echo esc_attr( $completeness_key ); ?>" <?php selected( $value, $completeness_key ); ?>><?php echo esc_html( $completeness_label ); ?></option>
+			<?php endforeach; ?>
 		</select>
 		<?php
 	}

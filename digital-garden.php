@@ -24,6 +24,13 @@ require_once plugin_dir_path( __FILE__ ) . 'includes/class-digital-garden-fronte
 require_once plugin_dir_path( __FILE__ ) . 'includes/class-digital-garden-settings.php';
 require_once plugin_dir_path( __FILE__ ) . 'includes/class-digital-garden-bidirectional-linking.php';
 require_once plugin_dir_path( __FILE__ ) . 'includes/class-digital-garden-block.php';
+require_once plugin_dir_path( __FILE__ ) . 'includes/class-digital-garden-notes-list-table.php';
+
+// Include the helper functions
+$helpers = glob( plugin_dir_path( __FILE__ ) . 'includes/helpers/*.php' );
+foreach ( $helpers as $helper ) {
+	require_once $helper;
+}
 
 // Activation and deactivation hooks
 register_activation_hook( __FILE__, 'digital_garden_activate' );
