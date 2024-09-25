@@ -133,4 +133,20 @@ document.addEventListener('DOMContentLoaded', function () {
 		textarea.innerHTML = str;
 		return textarea.value;
 	}
+
+	// Function to add current note to local storage
+	function addCurrentNoteToLocalStorage(note) {
+		let notes = localStorage.getItem('digitalGardenNotes') ? JSON.parse(localStorage.getItem('digitalGardenNotes')) : [];
+
+		// If the notes array already has this note, remove it.
+		if (notes.includes(note)) {
+			notes = notes.filter(item => item !== note);
+			localStorage.setItem('digitalGardenNotes', JSON.stringify(notes));
+		}
+
+		// Add the note to the notes array
+		notes.push(note);
+		localStorage.setItem('digitalGardenNotes', JSON.stringify(notes));
+	}
+
 });
