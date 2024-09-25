@@ -152,6 +152,8 @@ class Digital_Garden_Frontend {
 			$breadcrumbs .= '</ul></nav>';
 		}
 
+		$breadcrumbs .= '<nav class="digital-garden-breadcrumbs-placeholder"></nav>';
+
 		return $breadcrumbs . $content;
 	}
 }
