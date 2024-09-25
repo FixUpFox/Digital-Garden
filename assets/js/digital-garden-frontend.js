@@ -147,10 +147,12 @@ document.addEventListener('DOMContentLoaded', function () {
 	function addCurrentNoteToLocalStorage(note) {
 		let notes = localStorage.getItem('digitalGardenNotes') ? JSON.parse(localStorage.getItem('digitalGardenNotes')) : [];
 
-		// If the notes array already has this note, remove it.
-		if (notes.includes(note)) {
-			notes = notes.filter(item => item !== note);
-			localStorage.setItem('digitalGardenNotes', JSON.stringify(notes));
+		// Check if the note already exists in the array
+		const existingNoteIndex = notes.findIndex(n => n.title === note.title && n.url === note.url);
+
+		if (existingNoteIndex > -1) {
+			// If the note exists, remove it from the array
+			notes.splice(existingNoteIndex, 1);
 		}
 
 		// Add the note to the notes array
