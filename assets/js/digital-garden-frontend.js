@@ -5,6 +5,13 @@ document.addEventListener('DOMContentLoaded', function () {
 	const params = new URLSearchParams(window.location.search);
 	let selectedTags = params.get('tags') ? params.get('tags').split(',').map(Number) : [];
 
+	// Add current note to local storage
+	const currentNote = {
+		title: document.querySelectorAll('.wp-block-post-title')[0].textContent,
+		url: window.location.href,
+	};
+	addCurrentNoteToLocalStorage(currentNote);
+
 	clearButton.textContent = 'Clear Tags';
 	clearButton.className = 'digital-garden-clear-button';
 
