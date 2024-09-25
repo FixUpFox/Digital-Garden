@@ -14,7 +14,6 @@ class Digital_Garden_Frontend {
 	public static function init() {
 		add_filter( 'the_content', array( __CLASS__, 'convert_hashtags_to_links' ) );
 		add_filter( 'the_content', array( __CLASS__, 'display_timestamps' ) );
-		add_action( 'template_redirect', array( __CLASS__, 'track_recently_viewed' ) );
 		add_filter( 'the_content', array( __CLASS__, 'display_breadcrumbs' ) );
 	}
 
@@ -85,38 +84,6 @@ class Digital_Garden_Frontend {
 	}
 
 	/**
-	 * Track recently viewed notes
-	 */
-	public static function track_recently_viewed() {
-		if ( ! is_singular( 'note' ) ) {
-			return;
-		}
-
-		if ( ! session_id() ) {
-			session_start();
-		}
-
-		$note_id         = get_the_ID();
-		$recently_viewed = isset( $_SESSION['recently_viewed_notes'] ) ? $_SESSION['recently_viewed_notes'] : array();
-		$key             = array_search( $note_id, $recently_viewed, true );
-
-		// Remove the note if it's already in the array.
-		if ( false !== $key ) {
-			unset( $recently_viewed[ $key ] );
-		}
-
-		// Add the note to the beginning of the array.
-		array_unshift( $recently_viewed, $note_id );
-
-		// Limit the number of steps in the breadcrumb trail.
-		$max_steps       = get_option( 'digital_garden_breadcrumb_steps', 5 );
-		$recently_viewed = array_slice( $recently_viewed, 0, $max_steps );
-
-		// Save the updated array back to the session.
-		$_SESSION['recently_viewed_notes'] = $recently_viewed;
-	}
-
-	/**
 	 * Display breadcrumbs in the content.
 	 *
 	 * @param string $content The post content.
@@ -132,29 +99,7 @@ class Digital_Garden_Frontend {
 			return $content;
 		}
 
-		if ( ! session_id() ) {
-			session_start();
-		}
-
-		$recently_viewed = isset( $_SESSION['recently_viewed_notes'] ) ? array_reverse( $_SESSION['recently_viewed_notes'] ) : array();
-
-		if ( ! empty( $recently_viewed ) ) {
-			$breadcrumbs = '<nav class="digital-garden-breadcrumbs"><div class="digital-garden-breadcrumb-title">' . __( 'Recently Viewed Notes', 'digital-garden' ) . '</div><ul>';
-
-			foreach ( $recently_viewed as $note_id ) {
-				if ( get_the_ID() !== $note_id ) {
-					$breadcrumbs .= '<li><a href="' . get_permalink( $note_id ) . '">' . get_the_title( $note_id ) . '</a></li>';
-				} else {
-					$breadcrumbs .= '<li>' . get_the_title( $note_id ) . '</li>';
-				}
-			}
-
-			$breadcrumbs .= '</ul></nav>';
-		}
-
-		$breadcrumbs .= '<nav class="digital-garden-breadcrumbs-placeholder"></nav>';
-
-		return $breadcrumbs . $content;
+		return '<nav class="digital-garden-breadcrumbs-placeholder"></nav>' . $content;
 	}
 }
 
