@@ -5,12 +5,14 @@ document.addEventListener('DOMContentLoaded', function () {
 	const params = new URLSearchParams(window.location.search);
 	let selectedTags = params.get('tags') ? params.get('tags').split(',').map(Number) : [];
 
-	// Add current note to local storage
-	const currentNote = {
-		title: document.querySelectorAll('.wp-block-post-title')[0].textContent,
-		url: window.location.href,
-	};
-	addCurrentNoteToLocalStorage(currentNote);
+	// Check if current page has body class of single-note
+	if (document.body.classList.contains('single-note')) {
+		// Add current note to local storage
+		addCurrentNoteToLocalStorage({
+			title: document.querySelectorAll('.wp-block-post-title')[0].textContent,
+			url: window.location.href,
+		});
+	}
 
 	clearButton.textContent = 'Clear Tags';
 	clearButton.className = 'digital-garden-clear-button';
