@@ -14,6 +14,8 @@ document.addEventListener('DOMContentLoaded', function () {
 		});
 	}
 
+	displayRecentNotes();
+
 	clearButton.textContent = 'Clear Tags';
 	clearButton.className = 'digital-garden-clear-button';
 
@@ -157,7 +159,45 @@ document.addEventListener('DOMContentLoaded', function () {
 
 		// Add the note to the notes array
 		notes.push(note);
+
+		// Limit the number of notes to digitalGardenData.max_steps
+		if (notes.length > digitalGardenData.max_steps) {
+			notes.shift();
+		}
+
 		localStorage.setItem('digitalGardenNotes', JSON.stringify(notes));
+	}
+
+	function displayRecentNotes() {
+		// return if the div is not present.
+		if (!document.querySelector('.digital-garden-breadcrumbs-placeholder')) {
+			return;
+		}
+
+		const notes = localStorage.getItem('digitalGardenNotes') ? JSON.parse(localStorage.getItem('digitalGardenNotes')) : [];
+
+		// Get the div with the class digital-garden-breadcrumbs-placeholder
+		recentNotesContainer = document.querySelector('.digital-garden-breadcrumbs-placeholder');
+
+		// If the div is not found, exit the function
+		if (!recentNotesContainer) {
+			return;
+		}
+
+		// change the class on the div
+		recentNotesContainer.className = 'digital-garden-breadcrumbs';
+
+		let recentNotesContent = '<div class="digital-garden-breadcrumb-title">Recently Viewed Notes</div><ul>';
+
+		if (notes.length > 0) {
+			notes.forEach(note => {
+				recentNotesContent += `<li><a href="${note.url}" class="digital-garden-regular-link">${note.title}</a></li>`;
+			});
+		}
+
+		recentNotesContent += '</ul>';
+
+		recentNotesContainer.innerHTML = recentNotesContent;
 	}
 
 });
