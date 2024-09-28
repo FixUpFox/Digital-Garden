@@ -75,9 +75,10 @@ class Digital_Garden_Block {
 				'digital-garden-frontend',
 				'digitalGardenData',
 				array(
-					'tags'     => self::get_note_tags(),
-					'nonce'    => wp_create_nonce( 'digital_garden_nonce' ),
-					'ajax_url' => admin_url( 'admin-ajax.php' ),
+					'tags'      => self::get_note_tags(),
+					'nonce'     => wp_create_nonce( 'digital_garden_nonce' ),
+					'ajax_url'  => admin_url( 'admin-ajax.php' ),
+					'max_steps' => get_option( 'digital_garden_breadcrumb_steps', 5 ),
 				)
 			);
 

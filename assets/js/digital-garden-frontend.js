@@ -5,6 +5,17 @@ document.addEventListener('DOMContentLoaded', function () {
 	const params = new URLSearchParams(window.location.search);
 	let selectedTags = params.get('tags') ? params.get('tags').split(',').map(Number) : [];
 
+	// Check if current page has body class of single-note
+	if (document.body.classList.contains('single-note')) {
+		// Add current note to local storage
+		addCurrentNoteToLocalStorage({
+			title: document.querySelectorAll('.wp-block-post-title')[0].textContent,
+			url: window.location.href,
+		});
+	}
+
+	displayRecentNotes();
+
 	clearButton.textContent = 'Clear Tags';
 	clearButton.className = 'digital-garden-clear-button';
 
@@ -133,4 +144,60 @@ document.addEventListener('DOMContentLoaded', function () {
 		textarea.innerHTML = str;
 		return textarea.value;
 	}
+
+	// Function to add current note to local storage
+	function addCurrentNoteToLocalStorage(note) {
+		let notes = localStorage.getItem('digitalGardenNotes') ? JSON.parse(localStorage.getItem('digitalGardenNotes')) : [];
+
+		// Check if the note already exists in the array
+		const existingNoteIndex = notes.findIndex(n => n.title === note.title && n.url === note.url);
+
+		if (existingNoteIndex > -1) {
+			// If the note exists, remove it from the array
+			notes.splice(existingNoteIndex, 1);
+		}
+
+		// Add the note to the notes array
+		notes.push(note);
+
+		// Limit the number of notes to digitalGardenData.max_steps
+		if (notes.length > digitalGardenData.max_steps) {
+			notes.shift();
+		}
+
+		localStorage.setItem('digitalGardenNotes', JSON.stringify(notes));
+	}
+
+	function displayRecentNotes() {
+		// return if the div is not present.
+		if (!document.querySelector('.digital-garden-breadcrumbs-placeholder')) {
+			return;
+		}
+
+		const notes = localStorage.getItem('digitalGardenNotes') ? JSON.parse(localStorage.getItem('digitalGardenNotes')) : [];
+
+		// Get the div with the class digital-garden-breadcrumbs-placeholder
+		recentNotesContainer = document.querySelector('.digital-garden-breadcrumbs-placeholder');
+
+		// If the div is not found, exit the function
+		if (!recentNotesContainer) {
+			return;
+		}
+
+		// change the class on the div
+		recentNotesContainer.className = 'digital-garden-breadcrumbs';
+
+		let recentNotesContent = '<div class="digital-garden-breadcrumb-title">Recently Viewed Notes</div><ul>';
+
+		if (notes.length > 0) {
+			notes.forEach(note => {
+				recentNotesContent += `<li><a href="${note.url}" class="digital-garden-regular-link">${note.title}</a></li>`;
+			});
+		}
+
+		recentNotesContent += '</ul>';
+
+		recentNotesContainer.innerHTML = recentNotesContent;
+	}
+
 });
