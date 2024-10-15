@@ -1,10 +1,10 @@
 === Digital Garden ===
-Contributors: wolfpaw
+Contributors: wolfpaw, binarygary
 Donate link: https://david.garden
 Tags: notes, digital garden, custom post type, taxonomy, block editor
 Requires at least: 5.0
 Tested up to: 6.5.3
-Stable tag: 1.0.0
+Stable tag: 1.1.0
 Requires PHP: 7.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -38,13 +38,16 @@ On the "Digital Garden" page, click on the tag buttons at the top of the archive
 
 == Changelog ==
 
+= 1.1.0 =
+* Fixes multiple init issue
+* Fixes static methods
+* Builds a url to the auto-created page with note tag ID
+* Exposes completeness in list table
+* Refactors recent notes breadcrumbs to local storage in js
+* Adds GitHub based update mechanism
+
 = 1.0.0 =
 * Initial release
-
-== Upgrade Notice ==
-
-= 1.0.0 =
-Initial release.
 
 == License ==
 
