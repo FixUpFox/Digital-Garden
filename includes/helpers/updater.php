@@ -27,7 +27,7 @@ function digital_garden_check_for_plugin_update( $transient ) {
 	// If a new version is available, modify the transient to reflect the update
 	if ( version_compare( $transient->checked[ $plugin_slug ], $update_info->new_version, '<' ) ) {
 		$plugin_data                         = array(
-			'slug'        => 'prismpress',
+			'slug'        => 'david-garden',
 			'plugin'      => $plugin_slug,
 			'new_version' => $update_info->new_version,
 			'url'         => $update_info->url,
