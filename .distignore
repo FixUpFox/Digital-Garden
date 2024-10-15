@@ -1,3 +1,24 @@
+# Deploy, Build, and Git files
+.deploy
+.distignore
+.editorconfig
+.git
+.github
+.gitignore
+.gitmodules
+composer.json
+composer.lock
+Gruntfile.js
+package.json
+phpcs.xml.dist
+phpcs.ruleset.xml
+phpstan.neon.dist
+phpunit.xml
+phpunit.xml.dist
+README.md
+tests
+wp-cli.local.yml
+
 # WordPress specific
 /wp-content/uploads/
 /wp-content/upgrade/
@@ -31,6 +52,7 @@ wp-cli.yml
 *.jar
 *.rar
 *.tar
+*.tar.gz
 *.zip
 
 # Logs and databases
@@ -52,7 +74,6 @@ yarn-error.log*
 .Spotlight-V100
 .Trashes
 ehthumbs.db
-Thumbs.db
 
 # IDE files
 #############
