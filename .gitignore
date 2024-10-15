@@ -31,7 +31,6 @@ wp-cli.yml
 *.jar
 *.rar
 *.tar
-*.zip
 
 # Logs and databases #
 ######################
