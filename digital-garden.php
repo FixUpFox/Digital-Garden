@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Digital Garden
  * Description: A plugin to create a digital garden with notes and tags.
- * Version: 1.1.0
+ * Version: 1.1.1
  * Author: wolfpaw
  * Text Domain: digital-garden
  */
@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // Define plugin version
-define( 'DIGITAL_GARDEN_VERSION', '1.1.0' );
+define( 'DIGITAL_GARDEN_VERSION', '1.1.1' );
 
 // Include the necessary files
 require_once plugin_dir_path( __FILE__ ) . 'includes/class-digital-garden-cpt.php';
