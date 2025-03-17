@@ -1,0 +1,12 @@
+{
+  "apiVersion": 2,
+  "name": "digital-garden/container",
+  "title": "Digital Garden Container",
+  "category": "widgets",
+  "icon": "index-card",
+  "description": "Container block for your digital garden archive and note blocks.",
+  "supports": {
+    "html": false
+  },
+  "editorScript": "file:./index.js"
+}

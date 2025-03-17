@@ -1,0 +1,13 @@
+{
+    "apiVersion": 2,
+    "name": "digital-garden/search",
+    "title": "Search",
+    "category": "widgets",
+    "icon": "admin-site",
+    "description": "Search block.",
+		"parent": [ "digital-garden/container" ],
+    "supports": {
+        "html": false
+    },
+    "editorScript": "file:./index.js"
+}

@@ -1,0 +1,13 @@
+{
+    "apiVersion": 2,
+    "name": "digital-garden/tag-filter",
+    "title": "Tag Filter",
+    "category": "widgets",
+    "icon": "admin-site",
+    "description": "Tag Filter block.",
+		"parent": [ "digital-garden/container" ],
+    "supports": {
+        "html": false
+    },
+    "editorScript": "file:./index.js"
+}
