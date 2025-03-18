@@ -1,13 +1,13 @@
 {
-    "apiVersion": 2,
-    "name": "digital-garden/note-completeness",
-    "title": "Note Completeness",
-    "category": "widgets",
-    "icon": "admin-site",
-    "description": "Note Completeness block.",
-		"parent": [ "digital-garden/container" ],
-    "supports": {
-        "html": false
-    },
-    "editorScript": "file:./index.js"
+  "apiVersion": 2,
+  "name": "digital-garden/note-completeness",
+  "title": "Note Completeness",
+  "category": "widgets",
+  "icon": "admin-site",
+  "description": "Note Completeness block.",
+  "parent": [ "digital-garden/container" ],
+  "supports": {
+    "html": false
+  },
+  "editorScript": "file:./index.js"
 }

@@ -28,7 +28,12 @@ require_once DIGITAL_GARDEN_PLUGIN_PATH . 'includes/class-digital-garden-bidirec
 require_once DIGITAL_GARDEN_PLUGIN_PATH . 'includes/class-digital-garden-blocks.php';
 require_once DIGITAL_GARDEN_PLUGIN_PATH . 'includes/class-digital-garden-notes-list-table.php';
 
-new DigitalGarden\Digital_Garden_Blocks();
+add_action(
+	'plugins_loaded',
+	function () {
+		new \DigitalGarden\Digital_Garden_Blocks();
+	}
+);
 
 // Include the helper functions
 $helpers = glob( DIGITAL_GARDEN_PLUGIN_PATH . 'includes/helpers/*.php' );

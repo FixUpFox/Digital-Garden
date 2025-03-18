@@ -1,19 +1,18 @@
 {
-    "apiVersion": 2,
-    "name": "digital-garden/garden-title",
-    "title": "Garden Title",
-    "category": "widgets",
-    "icon": "heading",
-    "description": "Displays the garden title.",
-		"parent": [ "digital-garden/container" ],
-    "supports": {
-        "html": false
-    },
-    "attributes": {
-        "content": {
-            "type": "string",
-            "default": "Digital Garden"
-        }
-    },
-    "editorScript": "file:./index.js"
+  "apiVersion": 2,
+  "name": "digital-garden/garden-title",
+  "title": "Garden Title",
+  "category": "widgets",
+  "icon": "heading",
+  "description": "Displays the garden title.",
+  "parent": [ "digital-garden/container" ],
+  "attributes": {
+    "content": {
+      "type": "string"
+    }
+  },
+  "supports": {
+    "html": false
+  },
+  "editorScript": "file:./index.js"
 }

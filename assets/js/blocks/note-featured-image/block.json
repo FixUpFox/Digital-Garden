@@ -1,12 +1,12 @@
 {
-    "apiVersion": 2,
-    "name": "digital-garden/note-featured-image",
-    "title": "Note Featured Image",
-    "category": "widgets",
-    "icon": "admin-site",
-    "description": "Note Featured Image block.",
-		"parent": [ "digital-garden/container" ],
-    "supports": {
-        "html": false
-    }
+  "apiVersion": 2,
+  "name": "digital-garden/note-featured-image",
+  "title": "Note Featured Image",
+  "category": "widgets",
+  "icon": "admin-site",
+  "description": "Note Featured Image block.",
+  "parent": [ "digital-garden/container" ],
+  "supports": {
+    "html": false
+  }
 }

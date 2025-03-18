@@ -1,13 +1,13 @@
 {
-    "apiVersion": 2,
-    "name": "digital-garden/note-modify-date",
-    "title": "Note Modify Date",
-    "category": "widgets",
-    "icon": "admin-site",
-    "description": "Note Modify Date block.",
-		"parent": [ "digital-garden/container" ],
-    "supports": {
-        "html": false
-    },
-    "editorScript": "file:./index.js"
+  "apiVersion": 2,
+  "name": "digital-garden/note-modify-date",
+  "title": "Note Modify Date",
+  "category": "widgets",
+  "icon": "admin-site",
+  "description": "Note Modify Date block.",
+  "parent": [ "digital-garden/container" ],
+  "supports": {
+    "html": false
+  },
+  "editorScript": "file:./index.js"
 }

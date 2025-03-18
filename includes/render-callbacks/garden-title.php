@@ -9,6 +9,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-function render_garden_title( $attributes, $content ) {
-	return '<div class="digital-garden-garden-title">[Garden Title Placeholder]</div>';
+function render_garden_title( $attributes ) {
+	$title = isset( $attributes['content'] ) ? esc_html( $attributes['content'] ) : 'Digital Garden';
+
+	return sprintf(
+		'<h2 class="digital-garden-title">%s</h2>',
+		$title
+	);
 }

@@ -1,12 +1,12 @@
 {
   "$schema": "https://schemas.wp.org/trunk/block.json",
   "apiVersion": 3,
-	"name": "digital-garden/note-block",
+  "name": "digital-garden/note-block",
   "version": "2.0.0",
-	"title": "Note",
+  "title": "Note",
   "category": "widgets",
-	"icon": "admin-site",
-	"description": "Note block.",
+  "icon": "admin-site",
+  "description": "Note block.",
   "parent": [ "digital-garden/container" ],
   "example": {},
   "keywords": [
