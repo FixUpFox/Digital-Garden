@@ -1,36 +1,37 @@
-(function( blocks, element, blockEditor ) {
-  var el = element.createElement;
-  var RichText = blockEditor.RichText;
+(function(wp) {
+  const { registerBlockType } = wp.blocks;
+  const { RichText, useBlockProps } = wp.blockEditor;
+  const el = wp.element.createElement;
 
-  blocks.registerBlockType( 'digital-garden/garden-title', {
-    title: 'Garden Title',
-    icon: 'heading',
-    category: 'widgets',
-    parent: [ 'digital-garden/container' ],
-    attributes: {
-      content: {
-        type: 'string'
+  registerBlockType('digital-garden/garden-title', {
+      title: 'Garden Title',
+      icon: 'heading',
+      category: 'widgets',
+      parent: [ 'digital-garden/container' ],
+
+      attributes: {
+          content: { type: 'string' }
+      },
+
+      edit: function(props) {
+          const { attributes, setAttributes } = props;
+          const blockProps = useBlockProps();
+
+          return el(
+              'div',
+              blockProps,
+              el( RichText, {
+                  tagName: 'h2',
+                  className: 'digital-garden-title',
+                  value: attributes.content || '',
+                  onChange: ( newContent ) => setAttributes( { content: newContent } ),
+                  placeholder: 'Enter garden title...'
+              })
+          );
+      },
+
+      save: function() {
+          return null;
       }
-    },
-    edit: function( props ) {
-      const { attributes, setAttributes } = props;
-      const { content } = attributes;
-
-      return el( 'div', {},
-        el( RichText, {
-          tagName: 'h2',
-          className: 'digital-garden-title',
-          value: content || "",
-          onChange: function( newContent ) {
-          console.log("Updating content to:", newContent);
-            setAttributes( { content: newContent } );
-          },
-          placeholder: 'Enter Garden Title...'
-        })
-      );
-    },
-    save: function() {
-      return null; // Server-rendered in PHP
-    }
   });
-})( window.wp.blocks, window.wp.element, window.wp.blockEditor );
+})(window.wp);

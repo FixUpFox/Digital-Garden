@@ -1,16 +1,21 @@
-(function( blocks, element ) {
-  var el = element.createElement;
-  var registerBlockType = blocks.registerBlockType;
+(function(wp) {
+  const { registerBlockType } = wp.blocks;
+  const { useBlockProps } = wp.blockEditor;
+  const el = wp.element.createElement;
 
-  registerBlockType( 'digital-garden/tag-filter', {
-    title: 'Tag Filter',
-    icon: 'admin-site',
-    category: 'widgets',
-    edit: function() {
-      return el( 'div', { className: 'digital-garden-tag-filter' }, 'Tag Filter' );
-    },
-    save: function() {
-      return null; // Server-side rendered in PHP
-    }
+  registerBlockType('digital-garden/tag-filter', {
+      title: 'Tag Filter',
+      icon: 'filter',
+      category: 'widgets',
+      parent: [ 'digital-garden/container' ],
+
+      edit: function(props) {
+          const blockProps = useBlockProps();
+          return el('div', blockProps, 'Tag Filter');
+      },
+
+      save: function() {
+          return null;
+      }
   });
-})( window.wp.blocks, window.wp.element );
+})(window.wp);

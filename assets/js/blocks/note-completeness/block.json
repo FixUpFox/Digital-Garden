@@ -3,7 +3,7 @@
   "name": "digital-garden/note-completeness",
   "title": "Note Completeness",
   "category": "widgets",
-  "icon": "admin-site",
+  "icon": "yes",
   "description": "Note Completeness block.",
   "parent": [ "digital-garden/container" ],
   "supports": {

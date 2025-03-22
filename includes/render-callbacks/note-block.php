@@ -10,5 +10,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 function render_note_block( $attributes, $content ) {
-	return '<div class="digital-garden-note-block">[Note Block Placeholder]</div>';
+	return sprintf(
+		'<div class="digital-garden-note-block">%s</div>',
+		$content
+	);
 }

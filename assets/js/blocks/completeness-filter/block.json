@@ -3,11 +3,12 @@
   "name": "digital-garden/completeness-filter",
   "title": "Completeness Filter",
   "category": "widgets",
-  "icon": "admin-site",
+  "icon": "yes-alt",
   "description": "Completeness Filter block.",
   "parent": [ "digital-garden/container" ],
   "supports": {
     "html": false
   },
+  "textdomain": "digital-garden",
   "editorScript": "file:./index.js"
 }

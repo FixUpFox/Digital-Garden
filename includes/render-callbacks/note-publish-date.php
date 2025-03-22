@@ -9,6 +9,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-function render_note_publish_date( $attributes, $content ) {
-	return '<div class="digital-garden-note-publish-date">[Note Publish Date Placeholder]</div>';
+function render_note_publish_date( $attributes ) {
+	$content = isset( $attributes['content'] ) && ! empty( $attributes['content'] )
+		? esc_html( $attributes['content'] )
+		: 'Publish Date';
+
+	return sprintf(
+		'<div class="digital-garden-note-publish-date">%s</div>',
+		$content
+	);
 }

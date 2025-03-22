@@ -29,7 +29,7 @@ class Digital_Garden_Blocks {
 		wp_register_script(
 			'digital-garden-container',
 			DIGITAL_GARDEN_PLUGIN_URL . 'assets/js/blocks/container/index.js',
-			array( 'wp-blocks', 'wp-element', 'wp-block-editor' ),
+			array( 'wp-blocks', 'wp-element', 'wp-block-editor', 'wp-components' ),
 			DIGITAL_GARDEN_VERSION,
 			false
 		);
@@ -37,7 +37,7 @@ class Digital_Garden_Blocks {
 			$block_path,
 			array(
 				'editor_script'   => 'digital-garden-container',
-				'render_callback' => 'DigitalGarden\\render_container',
+				'render_callback' => '\\DigitalGarden\\render_container',
 			)
 		);
 
@@ -46,15 +46,15 @@ class Digital_Garden_Blocks {
 		wp_register_script(
 			'digital-garden-garden-title',
 			DIGITAL_GARDEN_PLUGIN_URL . 'assets/js/blocks/garden-title/index.js',
-			array( 'wp-blocks', 'wp-element', 'wp-block-editor', 'wp-components' ),
+			array( 'wp-blocks', 'wp-element', 'wp-block-editor' ),
 			DIGITAL_GARDEN_VERSION,
-			false
+			true
 		);
 		register_block_type(
 			$block_path,
 			array(
 				'editor_script'   => 'digital-garden-garden-title',
-				'render_callback' => 'DigitalGarden\\render_garden_title',
+				'render_callback' => '\\DigitalGarden\\render_garden_title',
 			)
 		);
 

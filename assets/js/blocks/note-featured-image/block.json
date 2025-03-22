@@ -3,7 +3,7 @@
   "name": "digital-garden/note-featured-image",
   "title": "Note Featured Image",
   "category": "widgets",
-  "icon": "admin-site",
+  "icon": "format-image",
   "description": "Note Featured Image block.",
   "parent": [ "digital-garden/container" ],
   "supports": {

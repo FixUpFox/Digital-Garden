@@ -3,11 +3,12 @@
   "name": "digital-garden/tag-filter",
   "title": "Tag Filter",
   "category": "widgets",
-  "icon": "admin-site",
+  "icon": "filter",
   "description": "Tag Filter block.",
   "parent": [ "digital-garden/container" ],
   "supports": {
     "html": false
   },
+  "textdomain": "digital-garden",
   "editorScript": "file:./index.js"
 }

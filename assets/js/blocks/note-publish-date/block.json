@@ -3,11 +3,12 @@
   "name": "digital-garden/note-publish-date",
   "title": "Note Publish Date",
   "category": "widgets",
-  "icon": "admin-site",
+  "icon": "calendar",
   "description": "Note Publish Date block.",
   "parent": [ "digital-garden/container" ],
   "supports": {
     "html": false
   },
+  "textdomain": "digital-garden",
   "editorScript": "file:./index.js"
 }

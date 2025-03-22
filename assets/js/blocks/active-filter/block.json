@@ -5,7 +5,7 @@
   "version": "2.0.0",
 	"title": "Active Filter",
   "category": "widgets",
-	"icon": "admin-site",
+  "icon": "visibility",
 	"description": "Active Filter block.",
   "parent": [ "digital-garden/container" ],
   "keywords": [
@@ -33,8 +33,5 @@
     }
   },
   "textdomain": "digital-garden",
-  "editorScript": "file:./index.js",
-  "editorStyle": "file:./index.css",
-  "style": "file:./style-index.css",
-  "render": "file:./render.php"
+  "editorScript": "file:./index.js"
 }

@@ -3,11 +3,12 @@
   "name": "digital-garden/search",
   "title": "Search",
   "category": "widgets",
-  "icon": "admin-site",
+  "icon": "search",
   "description": "Search block.",
   "parent": [ "digital-garden/container" ],
   "supports": {
     "html": false
   },
+  "textdomain": "digital-garden",
   "editorScript": "file:./index.js"
 }

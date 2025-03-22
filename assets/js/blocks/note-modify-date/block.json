@@ -3,11 +3,12 @@
   "name": "digital-garden/note-modify-date",
   "title": "Note Modify Date",
   "category": "widgets",
-  "icon": "admin-site",
+  "icon": "update",
   "description": "Note Modify Date block.",
   "parent": [ "digital-garden/container" ],
   "supports": {
     "html": false
   },
+  "textdomain": "digital-garden",
   "editorScript": "file:./index.js"
 }

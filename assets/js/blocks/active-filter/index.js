@@ -1,17 +1,21 @@
+(function(wp) {
+  const { registerBlockType } = wp.blocks;
+  const { useBlockProps } = wp.blockEditor;
+  const el = wp.element.createElement;
 
-(function( blocks, element ) {
-  var el = element.createElement;
-  var registerBlockType = blocks.registerBlockType;
+  registerBlockType('digital-garden/active-filter', {
+      title: 'Active Filter',
+      icon: 'visibility',
+      category: 'widgets',
+      parent: [ 'digital-garden/container' ],
 
-  registerBlockType( 'digital-garden/active-filter', {
-    title: 'Active Filter',
-    icon: 'admin-site',
-    category: 'widgets',
-    edit: function() {
-      return el( 'div', { className: 'digital-garden-active-filter' }, 'Active Filter' );
-    },
-    save: function() {
-      return null; // Server-side rendered in PHP
-    }
+      edit: function(props) {
+          const blockProps = useBlockProps();
+          return el('div', blockProps, 'Active Filter');
+      },
+
+      save: function() {
+          return null;
+      }
   });
-})( window.wp.blocks, window.wp.element );
+})(window.wp);
