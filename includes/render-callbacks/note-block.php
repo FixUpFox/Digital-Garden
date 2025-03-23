@@ -26,14 +26,14 @@ function render_note_block( $attributes, $content ) {
 	while ( $query->have_posts() ) {
 		$query->the_post();
 
-		$note_content = apply_filters( 'the_content', $content ); // InnerBlocks content here!
+		$note_content = get_the_content();
 
 		$output .= '<div class="digital-garden-note">';
-		$output .= $note_content; // Runs the layout template for each note
+		$output .= $note_content;
 		$output .= '</div>';
 	}
 
-	wp_reset_postdata();
+	\wp_reset_postdata();
 
 	$output .= '</div>';
 
