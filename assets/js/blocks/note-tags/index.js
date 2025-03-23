@@ -4,34 +4,34 @@
   const el = wp.element.createElement;
 
   registerBlockType('digital-garden/note-tags', {
-      title: 'Tags',
-      icon: 'tag',
-      category: 'widgets',
-      parent: [ 'digital-garden/note-block' ],
+    title: 'Tags',
+    icon: 'tag',
+    category: 'widgets',
+    parent: [ 'digital-garden/note-block' ],
 
-      attributes: {
-          content: { type: 'string' }
-      },
+    attributes: {
+      content: { type: 'string' }
+    },
 
-      edit: function(props) {
-          const { attributes, setAttributes } = props;
-          const blockProps = useBlockProps();
+    edit: function(props) {
+      const { attributes, setAttributes } = props;
+      const blockProps = useBlockProps();
 
-          return el(
-              'div',
-              blockProps,
-              el( RichText, {
-                  tagName: 'div',
-                  className: 'digital-garden-note-tags',
-                  value: attributes.content || '',
-                  onChange: ( newContent ) => setAttributes( { content: newContent } ),
-                  placeholder: 'Enter Tags...'
-              })
-          );
-      },
+      return el(
+        'div',
+        blockProps,
+        el( RichText, {
+          tagName: 'div',
+          className: 'digital-garden-note-tags',
+          value: attributes.content || '',
+          onChange: ( newContent ) => setAttributes( { content: newContent } ),
+          placeholder: 'Enter Tags...'
+        })
+      );
+    },
 
-      save: function() {
-          return null;
-      }
+    save: function() {
+      return null;
+    }
   });
 })(window.wp);
