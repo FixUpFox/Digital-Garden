@@ -5,7 +5,7 @@
   "category": "widgets",
   "icon": "calendar",
   "description": "Note Publish Date block.",
-  "parent": [ "digital-garden/container" ],
+  "parent": [ "digital-garden/note-block" ],
   "supports": {
     "html": false
   },

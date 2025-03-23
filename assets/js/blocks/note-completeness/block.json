@@ -5,7 +5,7 @@
   "category": "widgets",
   "icon": "yes",
   "description": "Note Completeness block.",
-  "parent": [ "digital-garden/container" ],
+  "parent": [ "digital-garden/note-block" ],
   "supports": {
     "html": false
   },

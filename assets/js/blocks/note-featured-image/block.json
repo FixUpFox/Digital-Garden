@@ -5,7 +5,7 @@
   "category": "widgets",
   "icon": "format-image",
   "description": "Note Featured Image block.",
-  "parent": [ "digital-garden/container" ],
+  "parent": [ "digital-garden/note-block" ],
   "supports": {
     "html": false
   }

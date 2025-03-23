@@ -5,7 +5,7 @@
   "category": "widgets",
   "icon": "edit",
   "description": "Note Title block.",
-  "parent": [ "digital-garden/container" ],
+  "parent": [ "digital-garden/note-block" ],
   "supports": {
     "html": false
   },

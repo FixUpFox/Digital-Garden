@@ -1,32 +1,31 @@
 (function(wp) {
   const { registerBlockType } = wp.blocks;
-  const { RichText, MediaUpload, useBlockProps } = wp.blockEditor;
+  const { useBlockProps } = wp.blockEditor;
   const el = wp.element.createElement;
 
   registerBlockType('digital-garden/note-title', {
-    title: 'Title',
-    icon: 'edit',
+    title: 'Note Title',
+    icon: 'heading',
     category: 'widgets',
     parent: [ 'digital-garden/note-block' ],
 
     attributes: {
-      content: { type: 'string' }
+      textAlign: { type: 'string', default: 'left' },
+      fontSize: { type: 'string', default: 'normal' }
     },
 
     edit: function(props) {
       const { attributes, setAttributes } = props;
       const blockProps = useBlockProps();
 
-      return el(
-        'div',
+      return el('div',
         blockProps,
-        el( RichText, {
-          tagName: 'div',
-          className: 'digital-garden-note-title',
-          value: attributes.content || '',
-          onChange: ( newContent ) => setAttributes( { content: newContent } ),
-          placeholder: 'Enter Title...'
-        })
+        el('h3', {
+          style: {
+            textAlign: attributes.textAlign,
+            fontSize: attributes.fontSize === 'large' ? '2rem' : '1rem'
+          }
+        }, 'Example Note Title')
       );
     },
 
