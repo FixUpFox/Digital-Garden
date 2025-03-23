@@ -46,7 +46,7 @@ class Digital_Garden_Blocks {
 		wp_register_script(
 			'digital-garden-garden-title',
 			DIGITAL_GARDEN_PLUGIN_URL . 'assets/js/blocks/garden-title/index.js',
-			array( 'wp-blocks', 'wp-element', 'wp-block-editor' ),
+			array( 'wp-blocks', 'wp-element', 'wp-block-editor', 'wp-components' ),
 			DIGITAL_GARDEN_VERSION,
 			true
 		);

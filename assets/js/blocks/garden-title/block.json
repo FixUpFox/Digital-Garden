@@ -8,6 +8,14 @@
   "attributes": {
     "content": {
       "type": "string"
+    },
+    "textAlign": {
+      "type": "string",
+      "default": "left"
+    },
+    "level": {
+      "type": "number",
+      "default": 2
     }
   },
   "supports": {

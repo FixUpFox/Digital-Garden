@@ -22,14 +22,3 @@ function render_garden_title( $attributes ) {
 		$level
 	);
 }
-
-// function render_garden_title( $attributes ) {
-//     $title = isset( $attributes['content'] ) && ! empty( $attributes['content'] )
-//         ? esc_html( $attributes['content'] )
-//         : 'Welcome to My Garden';
-
-//     return sprintf(
-//         '<h2 class="digital-garden-title">%s</h2>',
-//         $title
-//     );
-// }
