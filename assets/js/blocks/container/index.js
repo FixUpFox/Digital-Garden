@@ -16,20 +16,20 @@
         blockProps,
         el( InnerBlocks, {
           allowedBlocks: [
-          'digital-garden/garden-title',
-          'digital-garden/tag-filter',
-          'digital-garden/completeness-filter',
-          'digital-garden/active-filter',
-          'digital-garden/search',
-          'digital-garden/note-block',
+	          'digital-garden/garden-title',
+	          'digital-garden/tag-filter',
+	          'digital-garden/completeness-filter',
+	          'digital-garden/active-filter',
+	          'digital-garden/search',
+	          'digital-garden/note-block',
           ],
           template: [
-          [ 'digital-garden/garden-title' ],
-          [ 'digital-garden/tag-filter' ],
-          [ 'digital-garden/completeness-filter' ],
-          [ 'digital-garden/active-filter' ],
-          [ 'digital-garden/search' ],
-          [ 'digital-garden/note-block' ],
+	          [ 'digital-garden/garden-title' ],
+	          [ 'digital-garden/tag-filter' ],
+	          [ 'digital-garden/completeness-filter' ],
+	          [ 'digital-garden/active-filter' ],
+	          [ 'digital-garden/search' ],
+	          [ 'digital-garden/note-block' ],
           ],
           templateLock: false
         })

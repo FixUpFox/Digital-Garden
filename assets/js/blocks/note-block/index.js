@@ -22,14 +22,27 @@
             'digital-garden/note-featured-image',
             'digital-garden/note-publish-date',
             'digital-garden/note-modify-date'
-          ]
+          ],
+          template: [
+	          [ 'digital-garden/note-title' ],
+	          [ 'digital-garden/note-completeness' ],
+	          [ 'digital-garden/note-tags' ],
+	          [ 'digital-garden/note-featured-image' ],
+	          [ 'digital-garden/note-publish-date' ],
+	          [ 'digital-garden/note-modify-date' ],
+          ],
+          templateLock: false
         })
       );
     },
 
     save: function() {
       const blockProps = useBlockProps.save();
-      return el('div', blockProps, el( InnerBlocks.Content ));
+      return el(
+        'div',
+        blockProps,
+        el( InnerBlocks.Content )
+      );
     }
   });
 })(window.wp);
