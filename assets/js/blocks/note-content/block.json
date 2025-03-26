@@ -1,0 +1,16 @@
+{
+  "apiVersion": 3,
+  "name": "digital-garden/note-content",
+  "title": "Note Content",
+  "category": "widgets",
+  "icon": "edit",
+  "description": "Note Content block.",
+  "parent": [ "digital-garden/note-block" ],
+  "attributes": {
+    "postId": {
+      "type": "number"
+    }
+  },
+  "textdomain": "digital-garden",
+  "editorScript": "file:./index.js"
+}

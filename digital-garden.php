@@ -60,7 +60,7 @@ function digital_garden_activate() {
 		$page = array(
 			'post_title'   => 'Digital Garden',
 			'post_name'    => 'garden',
-			'post_content' => '<!-- wp:digital-garden/archive /-->',
+			'post_content' => '<!-- wp:digital-garden/container /-->',
 			'post_status'  => 'publish',
 			'post_type'    => 'page',
 			'post_author'  => 1,

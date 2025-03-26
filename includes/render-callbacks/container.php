@@ -9,9 +9,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-function render_container( $attributes, $content ) {
-	return sprintf(
-		'<div class="digital-garden-container">%s</div>',
-		$content
-	);
+function render_container_block( $attributes, $content ) {
+	return '<div class="digital-garden-container">' . do_blocks( $content ) . '</div>';
 }

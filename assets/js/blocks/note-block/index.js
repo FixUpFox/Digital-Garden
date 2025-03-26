@@ -7,16 +7,17 @@
     title: 'Note Block',
     icon: 'sticky',
     category: 'widgets',
-    parent: [ 'digital-garden/container' ],
-
-    attributes: {
-      layoutStyle: { type: 'string', default: 'list' } // or 'grid', etc.
+    supports: {
+        html: false,
+        reusable: false,
     },
+    parent: [ 'digital-garden/container' ],
 
     edit: function(props) {
       const blockProps = useBlockProps();
       const TEMPLATE = [
         [ 'digital-garden/note-title' ],
+        [ 'digital-garden/note-content' ],
         [ 'digital-garden/note-tags' ],
         [ 'digital-garden/note-completeness' ],
         [ 'digital-garden/note-featured-image' ],
@@ -31,20 +32,26 @@
         el(InnerBlocks, {
           allowedBlocks: [
             'digital-garden/note-title',
+            'digital-garden/note-content',
             'digital-garden/note-tags',
             'digital-garden/note-completeness',
             'digital-garden/note-featured-image',
             'digital-garden/note-publish-date',
-            'digital-garden/note-modify-date'
+            'digital-garden/note-modify-date',
+            'core/paragraph'
           ],
           template: TEMPLATE,
           templateLock: false
         })
       );
     },
-
     save: function() {
-      return null;
+      const blockProps = useBlockProps.save();
+      return el(
+        'div',
+        blockProps,
+        el( InnerBlocks.Content )
+      );
     }
   });
 })(window.wp);

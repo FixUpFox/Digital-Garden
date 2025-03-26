@@ -1,14 +1,11 @@
 {
-  "$schema": "https://schemas.wp.org/trunk/block.json",
   "apiVersion": 3,
   "name": "digital-garden/note-block",
-  "version": "2.0.0",
   "title": "Note",
   "category": "widgets",
   "icon": "sticky",
   "description": "Note block.",
   "parent": [ "digital-garden/container" ],
-  "example": {},
   "keywords": [
     "note"
   ],
@@ -20,8 +17,12 @@
     "html": false,
     "typography": {
       "fontSize": true
-    }
+    },
+    "reusable": false
   },
+  "attributes": {},
+  "usesContext": [],
+  "providesContext": {},
   "textdomain": "digital-garden",
   "editorScript": "file:./index.js"
 }

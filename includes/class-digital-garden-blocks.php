@@ -160,6 +160,23 @@ class Digital_Garden_Blocks {
 			)
 		);
 
+		// 7. Note Content Block
+		$block_path = DIGITAL_GARDEN_PLUGIN_PATH . 'assets/js/blocks/note-content';
+		wp_register_script(
+			'digital-garden-note-content',
+			plugins_url( '../assets/js/blocks/note-content/index.js', __FILE__ ),
+			array( 'wp-blocks', 'wp-element', 'wp-block-editor', 'wp-components' ),
+			DIGITAL_GARDEN_VERSION,
+			false
+		);
+		register_block_type(
+			$block_path,
+			array(
+				'editor_script'   => 'digital-garden-note-content',
+				'render_callback' => 'DigitalGarden\\render_note_content',
+			)
+		);
+
 		// 8. Note Completeness Block
 		$block_path = DIGITAL_GARDEN_PLUGIN_PATH . 'assets/js/blocks/note-completeness';
 		wp_register_script(

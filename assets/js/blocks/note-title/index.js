@@ -1,6 +1,16 @@
 (function(wp) {
   const { registerBlockType } = wp.blocks;
-  const { useBlockProps } = wp.blockEditor;
+  const {
+    useBlockProps,
+    BlockControls,
+    AlignmentToolbar
+  } = wp.blockEditor;
+
+  const {
+    ToolbarGroup,
+    ToolbarButton
+  } = wp.components;
+
   const el = wp.element.createElement;
 
   registerBlockType('digital-garden/note-title', {
@@ -11,26 +21,45 @@
 
     attributes: {
       textAlign: { type: 'string', default: 'left' },
-      fontSize: { type: 'string', default: 'normal' }
+      level: { type: 'number', default: 3 }
     },
 
     edit: function(props) {
       const { attributes, setAttributes } = props;
+      const { textAlign, level } = attributes;
+
       const blockProps = useBlockProps();
 
-      return el('div',
+      return el(
+        'div',
         blockProps,
-        el('h3', {
-          style: {
-            textAlign: attributes.textAlign,
-            fontSize: attributes.fontSize === 'large' ? '2rem' : '1rem'
-          }
+        el(BlockControls, {},
+          el(AlignmentToolbar, {
+            value: textAlign,
+            onChange: function(newAlign) {
+              setAttributes({ textAlign: newAlign });
+            }
+          }),
+          el(ToolbarGroup, {},
+            [2, 3, 4, 5, 6].map(function(headingLevel) {
+              return el(ToolbarButton, {
+                label: 'H' + headingLevel,
+                isPressed: level === headingLevel,
+                onClick: function() {
+                  setAttributes({ level: headingLevel });
+                },
+                key: headingLevel
+              }, 'H' + headingLevel);
+            })
+          )
+        ),
+
+        el('h' + level, {
+          style: { textAlign: textAlign },
+          className: 'digital-garden-note-title-preview'
         }, 'Example Note Title')
       );
     },
-
-    save: function() {
-      return null;
-    }
+    save: () => null
   });
 })(window.wp);

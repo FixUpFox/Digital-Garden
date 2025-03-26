@@ -1,16 +1,11 @@
 {
-  "$schema": "https://schemas.wp.org/trunk/block.json",
   "apiVersion": 3,
 	"name": "digital-garden/active-filter",
-  "version": "2.0.0",
 	"title": "Active Filter",
   "category": "widgets",
   "icon": "visibility",
 	"description": "Active Filter block.",
   "parent": [ "digital-garden/container" ],
-  "keywords": [
-    "09aac3"
-  ],
   "attributes": {
     "fallbackCurrentYear": {
       "type": "string"

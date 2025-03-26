@@ -10,15 +10,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 function render_note_title( $attributes ) {
-	$title = get_the_title();
+	$post_id = $attributes['postId'] ?? null;
+	$title   = $post_id ? get_the_title( $post_id ) : '[Missing Title]';
 
-	$align     = isset( $attributes['textAlign'] ) ? esc_attr( $attributes['textAlign'] ) : 'left';
-	$font_size = isset( $attributes['fontSize'] ) && 'large' === $attributes['fontSize'] ? '2rem' : '1rem';
-
-	return sprintf(
-		'<h3 style="text-align:%s; font-size:%s;">%s</h3>',
-		$align,
-		$font_size,
-		esc_html( $title )
-	);
+	return '<h3 class="digital-garden-note-title">' . esc_html( $title ) . '</h3>';
 }
