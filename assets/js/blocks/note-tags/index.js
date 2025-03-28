@@ -1,6 +1,6 @@
 (function(wp) {
   const { registerBlockType } = wp.blocks;
-  const { RichText, MediaUpload, useBlockProps } = wp.blockEditor;
+  const { useBlockProps } = wp.blockEditor;
   const el = wp.element.createElement;
 
   registerBlockType('digital-garden/note-tags', {
@@ -20,13 +20,7 @@
       return el(
         'div',
         blockProps,
-        el( RichText, {
-          tagName: 'div',
-          className: 'digital-garden-note-tags',
-          value: attributes.content || '',
-          onChange: ( newContent ) => setAttributes( { content: newContent } ),
-          placeholder: 'Enter Tags...'
-        })
+        'Tags will be rendered here in the front-end.'
       );
     },
 
