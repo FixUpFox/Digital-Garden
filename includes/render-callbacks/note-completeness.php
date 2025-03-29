@@ -9,13 +9,20 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-function render_note_completeness( $attributes ) {
-	$content = isset( $attributes['content'] ) && ! empty( $attributes['content'] )
-		? esc_html( $attributes['content'] )
-		: 'Completeness';
+function render_note_completeness() {
+	// Get the current post ID
+	$post_id = $block->context['postId'] ?? get_the_ID();
+
+	// Get the completeness meta for the post
+	$completeness = get_post_meta( $post_id, '_note_completeness', true );
+
+	// Default message if no completeness is found
+	if ( empty( $completeness ) ) {
+		$completeness = __( 'Unknown completeness', 'digital-garden' );
+	}
 
 	return sprintf(
-		'<div class="digital-garden-note-completeness">%s</div>',
-		$content
+		'<div class="digital-garden-completeness-filter">%s</div>',
+		esc_html( $completeness )
 	);
 }

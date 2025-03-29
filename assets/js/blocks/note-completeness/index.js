@@ -1,6 +1,6 @@
 (function(wp) {
   const { registerBlockType } = wp.blocks;
-  const { RichText, MediaUpload, useBlockProps } = wp.blockEditor;
+  const { RichText, useBlockProps } = wp.blockEditor;
   const el = wp.element.createElement;
 
   registerBlockType('digital-garden/note-completeness', {
@@ -9,24 +9,17 @@
     category: 'widgets',
     parent: [ 'digital-garden/note-block' ],
 
-    attributes: {
-      content: { type: 'string' }
+    supports: {
+      html: false,
     },
 
     edit: function(props) {
-      const { attributes, setAttributes } = props;
-      const blockProps = useBlockProps();
+      const blockProps = wp.blockEditor.useBlockProps();
 
-      return el(
+      return wp.element.createElement(
         'div',
         blockProps,
-        el( RichText, {
-          tagName: 'div',
-          className: 'digital-garden-note-completeness',
-          value: attributes.content || '',
-          onChange: ( newContent ) => setAttributes( { content: newContent } ),
-          placeholder: 'Enter Completeness...'
-        })
+        'Completeness will be rendered here in the front-end.'
       );
     },
 
