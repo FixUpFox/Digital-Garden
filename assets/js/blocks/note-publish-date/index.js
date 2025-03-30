@@ -1,6 +1,6 @@
 (function(wp) {
   const { registerBlockType } = wp.blocks;
-  const { RichText, MediaUpload, useBlockProps } = wp.blockEditor;
+  const { useBlockProps } = wp.blockEditor;
   const el = wp.element.createElement;
 
   registerBlockType('digital-garden/note-publish-date', {
@@ -10,27 +10,24 @@
     parent: [ 'digital-garden/note-block' ],
 
     attributes: {
-      content: { type: 'string' }
+      textAlign: { type: 'string', default: 'left' },
+      fontSize: { type: 'number', default: 16 },
+      fontWeight: { type: 'string', default: 'normal' }
     },
 
-    edit: function(props) {
-      const { attributes, setAttributes } = props;
-      const blockProps = useBlockProps();
+    edit: function() {
+      const blockProps = useBlockProps({
+        className: 'digital-garden-note-publish-date',
+      });
 
       return el(
         'div',
         blockProps,
-        el( RichText, {
-          tagName: 'div',
-          className: 'digital-garden-note-publish-date',
-          value: attributes.content || '',
-          onChange: ( newContent ) => setAttributes( { content: newContent } ),
-          placeholder: 'Enter Publish Date...'
-        })
+        'Publish Date Placeholder'
       );
     },
 
-    save: function() {
+		save: function() {
       return null;
     }
   });
