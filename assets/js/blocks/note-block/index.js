@@ -21,8 +21,16 @@
         [ 'digital-garden/note-tags' ],
         [ 'digital-garden/note-completeness' ],
         [ 'digital-garden/note-featured-image' ],
-        [ 'digital-garden/note-publish-date' ],
-        [ 'digital-garden/note-modify-date' ]
+        [
+          'core/columns', {}, [
+            [ 'core/column', {}, [
+              [ 'digital-garden/note-publish-date' ]
+            ] ],
+            [ 'core/column', {}, [
+              [ 'digital-garden/note-modify-date' ]
+            ] ]
+          ]
+        ]
       ];
 
       return el(
@@ -30,16 +38,6 @@
         blockProps,
         el('p', {}, 'Note Block Layout: Arrange the fields below'),
         el(InnerBlocks, {
-          allowedBlocks: [
-            'digital-garden/note-title',
-            'digital-garden/note-content',
-            'digital-garden/note-tags',
-            'digital-garden/note-completeness',
-            'digital-garden/note-featured-image',
-            'digital-garden/note-publish-date',
-            'digital-garden/note-modify-date',
-            'core/paragraph'
-          ],
           template: TEMPLATE,
           templateLock: false
         })

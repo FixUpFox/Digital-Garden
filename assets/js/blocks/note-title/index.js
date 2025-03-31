@@ -28,7 +28,9 @@
       const { attributes, setAttributes } = props;
       const { textAlign, level } = attributes;
 
-      const blockProps = useBlockProps();
+      const blockProps = useBlockProps({
+        style: { textAlign: textAlign }
+      });
 
       return el(
         'div',
@@ -60,6 +62,18 @@
         }, 'Example Note Title')
       );
     },
-    save: () => null
+    save: function(props) {
+      const { attributes } = props;
+      const { textAlign, level } = attributes;
+      const blockProps = useBlockProps.save({
+        style: { textAlign: textAlign }
+      });
+
+      return el(
+        'h' + level,
+        blockProps,
+        'Example Note Title'
+      );
+    }
   });
 })(window.wp);

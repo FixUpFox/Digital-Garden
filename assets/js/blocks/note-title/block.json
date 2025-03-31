@@ -15,11 +15,15 @@
     },
     "level": {
       "type": "number",
-      "default": 2
+      "default": 3
     }
   },
   "supports": {
-    "html": false
+    "html": false,
+    "spacing": {
+      "padding": true,
+      "margin": true
+    }
   },
   "textdomain": "digital-garden",
   "editorScript": "file:./index.js"
