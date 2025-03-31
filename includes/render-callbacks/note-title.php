@@ -10,7 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 function render_note_title( $attributes ) {
-	$post_id = $attributes['postId'] ?? null;
+	$post_id = get_the_ID();
 	$title   = $post_id ? get_the_title( $post_id ) : '[Missing Title]';
 
 	// Initialize an empty string for styles

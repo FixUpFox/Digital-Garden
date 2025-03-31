@@ -10,8 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 function render_note_completeness() {
-	// Get the current post ID
-	$post_id = $block->context['postId'] ?? get_the_ID();
+	$post_id = get_the_ID();
 
 	// Get the completeness meta for the post
 	$completeness = get_post_meta( $post_id, '_note_completeness', true );

@@ -10,7 +10,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 function render_note_featured_image() {
-	// Get the current post ID
 	$post_id = get_the_ID();
 
 	// Get the featured image URL for the current post

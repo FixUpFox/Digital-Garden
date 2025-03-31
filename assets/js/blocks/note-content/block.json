@@ -9,7 +9,18 @@
   "attributes": {
     "postId": {
       "type": "number"
+    },
+    "textAlign": {
+      "type": "string"
     }
+  },
+  "supports": {
+    "html": false,
+    "spacing": {
+      "padding": true,
+      "margin": true
+    },
+    "align": true
   },
   "textdomain": "digital-garden",
   "editorScript": "file:./index.js"

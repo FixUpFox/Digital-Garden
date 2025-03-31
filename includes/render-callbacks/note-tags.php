@@ -10,8 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 function render_note_tags() {
-	// Get the current post ID
-	$post_id = $block->context['postId'] ?? get_the_ID();
+	$post_id = get_the_ID();
 
 	// Get the tags for the post
 	$tags = get_the_terms( $post_id, 'note_tag' );

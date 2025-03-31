@@ -7,9 +7,6 @@
   "description": "Note Title block.",
   "parent": [ "digital-garden/note-block" ],
   "attributes": {
-    "postId": {
-      "type": "number"
-    },
     "textAlign": {
       "type": "string"
     },
