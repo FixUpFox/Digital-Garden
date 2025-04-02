@@ -11,7 +11,6 @@
 
     attributes: {
       textAlign: { type: 'string', default: 'left' },
-      fontSize: { type: 'number', default: 16 },
       fontWeight: { type: 'string', default: 'normal' }
     },
 

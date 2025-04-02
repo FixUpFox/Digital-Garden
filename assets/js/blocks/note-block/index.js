@@ -14,7 +14,10 @@
     parent: [ 'digital-garden/container' ],
 
     edit: function(props) {
-      const blockProps = useBlockProps();
+      const blockProps = useBlockProps({
+        style: props.attributes.style
+      });
+
       const TEMPLATE = [
         [ 'digital-garden/note-title' ],
         [ 'digital-garden/note-content' ],
@@ -42,6 +45,7 @@
           templateLock: false
         })
       );
+
     },
     save: function() {
       const blockProps = useBlockProps.save();

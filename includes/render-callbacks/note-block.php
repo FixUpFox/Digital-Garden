@@ -48,7 +48,50 @@ function render_note_block() {
 		return '<div class="digital-garden-note-block">No notes found.</div>';
 	}
 
-	$output = '<div class="digital-garden-note-block">';
+	// Initialize an empty string for styles
+	$styles = '';
+
+	// Handle border styles
+	if ( isset( $attributes['style']['border'] ) ) {
+		$border = $attributes['style']['border'];
+
+		if ( isset( $border['color'] ) ) {
+			$styles .= 'border-color:' . esc_attr( convert_to_css_var( $border['color'] ) ) . ';';
+		}
+		if ( isset( $border['style'] ) ) {
+			$styles .= 'border-style:' . esc_attr( $border['style'] ) . ';';
+		}
+		if ( isset( $border['width'] ) ) {
+			$styles .= 'border-width:' . esc_attr( $border['width'] ) . ';';
+		}
+		if ( isset( $border['radius'] ) ) {
+			$styles .= 'border-radius:' . esc_attr( $border['radius'] ) . ';';
+		}
+	}
+
+	// Handle box shadow
+	if ( isset( $attributes['style']['boxShadow'] ) ) {
+		$styles .= 'box-shadow:' . esc_attr( $attributes['style']['boxShadow'] ) . ';';
+	}
+
+	// Handle spacing styles
+	if ( isset( $attributes['style']['spacing'] ) ) {
+		$spacing = $attributes['style']['spacing'];
+
+		if ( isset( $spacing['padding'] ) ) {
+			foreach ( $spacing['padding'] as $side => $value ) {
+				$styles .= 'padding-' . esc_attr( $side ) . ':' . esc_attr( convert_to_css_var( $value ) ) . ';';
+			}
+		}
+
+		if ( isset( $spacing['margin'] ) ) {
+			foreach ( $spacing['margin'] as $side => $value ) {
+				$styles .= 'margin-' . esc_attr( $side ) . ':' . esc_attr( convert_to_css_var( $value ) ) . ';';
+			}
+		}
+	}
+
+	$output = '<div class="digital-garden-note-block" style="' . $styles . '">';
 
 	// For each note post, render the inner layout blocks with post context
 	if ( $query->have_posts() ) {

@@ -18,6 +18,17 @@
     "typography": {
       "fontSize": true
     },
+    "spacing": {
+      "padding": true,
+      "margin": true
+    },
+    "border": {
+      "color": true,
+      "style": true,
+      "width": true,
+      "radius": true
+    },
+    "boxShadow": true,
     "reusable": false
   },
   "attributes": {},
