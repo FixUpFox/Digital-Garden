@@ -1,6 +1,8 @@
 <?php
 namespace DigitalGarden;
 
+use function Digital_Garden\completeness_list;
+
 defined( 'ABSPATH' ) || exit;
 
 class Digital_Garden_Blocks {
@@ -33,6 +35,12 @@ class Digital_Garden_Blocks {
 			array(),
 			DIGITAL_GARDEN_VERSION,
 			true
+		);
+		wp_register_style(
+			'digital-garden-block-editor',
+			DIGITAL_GARDEN_PLUGIN_URL . 'assets/css/digital-garden-block-editor.css',
+			array(),
+			DIGITAL_GARDEN_VERSION
 		);
 		wp_register_script(
 			'digital-garden-container',
@@ -71,7 +79,7 @@ class Digital_Garden_Blocks {
 		wp_register_script(
 			'digital-garden-tag-filter',
 			plugins_url( '../assets/js/blocks/tag-filter/index.js', __FILE__ ),
-			array( 'wp-blocks', 'wp-element', 'wp-block-editor' ),
+			array( 'wp-blocks', 'wp-element', 'wp-block-editor', 'wp-components', 'wp-data', 'wp-i18n' ),
 			DIGITAL_GARDEN_VERSION,
 			false
 		);
@@ -79,6 +87,7 @@ class Digital_Garden_Blocks {
 			$block_path,
 			array(
 				'editor_script'   => 'digital-garden-tag-filter',
+				'editor_style'    => 'digital-garden-block-editor',
 				'render_callback' => 'DigitalGarden\\render_tag_filter',
 			)
 		);
@@ -88,14 +97,33 @@ class Digital_Garden_Blocks {
 		wp_register_script(
 			'digital-garden-completeness-filter',
 			plugins_url( '../assets/js/blocks/completeness-filter/index.js', __FILE__ ),
-			array( 'wp-blocks', 'wp-element', 'wp-block-editor' ),
+			array( 'wp-blocks', 'wp-element', 'wp-block-editor', 'wp-i18n' ),
 			DIGITAL_GARDEN_VERSION,
 			false
+		);
+		$options = array();
+
+		foreach ( completeness_list() as $slug => $label ) {
+			$options[] = array(
+				'value' => $slug,
+				'label' => $label,
+			);
+		}
+
+		wp_localize_script(
+			'digital-garden-completeness-filter',
+			'digitalGardenCompleteness',
+			array(
+				'options'   => $options,
+				'allLabel'  => \__( 'All completeness levels', 'digital-garden' ),
+				'ariaLabel' => \__( 'Filter notes by completeness', 'digital-garden' ),
+			)
 		);
 		register_block_type(
 			$block_path,
 			array(
 				'editor_script'   => 'digital-garden-completeness-filter',
+				'editor_style'    => 'digital-garden-block-editor',
 				'render_callback' => 'DigitalGarden\\render_completeness_filter',
 			)
 		);
@@ -105,7 +133,7 @@ class Digital_Garden_Blocks {
 		wp_register_script(
 			'digital-garden-active-filter',
 			plugins_url( '../assets/js/blocks/active-filter/index.js', __FILE__ ),
-			array( 'wp-blocks', 'wp-element', 'wp-block-editor' ),
+			array( 'wp-blocks', 'wp-element', 'wp-block-editor', 'wp-i18n' ),
 			DIGITAL_GARDEN_VERSION,
 			false
 		);
@@ -113,6 +141,7 @@ class Digital_Garden_Blocks {
 			$block_path,
 			array(
 				'editor_script'   => 'digital-garden-active-filter',
+				'editor_style'    => 'digital-garden-block-editor',
 				'render_callback' => 'DigitalGarden\\render_active_filter',
 			)
 		);

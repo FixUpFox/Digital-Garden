@@ -1,35 +1,110 @@
-/* Editor styles for the Digital Garden Archive block */
-.wp-block-digital-garden-archive p {
-	background-color: #f3f4f6;
-	border: 1px dashed #d1d5db;
-	padding: 1em;
+/* Editor styles for Digital Garden blocks */
+.digital-garden-block-preview {
+	background-color: #ffffff;
+	border: 1px solid #e2e8f0;
+	border-radius: 6px;
+	padding: 1rem;
 }
 
-.digital-garden-tags {
-	margin-bottom: 1em;
+.digital-garden-block-preview fieldset,
+.digital-garden-block-preview .digital-garden-completeness-filter,
+.digital-garden-block-preview .digital-garden-active-filter {
+	margin: 0;
 }
 
-.digital-garden-tag-button {
-	margin: 0.2em;
-	padding: 0.5em 1em;
-	background-color: #e2e8f0;
-	border: 1px solid #cbd5e0;
-	border-radius: 4px;
-	cursor: pointer;
+.digital-garden-tag-filter {
+	background-color: #ffffff;
+	border: 1px solid #e2e8f0;
+	border-radius: 6px;
+	padding: 1rem;
 }
 
-.digital-garden-tag-button.selected {
-	background-color: #3182ce;
-	color: white;
-	border-color: #2b6cb0;
+.digital-garden-tag-filter legend {
+	font-weight: 600;
+	margin-bottom: 0.75rem;
 }
 
-.digital-garden-clear-button {
-	margin: 0.2em;
-	padding: 0.5em 1em;
-	background-color: #e53e3e;
-	color: white;
-	border: 1px solid #c53030;
-	border-radius: 4px;
-	cursor: pointer;
+.digital-garden-filter-list {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5rem 1rem;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.digital-garden-filter-list__item {
+	margin: 0;
+}
+
+.digital-garden-filter-button {
+	align-items: center;
+	background-color: #edf2f7;
+	border: 1px solid #cbd5f5;
+	border-radius: 999px;
+	color: #1a202c;
+	display: inline-flex;
+	gap: 0.45rem;
+	padding: 0.35rem 0.85rem;
+}
+
+.digital-garden-filter-button__label {
+	font-weight: 500;
+}
+
+.digital-garden-filter-count {
+	font-size: 0.85em;
+	opacity: 0.7;
+}
+
+.digital-garden-filter__empty {
+	color: #4a5568;
+	font-style: italic;
+	margin: 0;
+}
+
+.digital-garden-filter-placeholder {
+	align-items: center;
+	color: #4a5568;
+	display: inline-flex;
+	gap: 0.5rem;
+	font-style: italic;
+}
+
+.digital-garden-filter-select {
+	appearance: none;
+	background-color: #edf2f7;
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%230073aa' d='M6 8a1 1 0 0 1-.7-.29l-5-5A1 1 0 0 1 1.7.3L6 4.59 10.3.3a1 1 0 0 1 1.4 1.41l-5 5A1 1 0 0 1 6 8Z'/%3E%3C/svg%3E");
+	background-position: right 0.65rem center;
+	background-repeat: no-repeat;
+	background-size: 12px 8px;
+	border: 1px solid #cbd5f5;
+	border-radius: 6px;
+	color: #1a202c;
+	font-size: 0.95rem;
+	line-height: 1.4;
+	max-width: 320px;
+	padding: 0.45rem 2.25rem 0.45rem 0.75rem;
+	transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.digital-garden-filter-select:focus {
+	background-color: #ffffff;
+	border-color: #0073aa;
+	box-shadow: 0 0 0 2px rgba(0, 115, 170, 0.2);
+	outline: none;
+}
+
+.digital-garden-completeness-filter {
+	background-color: #ffffff;
+	border: 1px solid #e2e8f0;
+	border-radius: 6px;
+	padding: 1rem;
+}
+
+.digital-garden-active-filter {
+	background-color: #ffffff;
+	border: 1px solid #e2e8f0;
+	border-radius: 6px;
+	padding: 1rem;
 }
