@@ -274,21 +274,22 @@
 .digital-garden-search-form {
 	display: flex;
 	flex-wrap: wrap;
-	gap: 0.5rem;
 	align-items: center;
+	position: relative;
+	max-width: 480px;
 }
 
 .digital-garden-search__field {
 	flex: 1 1 220px;
-	min-width: 180px;
+	min-width: 220px;
 	appearance: none;
 	background-color: #edf2f7;
 	border: 1px solid #cbd5f5;
-	border-radius: 6px;
+	border-radius: 999px;
 	color: #1a202c;
 	font-size: 0.95rem;
 	line-height: 1.4;
-	padding: 0.45rem 0.75rem;
+	padding: 0.5rem 2.5rem 0.5rem 1rem;
 	transition: border-color 0.2s ease, box-shadow 0.2s ease,
 		background-color 0.2s ease;
 }
@@ -300,22 +301,14 @@
 	outline: none;
 }
 
-.digital-garden-search__submit {
-	background-color: #0073aa;
-	border: 1px solid #0073aa;
-	border-radius: 6px;
-	color: #ffffff;
-	cursor: pointer;
-	font-weight: 600;
-	padding: 0.5rem 1.25rem;
-	transition: background-color 0.2s ease, border-color 0.2s ease;
-}
-
-.digital-garden-search__submit:hover,
-.digital-garden-search__submit:focus {
-	background-color: #005f8d;
-	border-color: #005f8d;
-	color: #ffffff;
+.digital-garden-search__icon {
+	position: absolute;
+	right: 0.75rem;
+	width: 1.15rem;
+	height: 1.15rem;
+	background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%230073aa' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='11' cy='11' r='7'%3E%3C/circle%3E%3Cline x1='20' y1='20' x2='16.65' y2='16.65'%3E%3C/line%3E%3C/svg%3E") no-repeat center center;
+	background-size: 1.15rem;
+	pointer-events: none;
 }
 
 .digital-garden-note-block__empty {

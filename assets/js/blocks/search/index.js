@@ -8,7 +8,7 @@
 		title: __('Search', 'digital-garden'),
 		icon: 'search',
 		category: 'widgets',
-		parent: ['digital-garden/container'],
+	parent: ['digital-garden/container', 'core/group', 'core/row'],
 
 		edit: function SearchEdit() {
 			const blockProps = useBlockProps({

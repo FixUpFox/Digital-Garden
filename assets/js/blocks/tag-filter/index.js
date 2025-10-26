@@ -10,7 +10,7 @@
 		title: __('Tag Filter', 'digital-garden'),
 		icon: 'filter',
 		category: 'widgets',
-		parent: ['digital-garden/container'],
+	parent: ['digital-garden/container', 'core/group', 'core/row'],
 
 		edit: function TagFilterEdit() {
 			const blockProps = useBlockProps({

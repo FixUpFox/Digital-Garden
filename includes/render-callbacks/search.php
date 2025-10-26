@@ -20,8 +20,8 @@ function render_search( $attributes, $content ) {
 
 	$field_id  = wp_unique_id( 'digital-garden-search-field-' );
 	$label     = esc_html__( 'Search notes', 'digital-garden' );
-	$button    = esc_html__( 'Search', 'digital-garden' );
 	$aria_text = esc_attr__( 'Search notes', 'digital-garden' );
+	$placeholder = esc_attr__( 'Search notes…', 'digital-garden' );
 
 	ob_start();
 	?>
@@ -36,12 +36,10 @@ function render_search( $attributes, $content ) {
 				name="dg_s"
 				class="digital-garden-search__field"
 				value="<?php echo esc_attr( $search_term ); ?>"
-				placeholder="<?php echo esc_attr__( 'Search notes…', 'digital-garden' ); ?>"
+				placeholder="<?php echo esc_attr( $placeholder ); ?>"
 				aria-label="<?php echo esc_attr( $aria_text ); ?>"
 			/>
-			<button type="submit" class="digital-garden-search__submit">
-				<?php echo esc_html( $button ); ?>
-			</button>
+			<span class="digital-garden-search__icon" aria-hidden="true"></span>
 		</form>
 	</div>
 	<?php

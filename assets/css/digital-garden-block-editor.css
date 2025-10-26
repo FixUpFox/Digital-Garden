@@ -108,6 +108,47 @@
 	padding: 0.5rem 1.25rem;
 }
 
+.digital-garden-search__label {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	border: 0;
+}
+
+.digital-garden-search-form {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	position: relative;
+	max-width: 480px;
+}
+
+.digital-garden-search__field {
+	flex: 1 1 220px;
+	min-width: 220px;
+	appearance: none;
+	background-color: #edf2f7;
+	border: 1px solid #cbd5f5;
+	border-radius: 999px;
+	color: #1a202c;
+	font-size: 0.95rem;
+	line-height: 1.4;
+	padding: 0.5rem 2.5rem 0.5rem 1rem;
+}
+
+.digital-garden-search__icon {
+	position: absolute;
+	right: 0.75rem;
+	width: 1.15rem;
+	height: 1.15rem;
+	background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%230073aa' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='11' cy='11' r='7'%3E%3C/circle%3E%3Cline x1='20' y1='20' x2='16.65' y2='16.65'%3E%3C/line%3E%3C/svg%3E") no-repeat center center;
+	background-size: 1.15rem;
+}
+
 .digital-garden-filter-placeholder {
 	align-items: center;
 	color: #4a5568;

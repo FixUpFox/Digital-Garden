@@ -25,7 +25,7 @@ function render_completeness_filter( $attributes, $content ) {
 	}
 
 	$output .= '<select id="' . esc_attr( $select_id ) . '" class="digital-garden-filter-select" data-filter-type="completeness" aria-label="' . esc_attr__( 'Filter notes by completeness', 'digital-garden' ) . '">';
-	$output .= '<option value="">' . esc_html__( 'All completeness levels', 'digital-garden' ) . '</option>';
+	$output .= '<option value="">' . esc_html__( 'Completeness', 'digital-garden' ) . '</option>';
 
 	foreach ( $options as $slug => $label ) {
 		$output .= sprintf(

@@ -8,7 +8,7 @@
 		title: __('Active Filter', 'digital-garden'),
 		icon: 'visibility',
 		category: 'widgets',
-		parent: ['digital-garden/container'],
+	parent: ['digital-garden/container', 'core/group', 'core/row'],
 
 		edit: function ActiveFilterEdit() {
 			const blockProps = useBlockProps({

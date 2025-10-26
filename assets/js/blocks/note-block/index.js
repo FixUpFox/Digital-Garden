@@ -11,7 +11,7 @@
         html: false,
         reusable: false,
     },
-    parent: [ 'digital-garden/container' ],
+    parent: [ 'digital-garden/container', 'core/group', 'core/row' ],
 
     edit: function(props) {
       const blockProps = useBlockProps({

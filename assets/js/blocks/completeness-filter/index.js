@@ -8,7 +8,7 @@
 		title: __('Completeness Filter', 'digital-garden'),
 		icon: 'yes-alt',
 		category: 'widgets',
-		parent: ['digital-garden/container'],
+	parent: ['digital-garden/container', 'core/group', 'core/row'],
 
 		edit: function CompletenessFilterEdit() {
 			const blockProps = useBlockProps({
@@ -27,7 +27,7 @@
 							{ value: 'evergreen', label: __('Evergreen', 'digital-garden') },
 					  ];
 
-			const allLabel = localized.allLabel || __('All completeness levels', 'digital-garden');
+			const allLabel = localized.allLabel || __('Completeness', 'digital-garden');
 			const ariaLabel =
 				localized.ariaLabel || __('Filter notes by completeness', 'digital-garden');
 
