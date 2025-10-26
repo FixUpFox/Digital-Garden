@@ -151,7 +151,7 @@ class Digital_Garden_Blocks {
 		wp_register_script(
 			'digital-garden-search',
 			plugins_url( '../assets/js/blocks/search/index.js', __FILE__ ),
-			array( 'wp-blocks', 'wp-element', 'wp-block-editor' ),
+			array( 'wp-blocks', 'wp-element', 'wp-block-editor', 'wp-i18n' ),
 			DIGITAL_GARDEN_VERSION,
 			false
 		);
@@ -159,6 +159,7 @@ class Digital_Garden_Blocks {
 			$block_path,
 			array(
 				'editor_script'   => 'digital-garden-search',
+				'editor_style'    => 'digital-garden-block-editor',
 				'render_callback' => 'DigitalGarden\\render_search',
 			)
 		);
