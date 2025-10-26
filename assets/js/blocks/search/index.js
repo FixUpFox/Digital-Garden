@@ -32,20 +32,19 @@
 								htmlFor: 'digital-garden-search-preview-field',
 							},
 							__('Search notes', 'digital-garden')
-						),
-						el('input', {
-							id: 'digital-garden-search-preview-field',
-							className: 'digital-garden-search__field',
-							type: 'search',
-							placeholder: __('Search notes…', 'digital-garden'),
-							readOnly: true,
-						}),
-						el(
-							'button',
-							{ className: 'digital-garden-search__submit', type: 'button' },
-							__('Search', 'digital-garden')
-						),
-					]
+					),
+					el('input', {
+						id: 'digital-garden-search-preview-field',
+						className: 'digital-garden-search__field',
+						type: 'search',
+						placeholder: __('Search notes…', 'digital-garden'),
+						readOnly: true,
+					}),
+					el('span', {
+						className: 'digital-garden-search__icon',
+						'aria-hidden': 'true',
+					}),
+				]
 				)
 			);
 		},
