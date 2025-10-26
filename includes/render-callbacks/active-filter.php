@@ -10,5 +10,17 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 function render_active_filter( $attributes, $content ) {
-	return '<div class="digital-garden-active-filter">[Active Filter Placeholder]</div>';
+	$recently_updated   = esc_html__( 'Recently updated', 'digital-garden' );
+	$recently_published = esc_html__( 'Recently published', 'digital-garden' );
+
+	$select_id = 'digital-garden-order-select-' . uniqid();
+
+	$output  = '<div class="digital-garden-active-filter" data-filter-group="active">';
+	$output .= '<select id="' . esc_attr( $select_id ) . '" class="digital-garden-filter-select digital-garden-active-filter__select" aria-label="' . esc_attr__( 'Order notes by', 'digital-garden' ) . '">';
+	$output .= '<option value="published" selected="selected">' . $recently_published . '</option>';
+	$output .= '<option value="modified">' . $recently_updated . '</option>';
+	$output .= '</select>';
+	$output .= '</div>';
+
+	return $output;
 }

@@ -6,11 +6,13 @@
 
 namespace DigitalGarden;
 
+use function Digital_Garden\completeness_list;
+
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-function render_note_block() {
+function render_note_block( $attributes = array(), $content = '' ) {
 	// Retrieve the full post content (including block markup) of the current page
 	$block_content = get_the_content( '', '', get_the_ID() );
 
@@ -91,6 +93,8 @@ function render_note_block() {
 		}
 	}
 
+	$default_completeness = array_key_first( completeness_list() );
+
 	$output = '<div class="digital-garden-note-block" style="' . $styles . '">';
 
 	// For each note post, render the inner layout blocks with post context
@@ -99,13 +103,43 @@ function render_note_block() {
 			$query->the_post();
 			$note_id = get_the_ID();
 
-			$output .= '<div class="digital-garden-note">';
+			$note_tags = get_the_terms( $note_id, 'note_tag' );
+			$tag_slugs = array();
+
+			if ( ! is_wp_error( $note_tags ) && ! empty( $note_tags ) ) {
+				$tag_slugs = array_map(
+					static function ( $tag ) {
+						return sanitize_title( $tag->slug );
+					},
+					$note_tags
+				);
+			}
+
+			$note_completeness = get_post_meta( $note_id, '_note_completeness', true );
+			if ( empty( $note_completeness ) ) {
+				$note_completeness = $default_completeness;
+			}
+
+			$published_timestamp = get_post_time( 'U', false, $note_id );
+			$modified_timestamp  = get_post_modified_time( 'U', false, $note_id );
+
+			$output .= sprintf(
+				'<div class="digital-garden-note" data-note-id="%1$d" data-tags="%2$s" data-completeness="%3$s" data-title="%4$s" data-published="%5$s" data-modified="%6$s">',
+				$note_id,
+				esc_attr( wp_json_encode( array_values( $tag_slugs ) ) ),
+				esc_attr( $note_completeness ),
+				esc_attr( get_the_title( $note_id ) ),
+				esc_attr( $published_timestamp ),
+				esc_attr( $modified_timestamp )
+			);
 			$output .= render_inner_blocks_recursive( $note_block_layout, $note_id );
 			$output .= '</div>';
 		}
 	}
 
 	wp_reset_postdata();
+
+	$output .= '<p class="digital-garden-note-block__empty" hidden>' . esc_html__( 'No notes match the current filters.', 'digital-garden' ) . '</p>';
 
 	$output .= '</div>';
 

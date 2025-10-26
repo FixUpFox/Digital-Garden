@@ -17,6 +17,7 @@ class Digital_Garden_Blocks {
 						array(),
 						DIGITAL_GARDEN_VERSION
 					);
+					wp_enqueue_script( 'digital-garden-archive-frontend' );
 				}
 			}
 		);
@@ -26,6 +27,13 @@ class Digital_Garden_Blocks {
 
 		// Container Block
 		$block_path = DIGITAL_GARDEN_PLUGIN_PATH . 'assets/js/blocks/container';
+		wp_register_script(
+			'digital-garden-archive-frontend',
+			DIGITAL_GARDEN_PLUGIN_URL . 'assets/js/digital-garden-archive.js',
+			array(),
+			DIGITAL_GARDEN_VERSION,
+			true
+		);
 		wp_register_script(
 			'digital-garden-container',
 			DIGITAL_GARDEN_PLUGIN_URL . 'assets/js/blocks/container/index.js',
