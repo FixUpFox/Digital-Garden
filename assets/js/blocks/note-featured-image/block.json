@@ -1,0 +1,12 @@
+{
+  "apiVersion": 2,
+  "name": "digital-garden/note-featured-image",
+  "title": "Note Featured Image",
+  "category": "widgets",
+  "icon": "format-image",
+  "description": "Note Featured Image block.",
+  "parent": [ "digital-garden/note-block" ],
+  "supports": {
+    "html": false
+  }
+}

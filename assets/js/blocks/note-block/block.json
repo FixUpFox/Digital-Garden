@@ -1,0 +1,39 @@
+{
+  "apiVersion": 3,
+  "name": "digital-garden/note-block",
+  "title": "Note",
+  "category": "widgets",
+  "icon": "sticky",
+  "description": "Note block.",
+  "parent": [ "digital-garden/container" ],
+  "keywords": [
+    "note"
+  ],
+  "supports": {
+    "color": {
+      "background": false,
+      "text": true
+    },
+    "html": false,
+    "typography": {
+      "fontSize": true
+    },
+    "spacing": {
+      "padding": true,
+      "margin": true
+    },
+    "border": {
+      "color": true,
+      "style": true,
+      "width": true,
+      "radius": true
+    },
+    "boxShadow": true,
+    "reusable": false
+  },
+  "attributes": {},
+  "usesContext": [],
+  "providesContext": {},
+  "textdomain": "digital-garden",
+  "editorScript": "file:./index.js"
+}

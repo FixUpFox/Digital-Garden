@@ -1,0 +1,27 @@
+{
+  "apiVersion": 3,
+  "name": "digital-garden/note-title",
+  "title": "Note Title",
+  "category": "widgets",
+  "icon": "edit",
+  "description": "Note Title block.",
+  "parent": [ "digital-garden/note-block" ],
+  "attributes": {
+    "textAlign": {
+      "type": "string"
+    },
+    "level": {
+      "type": "number",
+      "default": 3
+    }
+  },
+  "supports": {
+    "html": false,
+    "spacing": {
+      "padding": true,
+      "margin": true
+    }
+  },
+  "textdomain": "digital-garden",
+  "editorScript": "file:./index.js"
+}

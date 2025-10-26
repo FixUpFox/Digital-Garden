@@ -1,0 +1,14 @@
+{
+  "apiVersion": 2,
+  "name": "digital-garden/note-tags",
+  "title": "Note Tags",
+  "category": "widgets",
+  "icon": "tag",
+  "description": "Note Tags block.",
+  "parent": [ "digital-garden/note-block" ],
+  "supports": {
+    "html": false
+  },
+  "textdomain": "digital-garden",
+  "editorScript": "file:./index.js"
+}

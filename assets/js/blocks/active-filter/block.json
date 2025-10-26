@@ -1,0 +1,32 @@
+{
+  "apiVersion": 3,
+	"name": "digital-garden/active-filter",
+	"title": "Active Filter",
+  "category": "widgets",
+  "icon": "visibility",
+	"description": "Active Filter block.",
+  "parent": [ "digital-garden/container" ],
+  "attributes": {
+    "fallbackCurrentYear": {
+      "type": "string"
+    },
+    "showStartingYear": {
+      "type": "boolean"
+    },
+    "startingYear": {
+      "type": "string"
+    }
+  },
+  "supports": {
+    "color": {
+      "background": false,
+      "text": true
+    },
+    "html": false,
+    "typography": {
+      "fontSize": true
+    }
+  },
+  "textdomain": "digital-garden",
+  "editorScript": "file:./index.js"
+}

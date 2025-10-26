@@ -1,0 +1,39 @@
+{
+  "apiVersion": 3,
+  "name": "digital-garden/container",
+  "title": "Digital Garden Container",
+  "category": "widgets",
+  "icon": "index-card",
+  "description": "Container block for your digital garden archive and note blocks.",
+  "keywords": [
+    "note",
+    "garden"
+  ],
+  "supports": {
+    "color": {
+      "background": false,
+      "text": true
+    },
+    "html": false,
+    "typography": {
+      "fontSize": true
+    },
+    "spacing": {
+      "padding": true,
+      "margin": true
+    },
+    "border": {
+      "color": true,
+      "style": true,
+      "width": true,
+      "radius": true
+    },
+    "boxShadow": true,
+    "reusable": false
+  },
+  "attributes": {},
+  "usesContext": [],
+  "providesContext": {},
+  "textdomain": "digital-garden",
+  "editorScript": "file:./index.js"
+}

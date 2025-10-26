@@ -1,0 +1,26 @@
+{
+  "apiVersion": 2,
+  "name": "digital-garden/garden-title",
+  "title": "Garden Title",
+  "category": "widgets",
+  "icon": "heading",
+  "parent": [ "digital-garden/container" ],
+  "attributes": {
+    "content": {
+      "type": "string"
+    },
+    "textAlign": {
+      "type": "string",
+      "default": "left"
+    },
+    "level": {
+      "type": "number",
+      "default": 2
+    }
+  },
+  "supports": {
+    "html": false
+  },
+  "textdomain": "digital-garden",
+  "editorScript": "file:./index.js"
+}

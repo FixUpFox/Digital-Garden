@@ -1,0 +1,263 @@
+/* Front-end styles for the Digital Garden Archive block */
+.digital-garden-archive {
+	list-style-type: none;
+	padding-left: 0;
+}
+
+.digital-garden-archive li {
+	margin-bottom: 0.5em;
+}
+
+.digital-garden-archive li a {
+	text-decoration: none;
+	color: #2d3748;
+}
+
+.digital-garden-archive li a:hover {
+	text-decoration: underline;
+}
+
+/* Tags */
+.digital-garden-tags {
+	margin-bottom: 1em;
+}
+
+.digital-garden-tag-buttons {
+	margin-bottom: 20px;
+}
+
+.digital-garden-tag-button,
+.digital-garden-clear-button {
+	display: inline-block;
+	margin: 5px;
+	padding: 10px 15px;
+	border: 1px solid #0073aa;
+	border-radius: 5px;
+	background-color: #f1f1f1;
+	color: #0073aa;
+	text-decoration: none;
+	cursor: pointer;
+	transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+.digital-garden-tag-button:hover,
+.digital-garden-clear-button:hover {
+	background-color: #0073aa;
+	color: #fff;
+	border-color: #0073aa;
+}
+
+.digital-garden-tag-button.active,
+.digital-garden-tag-button.selected,
+.digital-garden-clear-button.active,
+.digital-garden-clear-button.selected {
+	background-color: #0073aa;
+	color: #fff;
+	border-color: #0073aa;
+}
+
+.digital-garden-tag-button:active,
+.digital-garden-clear-button:active {
+	background-color: #005177;
+	color: #fff;
+	border-color: #005177;
+}
+
+.digital-garden-clear-button {
+	background-color: #e53e3e;
+	color: white;
+	border: 1px solid #c53030;
+}
+
+/* Preview Modal */
+.digital-garden-modal {
+	position: absolute;
+	z-index: 1000;
+	background-color: #fff;
+	border: 1px solid #ddd;
+	padding: 10px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	border-radius: 5px;
+}
+
+.digital-garden-modal .modal-content {
+	max-width: 300px;
+	max-height: 300px;
+	overflow: auto;
+}
+
+/* Bidirectional Links */
+.bidirectional-links {
+	padding: 10px;
+	border: 1px solid #ddd;
+	border-radius: 5px;
+}
+
+.bidirectional-links ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: flex;
+}
+
+.bidirectional-links li:not(:last-of-type)::after {
+	content: "|";
+	padding: 0 3px;
+}
+
+/* Breadcrumbs */
+.digital-garden-breadcrumbs {
+	padding: 10px;
+	border: 1px solid #ddd;
+	border-radius: 5px;
+}
+
+.digital-garden-breadcrumb-title {
+	margin-top: 0;
+}
+
+.digital-garden-breadcrumbs ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	display: flex;
+}
+
+.digital-garden-breadcrumbs li:not(:last-of-type)::after {
+	content: "»";
+	padding: 0 3px;
+}
+
+.digital-garden-breadcrumbs a {
+	text-decoration: none;
+}
+
+.digital-garden-breadcrumbs a:hover {
+	text-decoration: underline;
+}
+
+/* Container Filters */
+.digital-garden-tag-filter,
+.digital-garden-completeness-filter,
+.digital-garden-active-filter {
+	background-color: #ffffff;
+	border: 1px solid #e2e8f0;
+	border-radius: 6px;
+	margin-bottom: 1.5rem;
+	padding: 1rem;
+}
+
+.digital-garden-tag-filter legend,
+.digital-garden-completeness-filter legend {
+	font-weight: 600;
+}
+
+.digital-garden-filter-list {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5rem 1rem;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.digital-garden-filter-list__item {
+	margin: 0;
+}
+
+.digital-garden-filter-label {
+	display: block;
+	font-weight: 500;
+	margin-bottom: 0.4rem;
+}
+
+.digital-garden-filter-select {
+	appearance: none;
+	background-color: #edf2f7;
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%230073aa' d='M6 8a1 1 0 0 1-.7-.29l-5-5A1 1 0 0 1 1.7.3L6 4.59 10.3.3a1 1 0 0 1 1.4 1.41l-5 5A1 1 0 0 1 6 8Z'/%3E%3C/svg%3E");
+	background-position: right 0.65rem center;
+	background-repeat: no-repeat;
+	background-size: 12px 8px;
+	border: 1px solid #cbd5f5;
+	border-radius: 6px;
+	color: #1a202c;
+	font-size: 0.95rem;
+	line-height: 1.4;
+	max-width: 320px;
+	padding: 0.45rem 2.25rem 0.45rem 0.75rem;
+	transition: border-color 0.2s ease, box-shadow 0.2s ease,
+		background-color 0.2s ease;
+}
+
+.digital-garden-filter-select:focus {
+	background-color: #ffffff;
+	border-color: #0073aa;
+	box-shadow: 0 0 0 2px rgba(0, 115, 170, 0.2);
+	outline: none;
+}
+
+.digital-garden-filter-input {
+	border: 0;
+	clip: rect(0 0 0 0);
+	clip-path: inset(50%);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	white-space: nowrap;
+	width: 1px;
+}
+
+.digital-garden-filter-button {
+	align-items: center;
+	background-color: #edf2f7;
+	border: 1px solid #cbd5f5;
+	border-radius: 999px;
+	color: #1a202c;
+	cursor: pointer;
+	display: inline-flex;
+	gap: 0.45rem;
+	padding: 0.35rem 0.85rem;
+	position: relative;
+	transition: background-color 0.2s ease, color 0.2s ease,
+		border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.digital-garden-filter-button:hover {
+	background-color: #0073aa;
+	border-color: #0073aa;
+	box-shadow: 0 0 0 2px rgba(0, 115, 170, 0.2);
+	color: #ffffff;
+}
+
+.digital-garden-filter-button.is-active {
+	background-color: #0073aa;
+	border-color: #0073aa;
+	color: #ffffff;
+}
+
+.digital-garden-filter-button__label {
+	font-weight: 500;
+}
+
+.digital-garden-filter-count {
+	font-size: 0.85em;
+	opacity: 0.7;
+}
+
+.digital-garden-filter-button.is-active .digital-garden-filter-count {
+	opacity: 0.95;
+}
+
+.digital-garden-filter__empty {
+	color: #4a5568;
+	font-style: italic;
+	margin: 0;
+}
+
+.digital-garden-note-block__empty {
+	color: #4a5568;
+	font-style: italic;
+	margin: 1.5rem 0 0;
+}
