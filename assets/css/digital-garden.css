@@ -140,11 +140,7 @@
 .digital-garden-tag-filter,
 .digital-garden-completeness-filter,
 .digital-garden-active-filter {
-	background-color: #ffffff;
-	border: 1px solid #e2e8f0;
-	border-radius: 6px;
-	margin-bottom: 1.5rem;
-	padding: 1rem;
+	margin-bottom: 1rem;
 }
 
 .digital-garden-tag-filter legend,
@@ -254,6 +250,62 @@
 	color: #4a5568;
 	font-style: italic;
 	margin: 0;
+}
+
+.digital-garden-search {
+	margin-bottom: 1.5rem;
+}
+
+.digital-garden-search__label {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	border: 0;
+}
+
+.digital-garden-search-form {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	position: relative;
+	max-width: 480px;
+}
+
+.digital-garden-search__field {
+	flex: 1 1 160px;
+	min-width: 160px;
+	appearance: none;
+	background-color: #edf2f7;
+	border: 1px solid #cbd5f5;
+	border-radius: 999px;
+	color: #1a202c;
+	font-size: 0.95rem;
+	line-height: 1.4;
+	padding: 0.5rem;
+	transition: border-color 0.2s ease, box-shadow 0.2s ease,
+		background-color 0.2s ease;
+}
+
+.digital-garden-search__field:focus {
+	background-color: #ffffff;
+	border-color: #0073aa;
+	box-shadow: 0 0 0 2px rgba(0, 115, 170, 0.2);
+	outline: none;
+}
+
+.digital-garden-search__icon {
+	position: absolute;
+	right: 0.75rem;
+	width: 1.15rem;
+	height: 1.15rem;
+	background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%230073aa' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='11' cy='11' r='7'%3E%3C/circle%3E%3Cline x1='20' y1='20' x2='16.65' y2='16.65'%3E%3C/line%3E%3C/svg%3E")
+		no-repeat center center;
+	background-size: 1.15rem;
+	pointer-events: none;
 }
 
 .digital-garden-note-block__empty {

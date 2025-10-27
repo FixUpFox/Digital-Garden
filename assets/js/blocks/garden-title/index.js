@@ -18,7 +18,7 @@
     title: 'Garden Title',
     icon: 'heading',
     category: 'widgets',
-    parent: [ 'digital-garden/container' ],
+    parent: [ 'digital-garden/container', 'core/group', 'core/row' ],
 
     attributes: {
       content: { type: 'string' },

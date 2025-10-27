@@ -37,13 +37,23 @@ function render_note_block( $attributes = array(), $content = '' ) {
 		}
 	}
 
-	// Query all published 'note' custom post type entries
-	$query = new \WP_Query(
-		array(
-			'post_type'      => 'note',
-			'posts_per_page' => -1,
-		)
+	$search_term = '';
+
+	if ( isset( $_GET['dg_s'] ) ) {
+		$search_term = sanitize_text_field( wp_unslash( $_GET['dg_s'] ) );
+	}
+
+	$args = array(
+		'post_type'      => 'note',
+		'posts_per_page' => -1,
 	);
+
+	if ( ! empty( $search_term ) ) {
+		$args['s'] = $search_term;
+	}
+
+	// Query all published 'note' custom post type entries
+	$query = new \WP_Query( $args );
 
 	// Return early if no notes found
 	if ( ! $query->have_posts() ) {

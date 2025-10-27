@@ -22,6 +22,8 @@
             'digital-garden/active-filter',
             'digital-garden/search',
             'digital-garden/note-block',
+            'core/group',
+            'core/row',
           ],
           template: [
             [ 'digital-garden/garden-title' ],

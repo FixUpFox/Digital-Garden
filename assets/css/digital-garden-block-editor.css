@@ -1,35 +1,180 @@
-/* Editor styles for the Digital Garden Archive block */
-.wp-block-digital-garden-archive p {
-	background-color: #f3f4f6;
-	border: 1px dashed #d1d5db;
-	padding: 1em;
+/* Container Filters */
+.block-editor .digital-garden-tag-filter,
+.block-editor .digital-garden-completeness-filter,
+.block-editor .digital-garden-active-filter {
+	margin-bottom: 1rem;
 }
 
-.digital-garden-tags {
-	margin-bottom: 1em;
+.block-editor .digital-garden-tag-filter legend,
+.block-editor .digital-garden-completeness-filter legend {
+	font-weight: 600;
 }
 
-.digital-garden-tag-button {
-	margin: 0.2em;
-	padding: 0.5em 1em;
-	background-color: #e2e8f0;
-	border: 1px solid #cbd5e0;
-	border-radius: 4px;
+.block-editor .digital-garden-filter-list {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5rem 1rem;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.block-editor .digital-garden-filter-list__item {
+	margin: 0;
+}
+
+.block-editor .digital-garden-filter-label {
+	display: block;
+	font-weight: 500;
+	margin-bottom: 0.4rem;
+}
+
+.block-editor .digital-garden-filter-select {
+	appearance: none;
+	background-color: #edf2f7;
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%230073aa' d='M6 8a1 1 0 0 1-.7-.29l-5-5A1 1 0 0 1 1.7.3L6 4.59 10.3.3a1 1 0 0 1 1.4 1.41l-5 5A1 1 0 0 1 6 8Z'/%3E%3C/svg%3E");
+	background-position: right 0.65rem center;
+	background-repeat: no-repeat;
+	background-size: 12px 8px;
+	border: 1px solid #cbd5f5;
+	border-radius: 6px;
+	color: #1a202c;
+	font-size: 0.95rem;
+	line-height: 1.4;
+	max-width: 320px;
+	padding: 0.45rem 2.25rem 0.45rem 0.75rem;
+	transition: border-color 0.2s ease, box-shadow 0.2s ease,
+		background-color 0.2s ease;
+}
+
+.block-editor .digital-garden-filter-select:focus {
+	background-color: #ffffff;
+	border-color: #0073aa;
+	box-shadow: 0 0 0 2px rgba(0, 115, 170, 0.2);
+	outline: none;
+}
+
+.block-editor .digital-garden-filter-input {
+	border: 0;
+	clip: rect(0 0 0 0);
+	clip-path: inset(50%);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	white-space: nowrap;
+	width: 1px;
+}
+
+.block-editor .digital-garden-filter-button {
+	align-items: center;
+	background-color: #edf2f7;
+	border: 1px solid #cbd5f5;
+	border-radius: 999px;
+	color: #1a202c;
 	cursor: pointer;
+	display: inline-flex;
+	gap: 0.45rem;
+	padding: 0.35rem 0.85rem;
+	position: relative;
+	transition: background-color 0.2s ease, color 0.2s ease,
+		border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-.digital-garden-tag-button.selected {
-	background-color: #3182ce;
-	color: white;
-	border-color: #2b6cb0;
+.block-editor .digital-garden-filter-button:hover {
+	background-color: #0073aa;
+	border-color: #0073aa;
+	box-shadow: 0 0 0 2px rgba(0, 115, 170, 0.2);
+	color: #ffffff;
 }
 
-.digital-garden-clear-button {
-	margin: 0.2em;
-	padding: 0.5em 1em;
-	background-color: #e53e3e;
-	color: white;
-	border: 1px solid #c53030;
-	border-radius: 4px;
-	cursor: pointer;
+.block-editor .digital-garden-filter-button.is-active {
+	background-color: #0073aa;
+	border-color: #0073aa;
+	color: #ffffff;
+}
+
+.block-editor .digital-garden-filter-button__label {
+	font-weight: 500;
+}
+
+.block-editor .digital-garden-filter-count {
+	font-size: 0.85em;
+	opacity: 0.7;
+}
+
+.block-editor
+	.digital-garden-filter-button.is-active
+	.block-editor
+	.digital-garden-filter-count {
+	opacity: 0.95;
+}
+
+.block-editor .digital-garden-filter__empty {
+	color: #4a5568;
+	font-style: italic;
+	margin: 0;
+}
+
+.block-editor .digital-garden-search {
+	margin-bottom: 1.5rem;
+}
+
+.block-editor .digital-garden-search__label {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	border: 0;
+}
+
+.block-editor .digital-garden-search-form {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	position: relative;
+	max-width: 480px;
+}
+
+.block-editor .digital-garden-search__field {
+	flex: 1 1 160px;
+	min-width: 160px;
+	appearance: none;
+	background-color: #edf2f7;
+	border: 1px solid #cbd5f5;
+	border-radius: 999px;
+	color: #1a202c;
+	font-size: 0.95rem;
+	line-height: 1.4;
+	padding: 0.5rem;
+	transition: border-color 0.2s ease, box-shadow 0.2s ease,
+		background-color 0.2s ease;
+}
+
+.block-editor .digital-garden-search__field:focus {
+	background-color: #ffffff;
+	border-color: #0073aa;
+	box-shadow: 0 0 0 2px rgba(0, 115, 170, 0.2);
+	outline: none;
+}
+
+.block-editor .digital-garden-search__icon {
+	position: absolute;
+	right: 0.75rem;
+	width: 1.15rem;
+	height: 1.15rem;
+	background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%230073aa' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='11' cy='11' r='7'%3E%3C/circle%3E%3Cline x1='20' y1='20' x2='16.65' y2='16.65'%3E%3C/line%3E%3C/svg%3E")
+		no-repeat center center;
+	background-size: 1.15rem;
+	pointer-events: none;
+}
+
+.block-editor .digital-garden-note-block__empty {
+	color: #4a5568;
+	font-style: italic;
+	margin: 1.5rem 0 0;
 }
