@@ -115,7 +115,7 @@ class Digital_Garden_Blocks {
 			'digitalGardenCompleteness',
 			array(
 				'options'   => $options,
-				'allLabel'  => \__( 'All completeness levels', 'digital-garden' ),
+				'allLabel'  => \__( 'Completeness', 'digital-garden' ),
 				'ariaLabel' => \__( 'Filter notes by completeness', 'digital-garden' ),
 			)
 		);

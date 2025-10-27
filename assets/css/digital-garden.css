@@ -140,11 +140,7 @@
 .digital-garden-tag-filter,
 .digital-garden-completeness-filter,
 .digital-garden-active-filter {
-	background-color: #ffffff;
-	border: 1px solid #e2e8f0;
-	border-radius: 6px;
-	margin-bottom: 1.5rem;
-	padding: 1rem;
+	margin-bottom: 1rem;
 }
 
 .digital-garden-tag-filter legend,
@@ -280,8 +276,8 @@
 }
 
 .digital-garden-search__field {
-	flex: 1 1 220px;
-	min-width: 220px;
+	flex: 1 1 160px;
+	min-width: 160px;
 	appearance: none;
 	background-color: #edf2f7;
 	border: 1px solid #cbd5f5;
@@ -289,7 +285,7 @@
 	color: #1a202c;
 	font-size: 0.95rem;
 	line-height: 1.4;
-	padding: 0.5rem 2.5rem 0.5rem 1rem;
+	padding: 0.5rem;
 	transition: border-color 0.2s ease, box-shadow 0.2s ease,
 		background-color 0.2s ease;
 }
