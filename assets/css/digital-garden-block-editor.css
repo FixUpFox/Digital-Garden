@@ -141,8 +141,8 @@
 }
 
 .block-editor .digital-garden-search__field {
-	flex: 1 1 160px;
-	min-width: 160px;
+	flex: 1 1 220px;
+	min-width: 220px;
 	appearance: none;
 	background-color: #edf2f7;
 	border: 1px solid #cbd5f5;
@@ -150,7 +150,7 @@
 	color: #1a202c;
 	font-size: 0.95rem;
 	line-height: 1.4;
-	padding: 0.5rem;
+	padding: 0.5rem 2.5rem 0.5rem 1rem;
 	transition: border-color 0.2s ease, box-shadow 0.2s ease,
 		background-color 0.2s ease;
 }
@@ -177,4 +177,107 @@
 	color: #4a5568;
 	font-style: italic;
 	margin: 1.5rem 0 0;
+}
+
+.block-editor .digital-garden-note {
+	background-color: #ffffff;
+	border: 1px solid #e2e8f0;
+	border-radius: 12px;
+	box-shadow: 0 8px 16px rgba(15, 23, 42, 0.08);
+	padding: 1.5rem;
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+}
+
+.block-editor .digital-garden-note--preview {
+	position: relative;
+}
+
+.block-editor .digital-garden-note-preview__hint {
+	margin: 0 0 0.75rem;
+	font-size: 0.85rem;
+	color: #64748b;
+}
+
+.block-editor .digital-garden-note-title {
+	margin: 0;
+	font-size: 1.35rem;
+	line-height: 1.3;
+	color: #0f172a;
+}
+
+.block-editor .digital-garden-note-content {
+	color: #334155;
+	font-size: 1rem;
+	line-height: 1.6;
+}
+
+.block-editor .digital-garden-note-content p {
+	margin: 0 0 0.85rem;
+}
+
+.block-editor .digital-garden-note-content__more {
+	color: #0073aa;
+	font-weight: 600;
+	font-size: 0.95rem;
+}
+
+.block-editor .digital-garden-note-tags {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5rem;
+}
+
+.block-editor .digital-garden-note-tags .note-tag {
+	display: inline-flex;
+	align-items: center;
+	padding: 0.2rem 0.75rem;
+	border-radius: 999px;
+	background-color: #eef2ff;
+	color: #3730a3;
+	font-size: 0.85rem;
+	font-weight: 600;
+}
+
+.block-editor .digital-garden-note-tags__empty {
+	color: #94a3b8;
+	font-size: 0.9rem;
+}
+
+.block-editor .digital-garden-note-completeness {
+	align-self: flex-start;
+	text-transform: uppercase;
+	letter-spacing: 0.06em;
+	font-size: 0.75rem;
+	font-weight: 700;
+	padding: 0.25rem 0.6rem;
+	border-radius: 999px;
+	background-color: #f97316;
+	color: #ffffff;
+}
+
+.block-editor .digital-garden-note-featured-image {
+	border-radius: 10px;
+	overflow: hidden;
+	background-color: #e2e8f0;
+	min-height: 180px;
+}
+
+.block-editor .digital-garden-note-featured-image__placeholder {
+	width: 100%;
+	height: 100%;
+	background: repeating-linear-gradient(
+		45deg,
+		rgba(255, 255, 255, 0.35),
+		rgba(255, 255, 255, 0.35) 10px,
+		rgba(148, 163, 184, 0.35) 10px,
+		rgba(148, 163, 184, 0.35) 20px
+	);
+}
+
+.block-editor .digital-garden-note-publish-date,
+.block-editor .digital-garden-note-modify-date {
+	font-size: 0.85rem;
+	color: #475569;
 }

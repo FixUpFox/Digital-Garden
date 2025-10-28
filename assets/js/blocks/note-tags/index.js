@@ -2,6 +2,7 @@
   const { registerBlockType } = wp.blocks;
   const { useBlockProps } = wp.blockEditor;
   const el = wp.element.createElement;
+  const { __ } = wp.i18n;
 
   registerBlockType('digital-garden/note-tags', {
     title: 'Tags',
@@ -20,7 +21,15 @@
       return el(
         'div',
         blockProps,
-        'Tags will be rendered here in the front-end.'
+        el(
+          'div',
+          { className: 'digital-garden-note-tags' },
+          [
+            el('span', { className: 'note-tag', key: 'tag1' }, __('gardening', 'digital-garden')),
+            el('span', { className: 'note-tag', key: 'tag2' }, __('learning', 'digital-garden')),
+            el('span', { className: 'note-tag', key: 'tag3' }, __('reference', 'digital-garden'))
+          ]
+        )
       );
     },
 

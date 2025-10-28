@@ -1,7 +1,8 @@
 (function(wp) {
   const { registerBlockType } = wp.blocks;
-  const { RichText, useBlockProps } = wp.blockEditor;
+  const { useBlockProps } = wp.blockEditor;
   const el = wp.element.createElement;
+  const { __ } = wp.i18n;
 
   registerBlockType('digital-garden/note-completeness', {
     title: 'Completeness',
@@ -16,10 +17,14 @@
     edit: function(props) {
       const blockProps = wp.blockEditor.useBlockProps();
 
-      return wp.element.createElement(
+      return el(
         'div',
         blockProps,
-        'Completeness will be rendered here in the front-end.'
+        el(
+          'span',
+          { className: 'digital-garden-note-completeness' },
+          __('Sprout', 'digital-garden')
+        )
       );
     },
 

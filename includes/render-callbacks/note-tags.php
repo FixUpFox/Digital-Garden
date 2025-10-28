@@ -24,9 +24,12 @@ function render_note_tags() {
 			$tags
 		);
 
-		$content = implode( ', ', $tag_list );
+		$content = implode( '', $tag_list );
 	} else {
-		$content = 'No tags found.';
+		$content = sprintf(
+			'<span class="digital-garden-note-tags__empty">%s</span>',
+			\esc_html__( 'No tags yet.', 'digital-garden' )
+		);
 	}
 
 	return sprintf(
