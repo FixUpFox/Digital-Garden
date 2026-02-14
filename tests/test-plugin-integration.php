@@ -4,6 +4,17 @@
  */
 class Digital_Garden_Integration_Test extends WP_UnitTestCase {
 
+	public function tear_down() {
+		$page_id = (int) get_option( 'digital_garden_page_id' );
+		if ( $page_id > 0 && get_post( $page_id ) ) {
+			wp_delete_post( $page_id, true );
+		}
+
+		delete_option( 'digital_garden_page_id' );
+
+		parent::tear_down();
+	}
+
 	public function test_plugin_constants_are_defined() {
 		$this->assertTrue( defined( 'DIGITAL_GARDEN_VERSION' ) );
 		$this->assertTrue( defined( 'DIGITAL_GARDEN_PLUGIN_URL' ) );
