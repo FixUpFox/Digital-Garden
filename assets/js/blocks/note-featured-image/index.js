@@ -16,7 +16,11 @@
       return el(
         'div',
         blockProps,
-        'Featured image will be rendered here in the front-end.'
+        el(
+          'div',
+          { className: 'digital-garden-note-featured-image' },
+          el('div', { className: 'digital-garden-note-featured-image__placeholder' })
+        )
       );
     },
 

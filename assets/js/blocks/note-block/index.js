@@ -2,6 +2,7 @@
   const { registerBlockType } = wp.blocks;
   const { InnerBlocks, useBlockProps } = wp.blockEditor;
   const el = wp.element.createElement;
+  const { __ } = wp.i18n;
 
   registerBlockType('digital-garden/note-block', {
     title: 'Note Block',
@@ -39,11 +40,15 @@
       return el(
         'div',
         blockProps,
-        el('p', {}, 'Note Block Layout: Arrange the fields below'),
-        el(InnerBlocks, {
-          template: TEMPLATE,
-          templateLock: false
-        })
+        el(
+          'div',
+          { className: 'digital-garden-note digital-garden-note--preview' },
+          el('p', { className: 'digital-garden-note-preview__hint' }, __('Adjust the blocks below to change how each note is displayed.', 'digital-garden')),
+          el(InnerBlocks, {
+            template: TEMPLATE,
+            templateLock: false
+          })
+        )
       );
 
     },

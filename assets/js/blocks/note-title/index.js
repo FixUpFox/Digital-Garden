@@ -6,6 +6,8 @@
     AlignmentToolbar
   } = wp.blockEditor;
 
+  const { __ } = wp.i18n;
+
   const {
     ToolbarGroup,
     ToolbarButton
@@ -58,8 +60,8 @@
 
         el('h' + level, {
           style: { textAlign: textAlign },
-          className: 'digital-garden-note-title-preview'
-        }, 'Example Note Title')
+          className: 'digital-garden-note-title'
+        }, __('Example Note Title', 'digital-garden'))
       );
     },
     save: function(props) {

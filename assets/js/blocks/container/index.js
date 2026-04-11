@@ -25,12 +25,19 @@
             'core/group',
             'core/row',
           ],
+          templateInsertUpdatesSelection: true,
           template: [
             [ 'digital-garden/garden-title' ],
             [ 'digital-garden/tag-filter' ],
-            [ 'digital-garden/completeness-filter' ],
-            [ 'digital-garden/active-filter' ],
-            [ 'digital-garden/search' ],
+            [
+              'core/group',
+              { className: 'digital-garden-archive-filters', "layout":{"type":"flex","flexWrap":"nowrap"} },
+              [
+                [ 'digital-garden/active-filter' ],
+                [ 'digital-garden/completeness-filter' ],
+                [ 'digital-garden/search' ],
+              ]
+            ],
             [ 'digital-garden/note-block' ],
           ],
           templateLock: false

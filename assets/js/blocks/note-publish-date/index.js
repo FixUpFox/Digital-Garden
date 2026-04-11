@@ -2,6 +2,7 @@
   const { registerBlockType } = wp.blocks;
   const { useBlockProps } = wp.blockEditor;
   const el = wp.element.createElement;
+  const { __ } = wp.i18n;
 
   registerBlockType('digital-garden/note-publish-date', {
     title: 'Publish Date',
@@ -22,7 +23,7 @@
       return el(
         'div',
         blockProps,
-        'Publish Date Placeholder'
+        __('Published May 12, 2024', 'digital-garden')
       );
     },
 

@@ -18,10 +18,10 @@ function render_note_completeness() {
 	// Default message if no completeness is found
 	if ( empty( $completeness ) ) {
 		$completeness = __( 'Unknown completeness', 'digital-garden' );
-	}
+}
 
 	return sprintf(
-		'<div class="digital-garden-completeness-filter">%s</div>',
+		'<span class="digital-garden-note-completeness">%s</span>',
 		esc_html( $completeness )
 	);
 }
