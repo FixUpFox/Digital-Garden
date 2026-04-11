@@ -31,7 +31,7 @@
             [ 'digital-garden/tag-filter' ],
             [
               'core/group',
-              { className: 'digital-garden-archive-filters' },
+              { className: 'digital-garden-archive-filters', "layout":{"type":"flex","flexWrap":"nowrap"} },
               [
                 [ 'digital-garden/active-filter' ],
                 [ 'digital-garden/completeness-filter' ],
