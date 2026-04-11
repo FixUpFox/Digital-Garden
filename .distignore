@@ -2,10 +2,12 @@
 .deploy
 .distignore
 .editorconfig
+.eslintrc.json
 .git
 .github
 .gitignore
 .gitmodules
+bin
 composer.json
 composer.lock
 Gruntfile.js
@@ -15,6 +17,7 @@ phpcs.ruleset.xml
 phpstan.neon.dist
 phpunit.xml
 phpunit.xml.dist
+README-DEV.md
 README.md
 tests
 wp-cli.local.yml

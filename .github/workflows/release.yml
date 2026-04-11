@@ -1,0 +1,44 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build plugin zip
+        run: |
+          VERSION=${GITHUB_REF_NAME#v}
+          PLUGIN_SLUG="digital-garden"
+          ZIP_NAME="${PLUGIN_SLUG}-${VERSION}.zip"
+
+          # Copy plugin files, excluding everything in .distignore
+          rsync -r \
+            --exclude-from=".distignore" \
+            --exclude=".git" \
+            . /tmp/${PLUGIN_SLUG}/
+
+          # Zip with the plugin slug as the root folder
+          cd /tmp
+          zip -r "${ZIP_NAME}" "${PLUGIN_SLUG}/"
+
+          echo "ZIP_PATH=/tmp/${ZIP_NAME}" >> $GITHUB_ENV
+          echo "ZIP_NAME=${ZIP_NAME}" >> $GITHUB_ENV
+          echo "VERSION=${VERSION}" >> $GITHUB_ENV
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          name: "v${{ env.VERSION }}"
+          tag_name: ${{ github.ref_name }}
+          generate_release_notes: true
+          files: ${{ env.ZIP_PATH }}
