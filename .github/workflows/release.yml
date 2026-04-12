@@ -15,6 +15,28 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Validate version numbers
+        run: |
+          VERSION=${GITHUB_REF_NAME#v}
+
+          check() {
+            local label="$1"
+            local file="$2"
+            local pattern="$3"
+            local found
+            found=$(grep -oP "$pattern" "$file" | head -1)
+            if [ "$found" != "$VERSION" ]; then
+              echo "::error file=${file}::${label} version mismatch — expected ${VERSION}, found '${found}'"
+              exit 1
+            fi
+            echo "${label}: ${found} ✓"
+          }
+
+          check "digital-garden.php header"   digital-garden.php  '(?<=\* Version: )[\d.]+'
+          check "DIGITAL_GARDEN_VERSION"       digital-garden.php  "(?<=DIGITAL_GARDEN_VERSION', ')[\d.]+"
+          check "readme.md Stable tag"         readme.md           '(?<=\*\*Stable tag\*\*\s{8}\| )[\d.]+'
+          check "readme.txt Stable tag"        readme.txt          '(?<=Stable tag: )[\d.]+'
+
       - name: Build plugin zip
         run: |
           VERSION=${GITHUB_REF_NAME#v}
