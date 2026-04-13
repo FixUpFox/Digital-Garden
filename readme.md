@@ -8,7 +8,7 @@
 | **Requires at least** | 5.0                                                                                  |
 | **Tested up to**      | 6.6.2                                                                                |
 | **Requires PHP**      | 7.0                                                                                  |
-| **Stable tag**        | 1.1.0                                                                                |
+| **Stable tag**        | 1.2.0                                                                                |
 | **License**           | GPLv2 or later                                                                       |
 | **License URI**       | [http://www.gnu.org/licenses/gpl-2.0.html](http://www.gnu.org/licenses/gpl-2.0.html) |
 
@@ -19,7 +19,14 @@ Digital Garden is a WordPress plugin that helps you create a digital garden with
 
 ## Features
 
-- TODO
+- Custom post type for notes with rich metadata (completeness status, tags, featured image)
+- Fully customizable archive block built with WordPress inner blocks
+- 13 composable blocks: archive container, note card, note title, content, tags, completeness, featured image, publish date, modify date, garden title, search, tag filter, completeness filter, and active filter display
+- Live filtering by tag and completeness status with active filter indicators
+- Full-text note search in the archive
+- Bidirectional linking between notes
+- Editor previews that match the frontend for all blocks
+- GitHub-based automatic update mechanism
 
 ## Installation
 
@@ -46,6 +53,15 @@ On the "Digital Garden" page, click on the tag buttons at the top of the archive
 
 
 ## Changelog
+
+### 1.2.0
+* Refactors archive to use WordPress inner blocks, making the note card template fully customizable in the editor
+* Adds 13 new blocks: note card, note title, note content, note tags, note completeness, note featured image, note publish date, note modify date, garden title, search, tag filter, completeness filter, and active filter
+* Adds live tag and completeness filtering with active filter display
+* Adds full-text note search to the archive
+* Adds editor previews for all blocks matching the frontend
+* Syncs editor and frontend styles for filters, search, and layout
+* Rewrites automatic updater to pull version info and zip directly from GitHub Releases
 
 ### 1.1.0
 * Fixes multiple init issue

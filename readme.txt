@@ -3,8 +3,8 @@ Contributors: wolfpaw, binarygary
 Donate link: https://david.garden
 Tags: notes, digital garden, custom post type, taxonomy, block editor
 Requires at least: 5.0
-Tested up to: 6.5.3
-Stable tag: 1.1.0
+Tested up to: 6.6.2
+Stable tag: 1.2.0
 Requires PHP: 7.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -37,6 +37,15 @@ The Digital Garden block is automatically added to the "Digital Garden" page cre
 On the "Digital Garden" page, click on the tag buttons at the top of the archive to filter notes by the selected tags. You can select multiple tags to display notes that match any of the selected tags. Click the "Clear" button to reset the filter.
 
 == Changelog ==
+
+= 1.2.0 =
+* Refactors archive to use WordPress inner blocks, making the note card template fully customizable in the editor
+* Adds 13 new blocks: note card, note title, note content, note tags, note completeness, note featured image, note publish date, note modify date, garden title, search, tag filter, completeness filter, and active filter
+* Adds live tag and completeness filtering with active filter display
+* Adds full-text note search to the archive
+* Adds editor previews for all blocks matching the frontend
+* Syncs editor and frontend styles for filters, search, and layout
+* Rewrites automatic updater to pull version info and zip directly from GitHub Releases
 
 = 1.1.0 =
 * Fixes multiple init issue
