@@ -10,7 +10,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 function render_garden_title( $attributes ) {
-	$title = isset( $attributes['content'] ) ? esc_html( $attributes['content'] ) : 'Digital Garden';
+	$allowed_tags = array(
+		'strong' => array(),
+		'em'     => array(),
+		'b'      => array(),
+		'i'      => array(),
+		'span'   => array( 'class' => array(), 'style' => array() ),
+		'a'      => array( 'href' => array(), 'title' => array(), 'target' => array() ),
+	);
+	$title = isset( $attributes['content'] ) ? wp_kses( $attributes['content'], $allowed_tags ) : 'Digital Garden';
 	$align = isset( $attributes['textAlign'] ) ? esc_attr( $attributes['textAlign'] ) : 'left';
 	$level = isset( $attributes['level'] ) ? intval( $attributes['level'] ) : 2;
 
