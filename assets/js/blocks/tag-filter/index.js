@@ -1,18 +1,24 @@
 (function (wp) {
 	const { registerBlockType } = wp.blocks;
-	const { useBlockProps } = wp.blockEditor;
+	const { useBlockProps, InspectorControls } = wp.blockEditor;
 	const { createElement: el, useMemo } = wp.element;
 	const { useSelect } = wp.data;
-	const { Spinner } = wp.components;
+	const { Spinner, PanelBody, RadioControl } = wp.components;
 	const { __ } = wp.i18n;
 
 	registerBlockType('digital-garden/tag-filter', {
 		title: __('Tag Filter', 'digital-garden'),
 		icon: 'filter',
 		category: 'widgets',
-	parent: ['digital-garden/container', 'core/group', 'core/row'],
+		parent: ['digital-garden/container', 'core/group', 'core/row'],
 
-		edit: function TagFilterEdit() {
+		attributes: {
+			sortOrder: { type: 'string', default: 'alphabetical' },
+		},
+
+		edit: function TagFilterEdit( { attributes, setAttributes } ) {
+			const { sortOrder } = attributes;
+
 			const blockProps = useBlockProps({
 				className: 'digital-garden-block-preview digital-garden-tag-filter__preview',
 			});
@@ -45,6 +51,16 @@
 				[query]
 			);
 
+			const sortedTerms = useMemo(() => {
+				if ( ! Array.isArray( terms ) ) {
+					return terms;
+				}
+				if ( sortOrder === 'count' ) {
+					return [ ...terms ].sort( ( a, b ) => ( b.count || 0 ) - ( a.count || 0 ) );
+				}
+				return [ ...terms ].sort( ( a, b ) => a.name.localeCompare( b.name ) );
+			}, [ terms, sortOrder ] );
+
 			let content;
 
 			if (isResolving && !Array.isArray(terms)) {
@@ -58,11 +74,11 @@
 						__('Loading tags...', 'digital-garden')
 					)
 				);
-			} else if (Array.isArray(terms) && terms.length) {
+			} else if (Array.isArray(sortedTerms) && sortedTerms.length) {
 				content = el(
 					'ul',
 					{ className: 'digital-garden-filter-list digital-garden-filter-list--tags' },
-					terms.map((term) =>
+					sortedTerms.map((term) =>
 						el(
 							'li',
 							{ className: 'digital-garden-filter-list__item', key: term.id || term.slug },
@@ -86,6 +102,25 @@
 			return el(
 				'div',
 				blockProps,
+				el(
+					InspectorControls,
+					null,
+					el(
+						PanelBody,
+						{ title: __( 'Sort Order', 'digital-garden' ), initialOpen: true },
+						el( RadioControl, {
+							label: __( 'Sort tags by', 'digital-garden' ),
+							selected: sortOrder,
+							options: [
+								{ label: __( 'Alphabetical', 'digital-garden' ), value: 'alphabetical' },
+								{ label: __( 'Note count', 'digital-garden' ),   value: 'count' },
+							],
+							onChange: function( value ) {
+								setAttributes( { sortOrder: value } );
+							},
+						} )
+					)
+				),
 				el(
 					'fieldset',
 					{ className: 'digital-garden-tag-filter', 'aria-hidden': 'true' },

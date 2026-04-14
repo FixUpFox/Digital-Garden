@@ -9,6 +9,12 @@
   "supports": {
     "html": false
   },
+  "attributes": {
+    "sortOrder": {
+      "type": "string",
+      "default": "alphabetical"
+    }
+  },
   "textdomain": "digital-garden",
   "editorScript": "file:./index.js"
 }

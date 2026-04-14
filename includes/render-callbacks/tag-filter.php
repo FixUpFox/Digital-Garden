@@ -10,10 +10,22 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 function render_tag_filter( $attributes, $content ) {
+	$sort_order = isset( $attributes['sortOrder'] ) ? $attributes['sortOrder'] : 'alphabetical';
+
+	if ( 'count' === $sort_order ) {
+		$orderby = 'count';
+		$order   = 'DESC';
+	} else {
+		$orderby = 'name';
+		$order   = 'ASC';
+	}
+
 	$terms = get_terms(
 		array(
 			'taxonomy'   => 'note_tag',
 			'hide_empty' => false,
+			'orderby'    => $orderby,
+			'order'      => $order,
 		)
 	);
 
