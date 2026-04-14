@@ -38,9 +38,12 @@ function render_note_title( $attributes ) {
 		}
 	}
 
+	$permalink = $post_id ? get_permalink( $post_id ) : '#';
+
 	return sprintf(
-		'<h3 class="digital-garden-note-title" style="%s">%s</h3>',
+		'<h3 class="digital-garden-note-title" style="%s"><a href="%s">%s</a></h3>',
 		$styles,
+		esc_url( $permalink ),
 		esc_html( $title )
 	);
 }
