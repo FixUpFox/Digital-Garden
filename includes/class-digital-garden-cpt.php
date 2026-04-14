@@ -29,6 +29,7 @@ class Digital_Garden_CPT {
 			'new_item'              => __( 'New Note', 'digital-garden' ),
 			'edit_item'             => __( 'Edit Note', 'digital-garden' ),
 			'view_item'             => __( 'View Note', 'digital-garden' ),
+			'view_items'            => __( 'View Notes', 'digital-garden' ),
 			'all_items'             => __( 'All Notes', 'digital-garden' ),
 			'search_items'          => __( 'Search Notes', 'digital-garden' ),
 			'parent_item_colon'     => __( 'Parent Notes:', 'digital-garden' ),
@@ -44,6 +45,13 @@ class Digital_Garden_CPT {
 			'filter_items_list'     => _x( 'Filter notes list', 'Screen reader text for the filter links heading on the post type listing screen. Default “Filter posts list”/”Filter pages list”. Added in 4.4', 'digital-garden' ),
 			'items_list_navigation' => _x( 'Notes list navigation', 'Screen reader text for the pagination heading on the post type listing screen. Default “Posts list navigation”/”Pages list navigation”. Added in 4.4', 'digital-garden' ),
 			'items_list'            => _x( 'Notes list', 'Screen reader text for the items list heading on the post type listing screen. Default “Posts list”/”Pages list”. Added in 4.4', 'digital-garden' ),
+			'item_published'           => __( 'Note published.', 'digital-garden' ),
+			'item_published_privately' => __( 'Note published privately.', 'digital-garden' ),
+			'item_reverted_to_draft'   => __( 'Note reverted to draft.', 'digital-garden' ),
+			'item_scheduled'           => __( 'Note scheduled.', 'digital-garden' ),
+			'item_updated'             => __( 'Note updated.', 'digital-garden' ),
+			'item_link'                => _x( 'Note Link', 'Used in the block editor. Added in 5.8', 'digital-garden' ),
+			'item_link_description'    => _x( 'A link to a note.', 'Used in the block editor. Added in 5.8', 'digital-garden' ),
 		);
 
 		// Set up rewrites for the custom post type
