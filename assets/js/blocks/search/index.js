@@ -4,58 +4,58 @@
 	const el = wp.element.createElement;
 	const { __ } = wp.i18n;
 
-	registerBlockType("digital-garden/search", {
-		title: __("Search", "digital-garden"),
-		icon: "search",
-		category: "widgets",
+	registerBlockType('digital-garden/search', {
+		title: __('Search', 'digital-garden'),
+		icon: 'search',
+		category: 'widgets',
 		parent: [
-			"digital-garden/container",
-			"core/group",
-			"core/row",
-			"core/column",
+			'digital-garden/container',
+			'core/group',
+			'core/row',
+			'core/column',
 		],
 
 		edit: function SearchEdit() {
 			const blockProps = useBlockProps({
 				className:
-					"digital-garden-block-preview digital-garden-search__preview",
+					'digital-garden-block-preview digital-garden-search__preview',
 			});
 
 			return el(
-				"div",
+				'div',
 				blockProps,
 				el(
-					"form",
+					'form',
 					{
-						className: "digital-garden-search-form",
-						role: "search",
+						className: 'digital-garden-search-form',
+						role: 'search',
 					},
 					[
 						el(
-							"label",
+							'label',
 							{
-								className: "digital-garden-search__label",
-								htmlFor: "digital-garden-search-preview-field",
+								className: 'digital-garden-search__label',
+								htmlFor: 'digital-garden-search-preview-field',
 							},
-							__("Search notes", "digital-garden"),
+							__('Search notes', 'digital-garden'),
 						),
-						el("input", {
-							id: "digital-garden-search-preview-field",
-							className: "digital-garden-search__field",
-							type: "search",
-							placeholder: __("Search notes…", "digital-garden"),
+						el('input', {
+							id: 'digital-garden-search-preview-field',
+							className: 'digital-garden-search__field',
+							type: 'search',
+							placeholder: __('Search notes…', 'digital-garden'),
 							readOnly: true,
 						}),
-						el("span", {
-							className: "digital-garden-search__icon",
-							"aria-hidden": "true",
+						el('span', {
+							className: 'digital-garden-search__icon',
+							'aria-hidden': 'true',
 						}),
 					],
 				),
 			);
 		},
 
-		save: function () {
+		save() {
 			return null;
 		},
 	});

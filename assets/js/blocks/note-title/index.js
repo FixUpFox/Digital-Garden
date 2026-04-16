@@ -8,32 +8,32 @@
 
 	const el = wp.element.createElement;
 
-	registerBlockType("digital-garden/note-title", {
-		title: "Note Title",
-		icon: "heading",
-		category: "widgets",
+	registerBlockType('digital-garden/note-title', {
+		title: 'Note Title',
+		icon: 'heading',
+		category: 'widgets',
 		attributes: {
-			textAlign: { type: "string", default: "left" },
-			level: { type: "number", default: 3 },
+			textAlign: { type: 'string', default: 'left' },
+			level: { type: 'number', default: 3 },
 		},
 
-		edit: function (props) {
+		edit(props) {
 			const { attributes, setAttributes } = props;
 			const { textAlign, level } = attributes;
 
 			const blockProps = useBlockProps({
-				style: { textAlign: textAlign },
+				style: { textAlign },
 			});
 
 			return el(
-				"div",
+				'div',
 				blockProps,
 				el(
 					BlockControls,
 					{},
 					el(AlignmentToolbar, {
 						value: textAlign,
-						onChange: function (newAlign) {
+						onChange(newAlign) {
 							setAttributes({ textAlign: newAlign });
 						},
 					}),
@@ -44,37 +44,37 @@
 							return el(
 								ToolbarButton,
 								{
-									label: "H" + headingLevel,
+									label: 'H' + headingLevel,
 									isPressed: level === headingLevel,
-									onClick: function () {
+									onClick() {
 										setAttributes({ level: headingLevel });
 									},
 									key: headingLevel,
 								},
-								"H" + headingLevel,
+								'H' + headingLevel,
 							);
 						}),
 					),
 				),
 
 				el(
-					"h" + level,
+					'h' + level,
 					{
-						style: { textAlign: textAlign },
-						className: "digital-garden-note-title",
+						style: { textAlign },
+						className: 'digital-garden-note-title',
 					},
-					__("Example Note Title", "digital-garden"),
+					__('Example Note Title', 'digital-garden'),
 				),
 			);
 		},
-		save: function (props) {
+		save(props) {
 			const { attributes } = props;
 			const { textAlign, level } = attributes;
 			const blockProps = useBlockProps.save({
-				style: { textAlign: textAlign },
+				style: { textAlign },
 			});
 
-			return el("h" + level, blockProps, "Example Note Title");
+			return el('h' + level, blockProps, 'Example Note Title');
 		},
 	});
 })(window.wp);

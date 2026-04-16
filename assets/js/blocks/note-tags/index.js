@@ -4,42 +4,42 @@
 	const el = wp.element.createElement;
 	const { __ } = wp.i18n;
 
-	registerBlockType("digital-garden/note-tags", {
-		title: "Tags",
-		icon: "tag",
-		category: "widgets",
+	registerBlockType('digital-garden/note-tags', {
+		title: 'Tags',
+		icon: 'tag',
+		category: 'widgets',
 		attributes: {
-			content: { type: "string" },
+			content: { type: 'string' },
 		},
 
-		edit: function (props) {
+		edit(props) {
 			const { attributes, setAttributes } = props;
 			const blockProps = useBlockProps();
 
 			return el(
-				"div",
+				'div',
 				blockProps,
-				el("div", { className: "digital-garden-note-tags" }, [
+				el('div', { className: 'digital-garden-note-tags' }, [
 					el(
-						"span",
-						{ className: "note-tag", key: "tag1" },
-						__("gardening", "digital-garden"),
+						'span',
+						{ className: 'note-tag', key: 'tag1' },
+						__('gardening', 'digital-garden'),
 					),
 					el(
-						"span",
-						{ className: "note-tag", key: "tag2" },
-						__("learning", "digital-garden"),
+						'span',
+						{ className: 'note-tag', key: 'tag2' },
+						__('learning', 'digital-garden'),
 					),
 					el(
-						"span",
-						{ className: "note-tag", key: "tag3" },
-						__("reference", "digital-garden"),
+						'span',
+						{ className: 'note-tag', key: 'tag3' },
+						__('reference', 'digital-garden'),
 					),
 				]),
 			);
 		},
 
-		save: function () {
+		save() {
 			return null;
 		},
 	});

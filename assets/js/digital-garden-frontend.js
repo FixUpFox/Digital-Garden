@@ -3,7 +3,9 @@ document.addEventListener('DOMContentLoaded', function () {
 	const tagButtons = document.querySelectorAll('.digital-garden-tag-button');
 	const clearButton = document.createElement('button');
 	const params = new URLSearchParams(window.location.search);
-	let selectedTags = params.get('tags') ? params.get('tags').split(',').map(Number) : [];
+	let selectedTags = params.get('tags')
+		? params.get('tags').split(',').map(Number)
+		: [];
 
 	// Check if current page has body class of single-note
 	if (document.body.classList.contains('single-note')) {
@@ -25,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function () {
 	}
 
 	// Add event listeners to tag buttons
-	tagButtons.forEach(button => {
+	tagButtons.forEach((button) => {
 		button.addEventListener('click', function () {
 			const tagId = parseInt(this.getAttribute('data-tag-id'));
 			const index = selectedTags.indexOf(tagId);
@@ -46,8 +48,8 @@ document.addEventListener('DOMContentLoaded', function () {
 	// Clear all selected tags
 	clearButton.addEventListener('click', function () {
 		selectedTags = [];
-		tagButtons.forEach(button => button.classList.remove('active'));
-		noteItems.forEach(item => item.style.display = '');
+		tagButtons.forEach((button) => button.classList.remove('active'));
+		noteItems.forEach((item) => (item.style.display = ''));
 		updateURL();
 	});
 
@@ -59,12 +61,18 @@ document.addEventListener('DOMContentLoaded', function () {
 		} else {
 			params.delete('tags');
 		}
-		window.history.replaceState({}, '', `${window.location.pathname}?${params}`);
+		window.history.replaceState(
+			{},
+			'',
+			`${window.location.pathname}?${params}`,
+		);
 	}
 
 	// Ensures that tags in query string are filtered on page load
-	selectedTags.forEach(tag => {
-		const tagElement = document.querySelector(`.digital-garden-tag-button[data-tag-id="${tag}"]`);
+	selectedTags.forEach((tag) => {
+		const tagElement = document.querySelector(
+			`.digital-garden-tag-button[data-tag-id="${tag}"]`,
+		);
 		if (tagElement) {
 			tagElement.classList.add('active');
 		}
@@ -74,20 +82,22 @@ document.addEventListener('DOMContentLoaded', function () {
 	// Filter notes based on selected tags
 	function filterNotes() {
 		if (selectedTags.length > 0) {
-			noteItems.forEach(item => {
+			noteItems.forEach((item) => {
 				const tags = JSON.parse(item.getAttribute('data-tag-ids'));
-				const isMatch = tags.some(tag => selectedTags.includes(tag));
+				const isMatch = tags.some((tag) => selectedTags.includes(tag));
 				item.style.display = isMatch ? '' : 'none';
 			});
 		} else {
-			noteItems.forEach(item => item.style.display = '');
+			noteItems.forEach((item) => (item.style.display = ''));
 		}
 	}
 
 	// Function to handle hover modal
 	function handleHoverModal(link) {
 		const noteId = link.getAttribute('data-note-id');
-		if (!noteId) return;  // Exit if data-note-id is not found
+		if (!noteId) {
+			return;
+		} // Exit if data-note-id is not found
 
 		const modal = document.createElement('div');
 		modal.classList.add('digital-garden-modal');
@@ -98,22 +108,32 @@ document.addEventListener('DOMContentLoaded', function () {
 			method: 'POST',
 			credentials: 'same-origin',
 			headers: {
-				'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+				'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
 			},
-			body: 'action=digital_garden_fetch_note_excerpt&note_id=' + noteId + '&nonce=' + encodeURIComponent(digitalGardenData.nonce)
+			body:
+				'action=digital_garden_fetch_note_excerpt&note_id=' +
+				noteId +
+				'&nonce=' +
+				encodeURIComponent(digitalGardenData.nonce),
 		})
-			.then(response => response.json())
-			.then(data => {
+			.then((response) => response.json())
+			.then((data) => {
 				if (data.success && data.data && data.data.content) {
 					const content = data.data.content;
-					modal.querySelector('.modal-content').innerHTML = '<strong>' + decodeHtml(content.title) + '</strong><br>' + decodeHtml(content.excerpt);
+					modal.querySelector('.modal-content').innerHTML =
+						'<strong>' +
+						decodeHtml(content.title) +
+						'</strong><br>' +
+						decodeHtml(content.excerpt);
 				} else {
-					modal.querySelector('.modal-content').innerHTML = 'Error loading note data.';
+					modal.querySelector('.modal-content').innerHTML =
+						'Error loading note data.';
 				}
 			})
-			.catch(error => {
+			.catch((error) => {
 				console.error('Error fetching note data:', error); // Debugging log
-				modal.querySelector('.modal-content').innerHTML = 'Error loading note data.';
+				modal.querySelector('.modal-content').innerHTML =
+					'Error loading note data.';
 			});
 
 		const rect = link.getBoundingClientRect();
@@ -129,10 +149,11 @@ document.addEventListener('DOMContentLoaded', function () {
 	}
 
 	// Add event listeners for note link hover to display modal
-	const noteLinksSelector = '.digital-garden-note-link, .digital-garden-regular-link';
+	const noteLinksSelector =
+		'.digital-garden-note-link, .digital-garden-regular-link';
 	const links = document.querySelectorAll(noteLinksSelector);
 
-	links.forEach(link => {
+	links.forEach((link) => {
 		link.addEventListener('mouseenter', function () {
 			handleHoverModal(this);
 		});
@@ -147,10 +168,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
 	// Function to add current note to local storage
 	function addCurrentNoteToLocalStorage(note) {
-		let notes = localStorage.getItem('digitalGardenNotes') ? JSON.parse(localStorage.getItem('digitalGardenNotes')) : [];
+		const notes = localStorage.getItem('digitalGardenNotes')
+			? JSON.parse(localStorage.getItem('digitalGardenNotes'))
+			: [];
 
 		// Check if the note already exists in the array
-		const existingNoteIndex = notes.findIndex(n => n.title === note.title && n.url === note.url);
+		const existingNoteIndex = notes.findIndex(
+			(n) => n.title === note.title && n.url === note.url,
+		);
 
 		if (existingNoteIndex > -1) {
 			// If the note exists, remove it from the array
@@ -174,10 +199,14 @@ document.addEventListener('DOMContentLoaded', function () {
 			return;
 		}
 
-		const notes = localStorage.getItem('digitalGardenNotes') ? JSON.parse(localStorage.getItem('digitalGardenNotes')) : [];
+		const notes = localStorage.getItem('digitalGardenNotes')
+			? JSON.parse(localStorage.getItem('digitalGardenNotes'))
+			: [];
 
 		// Get the div with the class digital-garden-breadcrumbs-placeholder
-		recentNotesContainer = document.querySelector('.digital-garden-breadcrumbs-placeholder');
+		recentNotesContainer = document.querySelector(
+			'.digital-garden-breadcrumbs-placeholder',
+		);
 
 		// If the div is not found, exit the function
 		if (!recentNotesContainer) {
@@ -187,10 +216,11 @@ document.addEventListener('DOMContentLoaded', function () {
 		// change the class on the div
 		recentNotesContainer.className = 'digital-garden-breadcrumbs';
 
-		let recentNotesContent = '<div class="digital-garden-breadcrumb-title">Recently Viewed Notes</div><ul>';
+		let recentNotesContent =
+			'<div class="digital-garden-breadcrumb-title">Recently Viewed Notes</div><ul>';
 
 		if (notes.length > 0) {
-			notes.forEach(note => {
+			notes.forEach((note) => {
 				recentNotesContent += `<li><a href="${note.url}" class="digital-garden-regular-link">${note.title}</a></li>`;
 			});
 		}
@@ -199,5 +229,4 @@ document.addEventListener('DOMContentLoaded', function () {
 
 		recentNotesContainer.innerHTML = recentNotesContent;
 	}
-
 });

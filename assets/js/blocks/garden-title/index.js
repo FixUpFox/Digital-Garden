@@ -7,31 +7,31 @@
 
 	const el = wp.element.createElement;
 
-	registerBlockType("digital-garden/garden-title", {
-		title: "Garden Title",
-		icon: "heading",
-		category: "widgets",
+	registerBlockType('digital-garden/garden-title', {
+		title: 'Garden Title',
+		icon: 'heading',
+		category: 'widgets',
 		parent: [
-			"digital-garden/container",
-			"core/group",
-			"core/row",
-			"core/column",
+			'digital-garden/container',
+			'core/group',
+			'core/row',
+			'core/column',
 		],
 
 		attributes: {
-			content: { type: "string" },
-			textAlign: { type: "string", default: "left" },
-			level: { type: "number", default: 2 },
+			content: { type: 'string' },
+			textAlign: { type: 'string', default: 'left' },
+			level: { type: 'number', default: 2 },
 		},
 
-		edit: function (props) {
+		edit(props) {
 			const { attributes, setAttributes } = props;
 			const { content, textAlign, level } = attributes;
 
 			const blockProps = useBlockProps();
 
 			return el(
-				"div",
+				'div',
 				blockProps,
 				// Block Controls Toolbar
 				el(
@@ -39,7 +39,7 @@
 					{},
 					el(AlignmentToolbar, {
 						value: textAlign,
-						onChange: function (newAlign) {
+						onChange(newAlign) {
 							setAttributes({ textAlign: newAlign });
 						},
 					}),
@@ -50,14 +50,14 @@
 							return el(
 								ToolbarButton,
 								{
-									label: "H" + headingLevel,
+									label: 'H' + headingLevel,
 									isPressed: level === headingLevel,
-									onClick: function () {
+									onClick() {
 										setAttributes({ level: headingLevel });
 									},
 									key: headingLevel,
 								},
-								"H" + headingLevel,
+								'H' + headingLevel,
 							);
 						}),
 					),
@@ -65,19 +65,19 @@
 
 				// RichText Field
 				el(RichText, {
-					tagName: "h" + level,
-					className: "digital-garden-title",
-					style: { textAlign: textAlign },
+					tagName: 'h' + level,
+					className: 'digital-garden-title',
+					style: { textAlign },
 					value: content,
-					onChange: function (newContent) {
+					onChange(newContent) {
 						setAttributes({ content: newContent });
 					},
-					placeholder: "Enter garden title...",
+					placeholder: 'Enter garden title...',
 				}),
 			);
 		},
 
-		save: function () {
+		save() {
 			return null;
 		},
 	});

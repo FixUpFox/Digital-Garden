@@ -4,21 +4,21 @@
 	const el = wp.element.createElement;
 	const { __ } = wp.i18n;
 
-	registerBlockType("digital-garden/completeness-filter", {
-		title: __("Completeness Filter", "digital-garden"),
-		icon: "yes-alt",
-		category: "widgets",
+	registerBlockType('digital-garden/completeness-filter', {
+		title: __('Completeness Filter', 'digital-garden'),
+		icon: 'yes-alt',
+		category: 'widgets',
 		parent: [
-			"digital-garden/container",
-			"core/group",
-			"core/row",
-			"core/column",
+			'digital-garden/container',
+			'core/group',
+			'core/row',
+			'core/column',
 		],
 
 		edit: function CompletenessFilterEdit() {
 			const blockProps = useBlockProps({
 				className:
-					"digital-garden-block-preview digital-garden-completeness-filter__preview",
+					'digital-garden-block-preview digital-garden-completeness-filter__preview',
 			});
 
 			const localized = window.digitalGardenCompleteness || {};
@@ -29,38 +29,38 @@
 				localizedOptions.length > 0
 					? localizedOptions
 					: [
-							{ value: "seedling", label: __("Seedling", "digital-garden") },
-							{ value: "sprout", label: __("Sprout", "digital-garden") },
-							{ value: "sapling", label: __("Sapling", "digital-garden") },
-							{ value: "evergreen", label: __("Evergreen", "digital-garden") },
+							{ value: 'seedling', label: __('Seedling', 'digital-garden') },
+							{ value: 'sprout', label: __('Sprout', 'digital-garden') },
+							{ value: 'sapling', label: __('Sapling', 'digital-garden') },
+							{ value: 'evergreen', label: __('Evergreen', 'digital-garden') },
 						];
 
 			const allLabel =
-				localized.allLabel || __("Completeness", "digital-garden");
+				localized.allLabel || __('Completeness', 'digital-garden');
 			const ariaLabel =
 				localized.ariaLabel ||
-				__("Filter notes by completeness", "digital-garden");
+				__('Filter notes by completeness', 'digital-garden');
 
 			return el(
-				"div",
+				'div',
 				blockProps,
 				el(
-					"div",
+					'div',
 					{
-						className: "digital-garden-completeness-filter",
-						"aria-hidden": "true",
+						className: 'digital-garden-completeness-filter',
+						'aria-hidden': 'true',
 					},
 					el(
-						"select",
+						'select',
 						{
-							className: "digital-garden-filter-select",
-							"aria-label": ariaLabel,
+							className: 'digital-garden-filter-select',
+							'aria-label': ariaLabel,
 						},
 						[
-							el("option", { value: "", key: "all" }, allLabel),
+							el('option', { value: '', key: 'all' }, allLabel),
 							...options.map((option) =>
 								el(
-									"option",
+									'option',
 									{ value: option.value, key: option.value },
 									option.label,
 								),
@@ -71,7 +71,7 @@
 			);
 		},
 
-		save: function () {
+		save() {
 			return null;
 		},
 	});

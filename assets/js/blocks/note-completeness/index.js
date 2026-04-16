@@ -4,29 +4,29 @@
 	const el = wp.element.createElement;
 	const { __ } = wp.i18n;
 
-	registerBlockType("digital-garden/note-completeness", {
-		title: "Completeness",
-		icon: "yes",
-		category: "widgets",
+	registerBlockType('digital-garden/note-completeness', {
+		title: 'Completeness',
+		icon: 'yes',
+		category: 'widgets',
 		supports: {
 			html: false,
 		},
 
-		edit: function (props) {
+		edit(props) {
 			const blockProps = wp.blockEditor.useBlockProps();
 
 			return el(
-				"div",
+				'div',
 				blockProps,
 				el(
-					"span",
-					{ className: "digital-garden-note-completeness" },
-					__("Sprout", "digital-garden"),
+					'span',
+					{ className: 'digital-garden-note-completeness' },
+					__('Sprout', 'digital-garden'),
 				),
 			);
 		},
 
-		save: function () {
+		save() {
 			return null;
 		},
 	});

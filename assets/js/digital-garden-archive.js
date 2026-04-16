@@ -2,7 +2,7 @@
 	/**
 	 * Safely parse a JSON string and return a fallback value on failure.
 	 *
-	 * @param {string} value
+	 * @param {string}              value
 	 * @param {Array|string|Object} fallback
 	 * @return {Array|string|Object}
 	 */
@@ -34,26 +34,30 @@
 			return;
 		}
 
-		const notes = Array.from(noteBlock.querySelectorAll('.digital-garden-note'));
+		const notes = Array.from(
+			noteBlock.querySelectorAll('.digital-garden-note'),
+		);
 		if (!notes.length) {
 			return;
 		}
 
 		const tagInputs = Array.from(
 			container.querySelectorAll(
-				'.digital-garden-filter-input[data-filter-type="tag"]'
-			)
+				'.digital-garden-filter-input[data-filter-type="tag"]',
+			),
 		);
 		const completenessSelect = container.querySelector(
-			'.digital-garden-completeness-filter .digital-garden-filter-select'
+			'.digital-garden-completeness-filter .digital-garden-filter-select',
 		);
 		const activeFilterRoot = container.querySelector(
-			'.digital-garden-active-filter'
+			'.digital-garden-active-filter',
 		);
 		const orderSelect = activeFilterRoot
 			? activeFilterRoot.querySelector('.digital-garden-active-filter__select')
 			: null;
-		const emptyState = noteBlock.querySelector('.digital-garden-note-block__empty');
+		const emptyState = noteBlock.querySelector(
+			'.digital-garden-note-block__empty',
+		);
 
 		let defaultOrder = 'published';
 		if (orderSelect && orderSelect.value) {
