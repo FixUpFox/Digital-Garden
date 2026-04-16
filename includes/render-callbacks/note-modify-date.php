@@ -18,8 +18,14 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @return string
  */
 function render_note_modify_date( $attributes ) {
-	$post_id     = get_the_ID();
-	$modify_date = get_the_date( '', $post_id );
+	$post_id     = isset( $attributes['postId'] ) ? (int) $attributes['postId'] : get_the_ID();
+	$prefix      = isset( $attributes['prefix'] ) ? $attributes['prefix'] : 'Updated';
+	$site_date_format = get_option( 'date_format' );
+	$date_format      = isset( $attributes['dateFormat'] ) && '' !== $attributes['dateFormat']
+		? $attributes['dateFormat']
+		: ( ! empty( $site_date_format ) ? $site_date_format : 'F j, Y' );
+
+	$modify_date = get_the_modified_date( $date_format, $post_id );
 
 	// Initialize an empty string for styles.
 	$styles = '';
@@ -31,6 +37,10 @@ function render_note_modify_date( $attributes ) {
 		if ( isset( $typography['fontSize'] ) ) {
 			$styles .= 'font-size:' . esc_attr( convert_to_css_var( $typography['fontSize'] ) ) . ';';
 		}
+
+		if ( isset( $typography['textAlign'] ) ) {
+			$styles .= 'text-align:' . esc_attr( $typography['textAlign'] ) . ';';
+		}
 	}
 
 	// Handle spacing styles.
@@ -38,23 +48,24 @@ function render_note_modify_date( $attributes ) {
 		$spacing = $attributes['style']['spacing'];
 
 		if ( isset( $spacing['padding'] ) ) {
-			$padding = $spacing['padding'];
-			foreach ( $padding as $side => $value ) {
+			foreach ( $spacing['padding'] as $side => $value ) {
 				$styles .= 'padding-' . esc_attr( $side ) . ':' . esc_attr( convert_to_css_var( $value ) ) . ';';
 			}
 		}
 
 		if ( isset( $spacing['margin'] ) ) {
-			$margin = $spacing['margin'];
-			foreach ( $margin as $side => $value ) {
+			foreach ( $spacing['margin'] as $side => $value ) {
 				$styles .= 'margin-' . esc_attr( $side ) . ':' . esc_attr( convert_to_css_var( $value ) ) . ';';
 			}
 		}
 	}
 
+	$label = '' !== $prefix ? esc_html( $prefix ) . '&#160;' : '';
+
 	return sprintf(
-		'<div class="digital-garden-note-modify-date" style="%s">%s</div>',
-		$styles,
+		'<div class="digital-garden-note-modify-date" style="%1$s">%2$s%3$s</div>',
+		esc_attr( $styles ),
+		$label,
 		esc_html( $modify_date )
 	);
 }

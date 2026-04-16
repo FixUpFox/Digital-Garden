@@ -286,7 +286,7 @@ class Digital_Garden_Blocks {
 		wp_register_script(
 			'digital-garden-note-publish-date',
 			plugins_url( '../assets/js/blocks/note-publish-date/index.js', __FILE__ ),
-			array( 'wp-blocks', 'wp-element', 'wp-block-editor' ),
+			array( 'wp-blocks', 'wp-element', 'wp-block-editor', 'wp-components', 'wp-i18n', 'wp-date' ),
 			DIGITAL_GARDEN_VERSION,
 			false
 		);
@@ -303,7 +303,7 @@ class Digital_Garden_Blocks {
 		wp_register_script(
 			'digital-garden-note-modify-date',
 			plugins_url( '../assets/js/blocks/note-modify-date/index.js', __FILE__ ),
-			array( 'wp-blocks', 'wp-element', 'wp-block-editor' ),
+			array( 'wp-blocks', 'wp-element', 'wp-block-editor', 'wp-components', 'wp-i18n', 'wp-date' ),
 			DIGITAL_GARDEN_VERSION,
 			false
 		);

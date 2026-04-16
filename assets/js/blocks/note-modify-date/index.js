@@ -1,28 +1,70 @@
 (function (wp) {
 	const { registerBlockType } = wp.blocks;
-	const { useBlockProps } = wp.blockEditor;
+	const { useBlockProps, InspectorControls } = wp.blockEditor;
+	const { PanelBody, TextControl } = wp.components;
 	const el = wp.element.createElement;
 	const { __ } = wp.i18n;
+
+	const siteModifyDateFormat = wp.date.getSettings().formats.date || 'F j, Y';
 
 	registerBlockType('digital-garden/note-modify-date', {
 		title: 'Modify Date',
 		icon: 'update',
 		category: 'widgets',
 		attributes: {
-			textAlign: { type: 'string', default: 'left' },
-			fontWeight: { type: 'string', default: 'normal' },
+			prefix: { type: 'string', default: 'Updated' },
+			dateFormat: { type: 'string', default: siteModifyDateFormat },
 		},
 
-		edit() {
+		edit(props) {
+			const { attributes, setAttributes } = props;
+			const { prefix, dateFormat } = attributes;
+
 			// eslint-disable-next-line react-hooks/rules-of-hooks
 			const blockProps = useBlockProps({
 				className: 'digital-garden-note-modify-date',
 			});
 
+			let previewDate;
+			try {
+				previewDate = wp.date.format(dateFormat, new Date());
+			} catch (e) {
+				previewDate = new Date().toLocaleDateString();
+			}
+
+			const previewText = prefix
+				? prefix + '\u00a0' + previewDate
+				: previewDate;
+
 			return el(
 				'div',
 				blockProps,
-				__('Updated June 02, 2024', 'digital-garden'),
+				el(
+					InspectorControls,
+					{},
+					el(
+						PanelBody,
+						{
+							title: __('Date Settings', 'digital-garden'),
+							initialOpen: true,
+						},
+						el(TextControl, {
+							label: __('Prefix', 'digital-garden'),
+							value: prefix,
+							onChange: (val) => setAttributes({ prefix: val }),
+						}),
+						el(TextControl, {
+							label: __('Date Format', 'digital-garden'),
+							value: dateFormat,
+							help: __(
+								'PHP date format string. Example: F j, Y → May 12, 2024',
+								'digital-garden',
+							),
+							onChange: (val) => setAttributes({ dateFormat: val }),
+						}),
+					),
+				),
+				previewText,
 			);
 		},
 
