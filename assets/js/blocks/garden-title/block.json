@@ -4,7 +4,7 @@
   "title": "Garden Title",
   "category": "widgets",
   "icon": "heading",
-  "parent": [ "digital-garden/container" ],
+  "ancestor": [ "digital-garden/container", "digital-garden/note-block" ],
   "attributes": {
     "content": {
       "type": "string"

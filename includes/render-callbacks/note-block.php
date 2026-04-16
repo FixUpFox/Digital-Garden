@@ -204,6 +204,18 @@ function render_dynamic_note_block( $block_name, $post_id, $attrs = array(), $in
 			return \DigitalGarden\render_note_publish_date( $attrs );
 		case 'digital-garden/note-modify-date':
 			return \DigitalGarden\render_note_modify_date( $attrs );
+		case 'core/columns':
+			$columns_class = 'wp-block-columns';
+			if ( isset( $attrs['isStackedOnMobile'] ) && false === $attrs['isStackedOnMobile'] ) {
+				$columns_class .= ' is-not-stacked-on-mobile';
+			}
+			return '<div class="' . esc_attr( $columns_class ) . '">' . $inner . '</div>';
+		case 'core/column':
+			$column_style = '';
+			if ( ! empty( $attrs['width'] ) ) {
+				$column_style = ' style="flex-basis:' . esc_attr( $attrs['width'] ) . '"';
+			}
+			return '<div class="wp-block-column"' . $column_style . '>' . $inner . '</div>';
 		default:
 			return $inner;
 	}

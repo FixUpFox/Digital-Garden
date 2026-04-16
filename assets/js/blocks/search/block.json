@@ -5,7 +5,7 @@
   "category": "widgets",
   "icon": "search",
   "description": "Search block.",
-  "parent": [ "digital-garden/container" ],
+  "ancestor": [ "digital-garden/container", "digital-garden/note-block" ],
   "supports": {
     "html": false
   },

@@ -5,7 +5,7 @@
   "category": "widgets",
   "icon": "edit",
   "description": "Note Title block.",
-  "parent": [ "digital-garden/note-block" ],
+  "ancestor": [ "digital-garden/container", "digital-garden/note-block" ],
   "attributes": {
     "textAlign": {
       "type": "string"

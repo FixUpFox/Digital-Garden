@@ -5,7 +5,7 @@
   "category": "widgets",
   "icon": "tag",
   "description": "Note Tags block.",
-  "parent": [ "digital-garden/note-block" ],
+  "ancestor": [ "digital-garden/container", "digital-garden/note-block" ],
   "supports": {
     "html": false
   },
