@@ -14,6 +14,7 @@
 		},
 
 		edit() {
+			// eslint-disable-next-line react-hooks/rules-of-hooks
 			const blockProps = useBlockProps({
 				className: 'digital-garden-note-modify-date',
 			});

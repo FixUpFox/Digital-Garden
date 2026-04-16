@@ -55,16 +55,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
 	// Update URL with a query string for selected tags
 	function updateURL() {
-		const params = new URLSearchParams(window.location.search);
+		const urlParams = new URLSearchParams(window.location.search);
 		if (selectedTags.length > 0) {
-			params.set('tags', selectedTags.join(','));
+			urlParams.set('tags', selectedTags.join(','));
 		} else {
-			params.delete('tags');
+			urlParams.delete('tags');
 		}
 		window.history.replaceState(
 			{},
 			'',
-			`${window.location.pathname}?${params}`,
+			`${window.location.pathname}?${urlParams}`,
 		);
 	}
 
@@ -141,9 +141,9 @@ document.addEventListener('DOMContentLoaded', function () {
 		modal.style.left = `${rect.left + window.scrollX}px`;
 
 		link.addEventListener('mouseleave', function () {
-			const modal = document.querySelector('.digital-garden-modal');
-			if (modal) {
-				modal.remove();
+			const existingModal = document.querySelector('.digital-garden-modal');
+			if (existingModal) {
+				existingModal.remove();
 			}
 		});
 	}
@@ -204,7 +204,7 @@ document.addEventListener('DOMContentLoaded', function () {
 			: [];
 
 		// Get the div with the class digital-garden-breadcrumbs-placeholder
-		recentNotesContainer = document.querySelector(
+		const recentNotesContainer = document.querySelector(
 			'.digital-garden-breadcrumbs-placeholder',
 		);
 

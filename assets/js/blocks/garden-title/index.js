@@ -28,6 +28,7 @@
 			const { attributes, setAttributes } = props;
 			const { content, textAlign, level } = attributes;
 
+			// eslint-disable-next-line react-hooks/rules-of-hooks
 			const blockProps = useBlockProps();
 
 			return el(

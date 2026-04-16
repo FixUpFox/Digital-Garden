@@ -4,7 +4,7 @@
 	 *
 	 * @param {string}              value
 	 * @param {Array|string|Object} fallback
-	 * @return {Array|string|Object}
+	 * @return {Array|string|Object} Parsed value or the fallback.
 	 */
 	function parseJSON(value, fallback) {
 		if (!value) {

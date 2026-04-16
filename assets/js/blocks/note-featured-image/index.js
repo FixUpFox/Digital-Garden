@@ -7,8 +7,8 @@
 		title: 'Featured Image',
 		icon: 'format-image',
 		category: 'widgets',
-		edit(props) {
-			const { attributes, setAttributes } = props;
+		edit() {
+			// eslint-disable-next-line react-hooks/rules-of-hooks
 			const blockProps = useBlockProps();
 
 			return el(

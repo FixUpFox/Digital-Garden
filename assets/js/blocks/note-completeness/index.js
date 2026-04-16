@@ -1,6 +1,5 @@
 (function (wp) {
 	const { registerBlockType } = wp.blocks;
-	const { useBlockProps } = wp.blockEditor;
 	const el = wp.element.createElement;
 	const { __ } = wp.i18n;
 
@@ -12,7 +11,8 @@
 			html: false,
 		},
 
-		edit(props) {
+		edit() {
+			// eslint-disable-next-line react-hooks/rules-of-hooks
 			const blockProps = wp.blockEditor.useBlockProps();
 
 			return el(
