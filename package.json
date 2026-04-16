@@ -1,0 +1,21 @@
+{
+	"name": "digital-garden",
+	"version": "1.2.0",
+	"private": true,
+	"devDependencies": {
+		"@wordpress/eslint-plugin": "^22.0.0",
+		"@wordpress/stylelint-config": "^23.0.0",
+		"eslint": "^8.57.0",
+		"stylelint": "^16.0.0"
+	},
+	"scripts": {
+		"lint:js": "eslint 'assets/js/**/*.js'",
+		"lint:css": "stylelint 'assets/css/**/*.css'",
+		"lint:php": "composer run phpcs",
+		"lint": "npm run lint:js && npm run lint:css && npm run lint:php",
+		"lint:fix:js": "eslint --fix 'assets/js/**/*.js'",
+		"lint:fix:css": "stylelint --fix 'assets/css/**/*.css'",
+		"lint:fix:php": "composer run phpcbf",
+		"lint:fix": "npm run lint:fix:js && npm run lint:fix:css && npm run lint:fix:php"
+	}
+}

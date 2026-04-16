@@ -1,31 +1,17 @@
 {
+	"extends": ["plugin:@wordpress/eslint-plugin/recommended"],
 	"env": {
 		"browser": true,
-		"es6": true,
-		"node": true
+		"es6": true
 	},
-	"extends": "eslint:recommended",
+	"globals": {
+		"wp": "readonly"
+	},
 	"parserOptions": {
 		"ecmaVersion": 2018,
-		"sourceType": "module"
+		"sourceType": "script"
 	},
 	"rules": {
-		"indent": [
-			"error",
-			2
-		],
-		"linebreak-style": [
-			"error",
-			"unix"
-		],
-		"quotes": [
-			"error",
-			"single"
-		],
-		"semi": [
-			"error",
-			"always"
-		],
 		"no-console": "off"
 	}
 }

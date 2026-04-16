@@ -3,6 +3,7 @@
 .distignore
 .editorconfig
 .eslintrc.json
+.prettierrc.json
 .git
 .github
 .gitignore
@@ -14,6 +15,7 @@ Gruntfile.js
 package.json
 phpcs.xml.dist
 phpcs.ruleset.xml
+.stylelintrc.json
 phpstan.neon.dist
 phpunit.xml
 phpunit.xml.dist
@@ -94,6 +96,7 @@ build/Release
 
 # Dependency directories
 node_modules/
+vendor/
 dist/
 build/
 

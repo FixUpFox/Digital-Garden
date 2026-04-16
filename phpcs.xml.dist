@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<ruleset name="Digital Garden">
+	<description>WordPress Coding Standards for the Digital Garden plugin.</description>
+
+	<!-- Scan all PHP files in the project -->
+	<file>.</file>
+	<arg name="extensions" value="php"/>
+
+	<!-- Exclude dev and dependency directories -->
+	<exclude-pattern>vendor/</exclude-pattern>
+	<exclude-pattern>node_modules/</exclude-pattern>
+	<exclude-pattern>tests/</exclude-pattern>
+
+	<!-- Output formatting -->
+	<arg name="colors"/>
+	<arg value="sp"/>
+	<arg name="basepath" value="."/>
+
+	<!-- Use the full WordPress Coding Standards ruleset -->
+	<rule ref="WordPress"/>
+
+	<!-- Enforce this plugin's text domain -->
+	<rule ref="WordPress.WP.I18n">
+		<properties>
+			<property name="text_domain" type="array">
+				<element value="digital-garden"/>
+			</property>
+		</properties>
+	</rule>
+
+	<!-- Minimum supported WordPress version for deprecated-function checks -->
+	<config name="minimum_supported_wp_version" value="6.0"/>
+</ruleset>
