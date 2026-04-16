@@ -1,6 +1,8 @@
 <?php
 /**
- * Render callback for Note Title block
+ * Render callback for Note Title block.
+ *
+ * @package DigitalGarden
  */
 
 namespace DigitalGarden;
@@ -9,19 +11,25 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+/**
+ * Render callback for the note title block.
+ *
+ * @param array $attributes Block attributes.
+ * @return string
+ */
 function render_note_title( $attributes ) {
 	$post_id = get_the_ID();
 	$title   = $post_id ? get_the_title( $post_id ) : '[Missing Title]';
 
-	// Initialize an empty string for styles
+	// Initialize an empty string for styles.
 	$styles = '';
 
-	// Handle text alignment
+	// Handle text alignment.
 	if ( isset( $attributes['textAlign'] ) ) {
 		$styles .= 'text-align:' . esc_attr( $attributes['textAlign'] ) . ';';
 	}
 
-	// Handle spacing styles
+	// Handle spacing styles.
 	if ( isset( $attributes['style']['spacing'] ) ) {
 		$spacing = $attributes['style']['spacing'];
 

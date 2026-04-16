@@ -1,13 +1,15 @@
 <?php
+/**
+ * Digital Garden Meta Class.
+ *
+ * @package DigitalGarden
+ */
 
 use function Digital_Garden\completeness_list;
 
 /**
- * Digital Garden Meta Class
- *
  * This class handles the registration of custom post meta for the note post type.
  */
-
 class Digital_Garden_Meta {
 
 	/**

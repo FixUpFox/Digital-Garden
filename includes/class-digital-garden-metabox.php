@@ -1,13 +1,15 @@
 <?php
+/**
+ * Digital Garden Metabox Class.
+ *
+ * @package DigitalGarden
+ */
 
 use function Digital_Garden\completeness_list;
 
 /**
- * Digital Garden Metabox Class
- *
  * This class handles the creation and saving of a metabox for the note post type.
  */
-
 class Digital_Garden_Metabox {
 
 	/**
@@ -66,7 +68,7 @@ class Digital_Garden_Metabox {
 		}
 
 		// Verify that the nonce is valid.
-		if ( ! wp_verify_nonce( $_POST['digital_garden_meta_box_nonce'], 'digital_garden_save_meta_box' ) ) {
+		if ( ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['digital_garden_meta_box_nonce'] ) ), 'digital_garden_save_meta_box' ) ) {
 			return;
 		}
 
@@ -81,7 +83,7 @@ class Digital_Garden_Metabox {
 		}
 
 		// Sanitize user input.
-		$new_value = isset( $_POST['digital_garden_note_completeness'] ) ? sanitize_text_field( $_POST['digital_garden_note_completeness'] ) : '';
+		$new_value = isset( $_POST['digital_garden_note_completeness'] ) ? sanitize_text_field( wp_unslash( $_POST['digital_garden_note_completeness'] ) ) : '';
 
 		// Update the meta field in the database.
 		update_post_meta( $post_id, '_note_completeness', $new_value );

@@ -1,7 +1,18 @@
 <?php
+/**
+ * Digital Garden Bidirectional Linking Class.
+ *
+ * @package DigitalGarden
+ */
 
+/**
+ * Handles detection and display of bidirectional links between notes.
+ */
 class Digital_Garden_Bidirectional_Linking {
 
+	/**
+	 * Initialize the class.
+	 */
 	public static function init() {
 		add_action( 'save_post_note', array( __CLASS__, 'detect_links' ), 10, 2 );
 		add_filter( 'the_content', array( __CLASS__, 'display_linked_from_section' ) );

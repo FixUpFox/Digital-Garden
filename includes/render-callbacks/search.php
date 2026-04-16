@@ -1,6 +1,8 @@
 <?php
 /**
- * Render callback for Search block
+ * Render callback for Search block.
+ *
+ * @package DigitalGarden
  */
 
 namespace DigitalGarden;
@@ -9,6 +11,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+/**
+ * Render callback for the search block.
+ *
+ * @param array  $attributes Block attributes.
+ * @param string $content    Block content.
+ * @return string
+ */
 function render_search( $attributes, $content ) {
 	$page_id     = (int) get_option( 'digital_garden_page_id' );
 	$action_url  = $page_id ? get_permalink( $page_id ) : home_url( '/' );
@@ -18,9 +27,9 @@ function render_search( $attributes, $content ) {
 		$search_term = sanitize_text_field( wp_unslash( $_GET['dg_s'] ) );
 	}
 
-	$field_id  = wp_unique_id( 'digital-garden-search-field-' );
-	$label     = esc_html__( 'Search notes', 'digital-garden' );
-	$aria_text = esc_attr__( 'Search notes', 'digital-garden' );
+	$field_id    = wp_unique_id( 'digital-garden-search-field-' );
+	$label       = esc_html__( 'Search notes', 'digital-garden' );
+	$aria_text   = esc_attr__( 'Search notes', 'digital-garden' );
 	$placeholder = esc_attr__( 'Search notes…', 'digital-garden' );
 
 	ob_start();

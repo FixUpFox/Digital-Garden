@@ -1,8 +1,15 @@
 <?php
+/**
+ * Completeness helper functions for the Digital Garden plugin.
+ *
+ * @package DigitalGarden
+ */
 
 namespace Digital_Garden;
 
 /**
+ * Returns the list of completeness levels.
+ *
  * @return array
  */
 function completeness_list() {

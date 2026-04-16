@@ -1,6 +1,8 @@
 <?php
 /**
- * Render callback for Note Content block
+ * Render callback for Note Content block.
+ *
+ * @package DigitalGarden
  */
 
 namespace DigitalGarden;
@@ -9,19 +11,25 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+/**
+ * Render callback for the note content block.
+ *
+ * @param array $attributes Block attributes.
+ * @return string
+ */
 function render_note_content( $attributes ) {
 	$post_id = $attributes['postId'] ?? null;
 	$content = $post_id ? apply_filters( 'the_content', get_post_field( 'post_content', $post_id ) ) : '[Missing Content]';
 
-	// Initialize an empty string for styles
+	// Initialize an empty string for styles.
 	$styles = '';
 
-	// Handle text alignment
+	// Handle text alignment.
 	if ( isset( $attributes['textAlign'] ) ) {
 		$styles .= 'text-align:' . esc_attr( $attributes['textAlign'] ) . ';';
 	}
 
-	// Handle spacing styles
+	// Handle spacing styles.
 	if ( isset( $attributes['style']['spacing'] ) ) {
 		$spacing = $attributes['style']['spacing'];
 

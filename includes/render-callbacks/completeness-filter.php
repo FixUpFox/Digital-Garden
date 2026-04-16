@@ -1,6 +1,8 @@
 <?php
 /**
- * Render callback for Completeness Filter block
+ * Render callback for Completeness Filter block.
+ *
+ * @package DigitalGarden
  */
 
 namespace DigitalGarden;
@@ -11,6 +13,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+/**
+ * Render callback for the completeness filter block.
+ *
+ * @param array  $attributes Block attributes.
+ * @param string $content    Block content.
+ * @return string
+ */
 function render_completeness_filter( $attributes, $content ) {
 	$options = completeness_list();
 

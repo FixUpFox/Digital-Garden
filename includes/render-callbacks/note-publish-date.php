@@ -1,6 +1,8 @@
 <?php
 /**
- * Render callback for Note Publish Date block
+ * Render callback for Note Publish Date block.
+ *
+ * @package DigitalGarden
  */
 
 namespace DigitalGarden;
@@ -9,14 +11,20 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+/**
+ * Render callback for the note publish date block.
+ *
+ * @param array $attributes Block attributes.
+ * @return string
+ */
 function render_note_publish_date( $attributes ) {
 	$post_id      = get_the_ID();
 	$publish_date = get_the_date( '', $post_id );
 
-	// Initialize an empty string for styles
+	// Initialize an empty string for styles.
 	$styles = '';
 
-	// Handle typography styles
+	// Handle typography styles.
 	if ( isset( $attributes['style']['typography'] ) ) {
 		$typography = $attributes['style']['typography'];
 
@@ -25,7 +33,7 @@ function render_note_publish_date( $attributes ) {
 		}
 	}
 
-	// Handle spacing styles
+	// Handle spacing styles.
 	if ( isset( $attributes['style']['spacing'] ) ) {
 		$spacing = $attributes['style']['spacing'];
 

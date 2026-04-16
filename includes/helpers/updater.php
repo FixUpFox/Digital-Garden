@@ -4,6 +4,8 @@
  *
  * When a new release is tagged on GitHub the attached zip is used as the
  * update package, so no separate update-info.json file is required.
+ *
+ * @package DigitalGarden
  */
 
 define( 'DIGITAL_GARDEN_GITHUB_REPO', 'FixUpFox/Digital-Garden' );
@@ -82,8 +84,8 @@ function digital_garden_check_for_plugin_update( $transient ) {
 		return $transient;
 	}
 
-	$new_version     = ltrim( $release->tag_name, 'v' );
-	$installed       = isset( $transient->checked[ $plugin_slug ] ) ? $transient->checked[ $plugin_slug ] : '0';
+	$new_version      = ltrim( $release->tag_name, 'v' );
+	$installed        = isset( $transient->checked[ $plugin_slug ] ) ? $transient->checked[ $plugin_slug ] : '0';
 	$update_available = version_compare( $installed, $new_version, '<' );
 
 	if ( ! $update_available ) {

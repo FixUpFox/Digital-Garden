@@ -1,10 +1,13 @@
 <?php
 /**
- * Digital Garden Taxonomy Class
+ * Digital Garden Taxonomy Class.
  *
- * This class handles the registration of the custom taxonomy "note_tag" for the note post type.
+ * @package DigitalGarden
  */
 
+/**
+ * This class handles the registration of the custom taxonomy "note_tag" for the note post type.
+ */
 class Digital_Garden_Taxonomy {
 
 	/**
@@ -18,7 +21,7 @@ class Digital_Garden_Taxonomy {
 	 * Register the custom taxonomy.
 	 */
 	public static function register_taxonomy() {
-		// Set up labels for the custom taxonomy
+		// Set up labels for the custom taxonomy.
 		$labels = array(
 			'name'                       => _x( 'Note Tags', 'taxonomy general name', 'digital-garden' ),
 			'singular_name'              => _x( 'Note Tag', 'taxonomy singular name', 'digital-garden' ),
@@ -38,7 +41,7 @@ class Digital_Garden_Taxonomy {
 			'menu_name'                  => __( 'Note Tags', 'digital-garden' ),
 		);
 
-		// Set up arguments for the custom taxonomy
+		// Set up arguments for the custom taxonomy.
 		$args = array(
 			'hierarchical'          => false,
 			'labels'                => $labels,
@@ -50,7 +53,7 @@ class Digital_Garden_Taxonomy {
 			'show_in_rest'          => true,
 		);
 
-		// Register the custom taxonomy
+		// Register the custom taxonomy.
 		register_taxonomy( 'note_tag', 'note', $args );
 	}
 }

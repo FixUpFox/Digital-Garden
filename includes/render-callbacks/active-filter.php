@@ -1,6 +1,8 @@
 <?php
 /**
- * Render callback for Active Filter block
+ * Render callback for Active Filter block.
+ *
+ * @package DigitalGarden
  */
 
 namespace DigitalGarden;
@@ -9,6 +11,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+/**
+ * Render callback for the active filter block.
+ *
+ * @param array  $attributes Block attributes.
+ * @param string $content    Block content.
+ * @return string
+ */
 function render_active_filter( $attributes, $content ) {
 	$recently_updated   = esc_html__( 'Recently updated', 'digital-garden' );
 	$recently_published = esc_html__( 'Recently published', 'digital-garden' );

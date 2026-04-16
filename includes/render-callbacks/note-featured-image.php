@@ -1,6 +1,8 @@
 <?php
 /**
- * Render callback for Note Featured Image block
+ * Render callback for Note Featured Image block.
+ *
+ * @package DigitalGarden
  */
 
 namespace DigitalGarden;
@@ -9,13 +11,18 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+/**
+ * Render callback for the note featured image block.
+ *
+ * @return string
+ */
 function render_note_featured_image() {
 	$post_id = get_the_ID();
 
-	// Get the featured image URL for the current post
+	// Get the featured image URL for the current post.
 	$image_url = get_the_post_thumbnail_url( $post_id, 'full' );
 
-	// If there's no featured image, optionally handle this case
+	// If there's no featured image, optionally handle this case.
 	if ( ! $image_url ) {
 		return '<div class="digital-garden-note-featured-image">No Featured Image</div>';
 	}

@@ -1,12 +1,24 @@
 <?php
+/**
+ * Digital Garden Blocks Class.
+ *
+ * @package DigitalGarden
+ */
+
 namespace DigitalGarden;
 
 use function Digital_Garden\completeness_list;
 
 defined( 'ABSPATH' ) || exit;
 
+/**
+ * Registers and manages all Digital Garden Gutenberg blocks.
+ */
 class Digital_Garden_Blocks {
 
+	/**
+	 * Constructor.
+	 */
 	public function __construct() {
 		add_action( 'init', array( $this, 'register_blocks' ) );
 		add_action(
@@ -25,9 +37,12 @@ class Digital_Garden_Blocks {
 		);
 	}
 
+	/**
+	 * Register all blocks.
+	 */
 	public function register_blocks() {
 
-		// Container Block
+		// Container Block.
 		$block_path = DIGITAL_GARDEN_PLUGIN_PATH . 'assets/js/blocks/container';
 		wp_register_script(
 			'digital-garden-archive-frontend',
@@ -57,7 +72,7 @@ class Digital_Garden_Blocks {
 			)
 		);
 
-		// Garden Title Block
+		// Garden Title Block.
 		$block_path = DIGITAL_GARDEN_PLUGIN_PATH . 'assets/js/blocks/garden-title';
 		wp_register_script(
 			'digital-garden-garden-title',
@@ -74,7 +89,7 @@ class Digital_Garden_Blocks {
 			)
 		);
 
-		// Tag Filter Block
+		// Tag Filter Block.
 		$block_path = DIGITAL_GARDEN_PLUGIN_PATH . 'assets/js/blocks/tag-filter';
 		wp_register_script(
 			'digital-garden-tag-filter',
@@ -92,7 +107,7 @@ class Digital_Garden_Blocks {
 			)
 		);
 
-		// Completeness Filter Block
+		// Completeness Filter Block.
 		$block_path = DIGITAL_GARDEN_PLUGIN_PATH . 'assets/js/blocks/completeness-filter';
 		wp_register_script(
 			'digital-garden-completeness-filter',
@@ -128,7 +143,7 @@ class Digital_Garden_Blocks {
 			)
 		);
 
-		// Active Filter Block
+		// Active Filter Block.
 		$block_path = DIGITAL_GARDEN_PLUGIN_PATH . 'assets/js/blocks/active-filter';
 		wp_register_script(
 			'digital-garden-active-filter',
@@ -146,7 +161,7 @@ class Digital_Garden_Blocks {
 			)
 		);
 
-		// Search Block
+		// Search Block.
 		$block_path = DIGITAL_GARDEN_PLUGIN_PATH . 'assets/js/blocks/search';
 		wp_register_script(
 			'digital-garden-search',
@@ -164,7 +179,7 @@ class Digital_Garden_Blocks {
 			)
 		);
 
-		// Note Block
+		// Note Block.
 		$block_path = DIGITAL_GARDEN_PLUGIN_PATH . 'assets/js/blocks/note-block';
 		wp_register_script(
 			'digital-garden-note-block',
@@ -181,7 +196,7 @@ class Digital_Garden_Blocks {
 			)
 		);
 
-		// Note Title Block
+		// Note Title Block.
 		$block_path = DIGITAL_GARDEN_PLUGIN_PATH . 'assets/js/blocks/note-title';
 		wp_register_script(
 			'digital-garden-note-title',
@@ -198,7 +213,7 @@ class Digital_Garden_Blocks {
 			)
 		);
 
-		// Note Content Block
+		// Note Content Block.
 		$block_path = DIGITAL_GARDEN_PLUGIN_PATH . 'assets/js/blocks/note-content';
 		wp_register_script(
 			'digital-garden-note-content',
@@ -215,7 +230,7 @@ class Digital_Garden_Blocks {
 			)
 		);
 
-		// Note Completeness Block
+		// Note Completeness Block.
 		$block_path = DIGITAL_GARDEN_PLUGIN_PATH . 'assets/js/blocks/note-completeness';
 		wp_register_script(
 			'digital-garden-note-completeness',
@@ -232,7 +247,7 @@ class Digital_Garden_Blocks {
 			)
 		);
 
-		// Note Tags Block
+		// Note Tags Block.
 		$block_path = DIGITAL_GARDEN_PLUGIN_PATH . 'assets/js/blocks/note-tags';
 		wp_register_script(
 			'digital-garden-note-tags',
@@ -249,7 +264,7 @@ class Digital_Garden_Blocks {
 			)
 		);
 
-		// Note Featured Image Block
+		// Note Featured Image Block.
 		$block_path = DIGITAL_GARDEN_PLUGIN_PATH . 'assets/js/blocks/note-featured-image';
 		wp_register_script(
 			'digital-garden-note-featured-image',
@@ -266,7 +281,7 @@ class Digital_Garden_Blocks {
 			)
 		);
 
-		// Note Publish Date Block
+		// Note Publish Date Block.
 		$block_path = DIGITAL_GARDEN_PLUGIN_PATH . 'assets/js/blocks/note-publish-date';
 		wp_register_script(
 			'digital-garden-note-publish-date',
@@ -283,7 +298,7 @@ class Digital_Garden_Blocks {
 			)
 		);
 
-		// Note Modify Date Block
+		// Note Modify Date Block.
 		$block_path = DIGITAL_GARDEN_PLUGIN_PATH . 'assets/js/blocks/note-modify-date';
 		wp_register_script(
 			'digital-garden-note-modify-date',

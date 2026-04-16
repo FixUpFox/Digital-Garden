@@ -1,10 +1,13 @@
 <?php
 /**
- * Digital Garden Hashtags Class
+ * Digital Garden Hashtags Class.
  *
- * This class handles converting hashtags in the content to tags for the note post type.
+ * @package DigitalGarden
  */
 
+/**
+ * This class handles converting hashtags in the content to tags for the note post type.
+ */
 class Digital_Garden_Hashtags {
 
 	/**

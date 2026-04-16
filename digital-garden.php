@@ -5,18 +5,20 @@
  * Version: 1.2.0
  * Author: wolfpaw
  * Text Domain: digital-garden
+ *
+ * @package DigitalGarden
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-// Define plugin version and path
+// Define plugin version and path.
 define( 'DIGITAL_GARDEN_VERSION', '1.2.0' );
 define( 'DIGITAL_GARDEN_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 define( 'DIGITAL_GARDEN_PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
 
-// Include the necessary files
+// Include the necessary files.
 require_once DIGITAL_GARDEN_PLUGIN_PATH . 'includes/class-digital-garden-cpt.php';
 require_once DIGITAL_GARDEN_PLUGIN_PATH . 'includes/class-digital-garden-taxonomy.php';
 require_once DIGITAL_GARDEN_PLUGIN_PATH . 'includes/class-digital-garden-meta.php';
@@ -35,25 +37,27 @@ add_action(
 	}
 );
 
-// Include the helper functions
+// Include the helper functions.
 $helpers = glob( DIGITAL_GARDEN_PLUGIN_PATH . 'includes/helpers/*.php' );
 foreach ( $helpers as $helper ) {
 	require_once $helper;
 }
 
-// Include the render callbacks
+// Include the render callbacks.
 $render_callbacks = glob( DIGITAL_GARDEN_PLUGIN_PATH . 'includes/render-callbacks/*.php' );
 foreach ( $render_callbacks as $render_callback ) {
 	require_once $render_callback;
 }
 
-// Activation and deactivation hooks
+// Activation and deactivation hooks.
 register_activation_hook( __FILE__, 'digital_garden_activate' );
 register_deactivation_hook( __FILE__, 'digital_garden_deactivate' );
 
-// Activation function
+/**
+ * Activation function.
+ */
 function digital_garden_activate() {
-	// Create the Digital Garden page
+	// Create the Digital Garden page.
 	$page_id = get_option( 'digital_garden_page_id' );
 
 	if ( ! $page_id || ! get_post( $page_id ) ) {
@@ -70,12 +74,14 @@ function digital_garden_activate() {
 		update_option( 'digital_garden_page_id', $page_id );
 	}
 
-	// Flush rewrite rules
+	// Flush rewrite rules.
 	flush_rewrite_rules();
 }
 
-// Deactivation function
+/**
+ * Deactivation function.
+ */
 function digital_garden_deactivate() {
-	// Flush rewrite rules
+	// Flush rewrite rules.
 	flush_rewrite_rules();
 }

@@ -1,7 +1,10 @@
 <?php
 /**
  * Render callback for the Note Block.
+ *
  * This block dynamically renders each Note post using the layout defined inside the note-block.
+ *
+ * @package DigitalGarden
  */
 
 namespace DigitalGarden;
@@ -12,17 +15,24 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+/**
+ * Render callback for the note block.
+ *
+ * @param array  $attributes Block attributes.
+ * @param string $content    Block content.
+ * @return string
+ */
 function render_note_block( $attributes = array(), $content = '' ) {
-	// Retrieve the full post content (including block markup) of the current page
+	// Retrieve the full post content (including block markup) of the current page.
 	$block_content = get_the_content( '', '', get_the_ID() );
 
-	// Parse the block markup into a structured array
+	// Parse the block markup into a structured array.
 	$parsed_blocks = parse_blocks( $block_content );
 	$inner_layout  = array();
 
 	$note_block_layout = array();
 
-	// Traverse the parsed blocks to find the note-block inside the digital-garden/container
+	// Traverse the parsed blocks to find the note-block inside the digital-garden/container.
 	foreach ( $parsed_blocks as $block ) {
 		if (
 			'digital-garden/container' === $block['blockName'] &&
@@ -31,7 +41,7 @@ function render_note_block( $attributes = array(), $content = '' ) {
 			foreach ( $block['innerBlocks'] as $child_block ) {
 				if ( 'digital-garden/note-block' === $child_block['blockName'] ) {
 					$note_block_layout = $child_block['innerBlocks'];
-					break 2; // Exit both loops once the layout is found
+					break 2; // Exit both loops once the layout is found.
 				}
 			}
 		}
@@ -52,18 +62,18 @@ function render_note_block( $attributes = array(), $content = '' ) {
 		$args['s'] = $search_term;
 	}
 
-	// Query all published 'note' custom post type entries
+	// Query all published 'note' custom post type entries.
 	$query = new \WP_Query( $args );
 
-	// Return early if no notes found
+	// Return early if no notes found.
 	if ( ! $query->have_posts() ) {
 		return '<div class="digital-garden-note-block">No notes found.</div>';
 	}
 
-	// Initialize an empty string for styles
+	// Initialize an empty string for styles.
 	$styles = '';
 
-	// Handle border styles
+	// Handle border styles.
 	if ( isset( $attributes['style']['border'] ) ) {
 		$border = $attributes['style']['border'];
 
@@ -81,12 +91,12 @@ function render_note_block( $attributes = array(), $content = '' ) {
 		}
 	}
 
-	// Handle box shadow
+	// Handle box shadow.
 	if ( isset( $attributes['style']['boxShadow'] ) ) {
 		$styles .= 'box-shadow:' . esc_attr( $attributes['style']['boxShadow'] ) . ';';
 	}
 
-	// Handle spacing styles
+	// Handle spacing styles.
 	if ( isset( $attributes['style']['spacing'] ) ) {
 		$spacing = $attributes['style']['spacing'];
 
@@ -107,7 +117,7 @@ function render_note_block( $attributes = array(), $content = '' ) {
 
 	$output = '<div class="digital-garden-note-block" style="' . $styles . '">';
 
-	// For each note post, render the inner layout blocks with post context
+	// For each note post, render the inner layout blocks with post context.
 	if ( $query->have_posts() ) {
 		while ( $query->have_posts() ) {
 			$query->the_post();
@@ -158,6 +168,10 @@ function render_note_block( $attributes = array(), $content = '' ) {
 
 /**
  * Recursively render nested blocks using the saved layout and specific post data.
+ *
+ * @param array $blocks  Array of block data.
+ * @param int   $post_id Post ID.
+ * @return string
  */
 function render_inner_blocks_recursive( $blocks, $post_id ) {
 	$output = '';
@@ -171,7 +185,7 @@ function render_inner_blocks_recursive( $blocks, $post_id ) {
 			continue;
 		}
 
-		// Handle any nested inner blocks
+		// Handle any nested inner blocks.
 		if ( ! empty( $block['innerBlocks'] ) ) {
 			$inner = render_inner_blocks_recursive( $block['innerBlocks'], $post_id );
 		}
@@ -185,6 +199,12 @@ function render_inner_blocks_recursive( $blocks, $post_id ) {
 
 /**
  * Dynamically dispatch the rendering of each supported note sub-block.
+ *
+ * @param string $block_name The block name.
+ * @param int    $post_id    Post ID.
+ * @param array  $attrs      Block attributes.
+ * @param string $inner      Inner block content.
+ * @return string
  */
 function render_dynamic_note_block( $block_name, $post_id, $attrs = array(), $inner = '' ) {
 	$attrs['postId'] = $post_id;

@@ -1,10 +1,13 @@
 <?php
 /**
- * Digital Garden Settings Class
+ * Digital Garden Settings Class.
  *
- * This class handles the creation and management of the settings page for the Digital Garden plugin.
+ * @package DigitalGarden
  */
 
+/**
+ * This class handles the creation and management of the settings page for the Digital Garden plugin.
+ */
 class Digital_Garden_Settings {
 
 	/**
@@ -33,13 +36,13 @@ class Digital_Garden_Settings {
 	 * Register the settings and fields.
 	 */
 	public static function register_settings() {
-		// Register the settings
+		// Register the settings.
 		register_setting( 'digital_garden_settings', 'digital_garden_display_last_edited' );
 		register_setting( 'digital_garden_settings', 'digital_garden_display_first_created' );
 		register_setting( 'digital_garden_settings', 'digital_garden_enable_breadcrumbs' );
 		register_setting( 'digital_garden_settings', 'digital_garden_breadcrumb_steps' );
 
-		// Add the settings section
+		// Add the settings section.
 		add_settings_section(
 			'digital_garden_settings_section',
 			__( 'Display Settings', 'digital-garden' ),
@@ -47,7 +50,7 @@ class Digital_Garden_Settings {
 			'digital-garden-settings'
 		);
 
-		// Add the "Display Last Edited Timestamp" field
+		// Add the "Display Last Edited Timestamp" field.
 		add_settings_field(
 			'digital_garden_display_last_edited',
 			__( 'Display Last Edited Timestamp', 'digital-garden' ),
@@ -56,7 +59,7 @@ class Digital_Garden_Settings {
 			'digital_garden_settings_section'
 		);
 
-		// Add the "Display First Created Timestamp" field
+		// Add the "Display First Created Timestamp" field.
 		add_settings_field(
 			'digital_garden_display_first_created',
 			__( 'Display First Created Timestamp', 'digital-garden' ),
@@ -73,7 +76,7 @@ class Digital_Garden_Settings {
 			'digital_garden_settings_section'
 		);
 
-		// Add the Breadcrumb view field
+		// Add the Breadcrumb view field.
 		add_settings_field(
 			'digital_garden_breadcrumb_steps',
 			__( 'Breadcrumb Steps', 'digital-garden' ),

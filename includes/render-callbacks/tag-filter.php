@@ -1,6 +1,8 @@
 <?php
 /**
- * Render callback for Tag Filter block
+ * Render callback for Tag Filter block.
+ *
+ * @package DigitalGarden
  */
 
 namespace DigitalGarden;
@@ -9,6 +11,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+/**
+ * Render callback for the tag filter block.
+ *
+ * @param array  $attributes Block attributes.
+ * @param string $content    Block content.
+ * @return string
+ */
 function render_tag_filter( $attributes, $content ) {
 	$sort_order = isset( $attributes['sortOrder'] ) ? $attributes['sortOrder'] : 'alphabetical';
 
@@ -29,7 +38,7 @@ function render_tag_filter( $attributes, $content ) {
 		)
 	);
 
-	$output = '<fieldset class="digital-garden-tag-filter" data-filter-group="tags">';
+	$output  = '<fieldset class="digital-garden-tag-filter" data-filter-group="tags">';
 	$output .= '<legend>' . esc_html__( 'Filter by tags', 'digital-garden' ) . '</legend>';
 
 	if ( is_wp_error( $terms ) || empty( $terms ) ) {
@@ -41,7 +50,7 @@ function render_tag_filter( $attributes, $content ) {
 	$output .= '<ul class="digital-garden-filter-list digital-garden-filter-list--tags">';
 
 	foreach ( $terms as $term ) {
-		$count      = isset( $term->count ) ? absint( $term->count ) : 0;
+		$count   = isset( $term->count ) ? absint( $term->count ) : 0;
 		$output .= '<li class="digital-garden-filter-list__item">';
 		$output .= sprintf(
 			'<label class="digital-garden-filter-button"><input type="checkbox" class="digital-garden-filter-input" data-filter-type="tag" data-filter-label="%1$s" value="%2$s" aria-label="%1$s" /> <span class="digital-garden-filter-button__label">%1$s</span> <span class="digital-garden-filter-count">(%3$d)</span></label>',
