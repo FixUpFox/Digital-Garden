@@ -40,6 +40,12 @@
 	transition: background-color 0.3s, color 0.3s, border-color 0.3s;
 }
 
+.digital-garden-clear-button {
+	background-color: #e53e3e;
+	color: #fff;
+	border: 1px solid #c53030;
+}
+
 .digital-garden-tag-button:hover,
 .digital-garden-clear-button:hover {
 	background-color: #0073aa;
@@ -61,12 +67,6 @@
 	background-color: #005177;
 	color: #fff;
 	border-color: #005177;
-}
-
-.digital-garden-clear-button {
-	background-color: #e53e3e;
-	color: white;
-	border: 1px solid #c53030;
 }
 
 /* Preview Modal */
@@ -128,13 +128,15 @@
 	padding: 0 3px;
 }
 
-.digital-garden-breadcrumbs a {
+/* stylelint-disable no-descending-specificity -- breadcrumbs and archive are independent components that never nest */
+.digital-garden-breadcrumbs ul li a {
 	text-decoration: none;
 }
 
-.digital-garden-breadcrumbs a:hover {
+.digital-garden-breadcrumbs ul li a:hover {
 	text-decoration: underline;
 }
+/* stylelint-enable no-descending-specificity */
 
 /* Container Filters */
 .digital-garden-tag-filter,
@@ -186,7 +188,7 @@
 }
 
 .digital-garden-filter-select:focus {
-	background-color: #ffffff;
+	background-color: #fff;
 	border-color: #0073aa;
 	box-shadow: 0 0 0 2px rgba(0, 115, 170, 0.2);
 	outline: none;
@@ -224,13 +226,13 @@
 	background-color: #0073aa;
 	border-color: #0073aa;
 	box-shadow: 0 0 0 2px rgba(0, 115, 170, 0.2);
-	color: #ffffff;
+	color: #fff;
 }
 
 .digital-garden-filter-button.is-active {
 	background-color: #0073aa;
 	border-color: #0073aa;
-	color: #ffffff;
+	color: #fff;
 }
 
 .digital-garden-filter-button__label {
@@ -291,7 +293,7 @@
 }
 
 .digital-garden-search__field:focus {
-	background-color: #ffffff;
+	background-color: #fff;
 	border-color: #0073aa;
 	box-shadow: 0 0 0 2px rgba(0, 115, 170, 0.2);
 	outline: none;
@@ -310,7 +312,7 @@
 
 /* Note Cards */
 .digital-garden-note {
-	background-color: #ffffff;
+	background-color: #fff;
 	border: 1px solid #e2e8f0;
 	border-radius: 12px;
 	box-shadow: 0 8px 16px rgba(15, 23, 42, 0.08);
@@ -375,7 +377,7 @@
 	padding: 0.25rem 0.6rem;
 	border-radius: 999px;
 	background-color: #f97316;
-	color: #ffffff;
+	color: #fff;
 }
 
 .digital-garden-note-featured-image {

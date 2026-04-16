@@ -48,7 +48,7 @@
 }
 
 .block-editor .digital-garden-filter-select:focus {
-	background-color: #ffffff;
+	background-color: #fff;
 	border-color: #0073aa;
 	box-shadow: 0 0 0 2px rgba(0, 115, 170, 0.2);
 	outline: none;
@@ -86,13 +86,13 @@
 	background-color: #0073aa;
 	border-color: #0073aa;
 	box-shadow: 0 0 0 2px rgba(0, 115, 170, 0.2);
-	color: #ffffff;
+	color: #fff;
 }
 
 .block-editor .digital-garden-filter-button.is-active {
 	background-color: #0073aa;
 	border-color: #0073aa;
-	color: #ffffff;
+	color: #fff;
 }
 
 .block-editor .digital-garden-filter-button__label {
@@ -156,7 +156,7 @@
 }
 
 .block-editor .digital-garden-search__field:focus {
-	background-color: #ffffff;
+	background-color: #fff;
 	border-color: #0073aa;
 	box-shadow: 0 0 0 2px rgba(0, 115, 170, 0.2);
 	outline: none;
@@ -180,7 +180,7 @@
 }
 
 .block-editor .digital-garden-note {
-	background-color: #ffffff;
+	background-color: #fff;
 	border: 1px solid #e2e8f0;
 	border-radius: 12px;
 	box-shadow: 0 8px 16px rgba(15, 23, 42, 0.08);
@@ -254,7 +254,7 @@
 	padding: 0.25rem 0.6rem;
 	border-radius: 999px;
 	background-color: #f97316;
-	color: #ffffff;
+	color: #fff;
 }
 
 .block-editor .digital-garden-note-featured-image {
