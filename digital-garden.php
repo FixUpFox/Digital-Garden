@@ -57,6 +57,10 @@ register_deactivation_hook( __FILE__, 'digital_garden_deactivate' );
  * Activation function.
  */
 function digital_garden_activate() {
+	// Register CPT and taxonomy first so their rewrite rules exist before flushing.
+	Digital_Garden_CPT::register_post_type();
+	Digital_Garden_Taxonomy::register_taxonomy();
+
 	// Create the Digital Garden page.
 	$page_id = get_option( 'digital_garden_page_id' );
 
@@ -74,7 +78,7 @@ function digital_garden_activate() {
 		update_option( 'digital_garden_page_id', $page_id );
 	}
 
-	// Flush rewrite rules.
+	// Flush rewrite rules after CPT and taxonomy are registered.
 	flush_rewrite_rules();
 }
 
