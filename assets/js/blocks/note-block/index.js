@@ -12,6 +12,19 @@
 			html: false,
 			reusable: false,
 		},
+		allowedBlocks: [
+			'core/columns',
+			'core/column',
+			'core/group',
+			'core/row',
+			'digital-garden/note-title',
+			'digital-garden/note-content',
+			'digital-garden/note-tags',
+			'digital-garden/note-completeness',
+			'digital-garden/note-featured-image',
+			'digital-garden/note-publish-date',
+			'digital-garden/note-modify-date',
+		],
 		parent: [
 			'digital-garden/container',
 			'core/group',
@@ -46,7 +59,9 @@
 				blockProps,
 				el(
 					'div',
-					{ className: 'digital-garden-note digital-garden-note--preview' },
+					{
+						className: 'digital-garden-note digital-garden-note--preview',
+					},
 					el(
 						'p',
 						{ className: 'digital-garden-note-preview__hint' },
@@ -58,6 +73,19 @@
 					el(InnerBlocks, {
 						template: TEMPLATE,
 						templateLock: false,
+						allowedBlocks: [
+							'core/columns',
+							'core/column',
+							'core/group',
+							'core/row',
+							'digital-garden/note-title',
+							'digital-garden/note-content',
+							'digital-garden/note-tags',
+							'digital-garden/note-completeness',
+							'digital-garden/note-featured-image',
+							'digital-garden/note-publish-date',
+							'digital-garden/note-modify-date',
+						],
 					}),
 				),
 			);
