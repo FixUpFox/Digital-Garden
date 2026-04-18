@@ -281,3 +281,13 @@
 	font-size: 0.85rem;
 	color: #475569;
 }
+
+.digital-garden-hashtag-completer__create {
+	color: inherit;
+	font-style: italic;
+}
+
+.digital-garden-hashtag-completer__create strong {
+	font-style: normal;
+	font-weight: 600;
+}

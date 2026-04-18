@@ -22,6 +22,22 @@ class Digital_Garden_Blocks {
 	public function __construct() {
 		add_action( 'init', array( $this, 'register_blocks' ) );
 		add_action(
+			'enqueue_block_editor_assets',
+			function () {
+				$screen = get_current_screen();
+				if ( ! $screen || 'note' !== $screen->post_type ) {
+					return;
+				}
+				wp_enqueue_script(
+					'digital-garden-hashtag-autocomplete',
+					DIGITAL_GARDEN_PLUGIN_URL . 'assets/js/hashtag-autocomplete.js',
+					array( 'wp-hooks', 'wp-element', 'wp-api-fetch' ),
+					DIGITAL_GARDEN_VERSION,
+					true
+				);
+			}
+		);
+		add_action(
 			'wp_enqueue_scripts',
 			function () {
 				if ( is_singular() && has_block( 'digital-garden/container' ) ) {
