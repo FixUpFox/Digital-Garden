@@ -32,9 +32,9 @@ class Digital_Garden_Notes_List_Table {
 		// Split the array at taxonomy-note_tag to insert our new column after it.
 		$taxonomy_column = array_search( 'taxonomy-note_tag', array_keys( $columns ), true );
 		$columns         = array_merge(
-			array_slice( $columns, 1, $taxonomy_column ),
+			array_slice( $columns, 0, $taxonomy_column + 1 ),
 			array( 'completeness' => __( 'Completeness', 'digital-garden' ) ),
-			array_slice( $columns, $taxonomy_column )
+			array_slice( $columns, $taxonomy_column + 1 )
 		);
 
 		return $columns;
