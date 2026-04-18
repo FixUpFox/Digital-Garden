@@ -35,12 +35,19 @@ class Digital_Garden_Blocks {
 					DIGITAL_GARDEN_VERSION,
 					true
 				);
+				wp_enqueue_script(
+					'digital-garden-double-bracket-autocomplete',
+					DIGITAL_GARDEN_PLUGIN_URL . 'assets/js/double-bracket-autocomplete.js',
+					array( 'wp-hooks', 'wp-element', 'wp-api-fetch' ),
+					DIGITAL_GARDEN_VERSION,
+					true
+				);
 			}
 		);
 		add_action(
 			'wp_enqueue_scripts',
 			function () {
-				if ( is_singular() && has_block( 'digital-garden/container' ) ) {
+				if ( ( is_singular() && has_block( 'digital-garden/container' ) ) || is_singular( 'note' ) ) {
 					wp_enqueue_style(
 						'digital-garden-styles',
 						DIGITAL_GARDEN_PLUGIN_URL . 'assets/css/digital-garden.css',

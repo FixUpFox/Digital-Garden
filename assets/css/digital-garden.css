@@ -417,3 +417,12 @@
 	font-style: italic;
 	margin: 1.5rem 0 0;
 }
+
+/* [[Draft]] placeholder — shown instead of a link when the linked note
+   hasn't been published yet, preventing 404s for visitors. */
+.digital-garden-note-link--draft {
+	border-bottom: 1px dashed currentColor;
+	color: inherit;
+	cursor: default;
+	opacity: 0.5;
+}

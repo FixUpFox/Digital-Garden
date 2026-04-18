@@ -282,12 +282,14 @@
 	color: #475569;
 }
 
-.digital-garden-hashtag-completer__create {
+.digital-garden-hashtag-completer__create,
+.digital-garden-double-bracket-completer__create {
 	color: inherit;
 	font-style: italic;
 }
 
-.digital-garden-hashtag-completer__create strong {
+.digital-garden-hashtag-completer__create strong,
+.digital-garden-double-bracket-completer__create strong {
 	font-style: normal;
 	font-weight: 600;
 }

@@ -125,6 +125,11 @@ class Digital_Garden_Bidirectional_Linking {
 	/**
 	 * Convert double bracket links to actual links in the post content.
 	 *
+	 * Draft notes are rendered as unlinked placeholders rather than links,
+	 * because draft permalinks return 404 for visitors. Draft stubs are
+	 * created on save by process_double_brackets() — never here, since this
+	 * filter runs on every page load and must not create posts as a side effect.
+	 *
 	 * @param string $content Post content.
 	 * @return string Modified post content.
 	 */
@@ -140,36 +145,16 @@ class Digital_Garden_Bidirectional_Linking {
 				$normalized_slug = sanitize_title( strtolower( $match ) );
 				$note            = get_page_by_path( $normalized_slug, OBJECT, 'note' );
 
-				// If the note doesn't exist, create a draft note.
-				if ( ! $note ) {
-					$note_id   = wp_insert_post(
-						array(
-							'post_title'  => $match,
-							'post_name'   => $normalized_slug,
-							'post_type'   => 'note',
-							'post_status' => 'draft',
-						)
-					);
-					$note_link = get_permalink( $note_id );
-
-					// Add backlink to the created note.
-					add_post_meta( $note_id, '_linked_from', get_the_ID(), false );
+				if ( $note && 'publish' === get_post_status( $note->ID ) ) {
+					// Published note — render as a real link.
+					$replacement = '<a href="' . esc_url( get_permalink( $note->ID ) ) . '" class="digital-garden-note-link" data-note-id="' . esc_attr( $note->ID ) . '">' . esc_html( $match ) . '</a>';
 				} else {
-					$note_link = get_permalink( $note->ID );
-					$note_id   = $note->ID;
-
-					// Add backlink to the existing note if not already added.
-					if ( ! metadata_exists( 'post', $note_id, '_linked_from' ) || ! in_array( get_the_ID(), get_post_meta( $note_id, '_linked_from' ), true ) ) {
-						add_post_meta( $note_id, '_linked_from', get_the_ID(), false );
-					}
+					// Draft or not-yet-saved note — render as an unlinked placeholder
+					// so visitors don't hit a 404. It will become a link once published.
+					$replacement = '<span class="digital-garden-note-link digital-garden-note-link--draft" title="' . esc_attr__( 'Draft note — not yet published', 'digital-garden' ) . '">' . esc_html( $match ) . '</span>';
 				}
 
-				// Replace [[word]] with a link to the note.
-				$content = str_replace(
-					'[[' . $match . ']]',
-					'<a href="' . esc_url( $note_link ) . '" class="digital-garden-note-link" data-note-id="' . esc_attr( $note_id ) . '">' . esc_html( $match ) . '</a>',
-					$content
-				);
+				$content = str_replace( '[[' . $match . ']]', $replacement, $content );
 			}
 		}
 
