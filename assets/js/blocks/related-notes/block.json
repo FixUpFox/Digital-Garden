@@ -1,0 +1,23 @@
+{
+  "apiVersion": 2,
+  "name": "digital-garden/related-notes",
+  "title": "Related Notes",
+  "category": "widgets",
+  "icon": "networking",
+  "description": "Displays notes that share tags or backlinks with the current note.",
+  "supports": {
+    "html": false
+  },
+  "attributes": {
+    "maxItems": {
+      "type": "integer",
+      "default": 5
+    },
+    "heading": {
+      "type": "string",
+      "default": "Related Notes"
+    }
+  },
+  "textdomain": "digital-garden",
+  "editorScript": "file:./index.js"
+}

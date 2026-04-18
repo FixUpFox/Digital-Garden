@@ -282,6 +282,29 @@
 	color: #475569;
 }
 
+/* Related Notes editor placeholder */
+.block-editor .digital-garden-related-notes {
+	border: 1px dashed #cbd5f5;
+	border-radius: 8px;
+	padding: 1rem 1.25rem;
+}
+
+.block-editor .digital-garden-related-notes__heading {
+	color: #64748b;
+	font-size: 0.8rem;
+	font-weight: 700;
+	letter-spacing: 0.06em;
+	margin: 0 0 0.5rem;
+	text-transform: uppercase;
+}
+
+.block-editor .digital-garden-related-notes__placeholder {
+	color: #94a3b8;
+	font-size: 0.9rem;
+	font-style: italic;
+	margin: 0;
+}
+
 .digital-garden-hashtag-completer__create,
 .digital-garden-double-bracket-completer__create {
 	color: inherit;

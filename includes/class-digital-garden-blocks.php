@@ -337,5 +337,22 @@ class Digital_Garden_Blocks {
 				'render_callback' => 'DigitalGarden\\render_note_modify_date',
 			)
 		);
+
+		// Related Notes Block.
+		$block_path = DIGITAL_GARDEN_PLUGIN_PATH . 'assets/js/blocks/related-notes';
+		wp_register_script(
+			'digital-garden-related-notes',
+			plugins_url( '../assets/js/blocks/related-notes/index.js', __FILE__ ),
+			array( 'wp-blocks', 'wp-element', 'wp-block-editor', 'wp-components', 'wp-i18n' ),
+			DIGITAL_GARDEN_VERSION,
+			false
+		);
+		register_block_type(
+			$block_path,
+			array(
+				'editor_script'   => 'digital-garden-related-notes',
+				'render_callback' => 'DigitalGarden\\render_related_notes',
+			)
+		);
 	}
 }

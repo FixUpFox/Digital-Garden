@@ -418,6 +418,45 @@
 	margin: 1.5rem 0 0;
 }
 
+/* Related Notes */
+.digital-garden-related-notes {
+	border-top: 1px solid #e2e8f0;
+	margin-top: 2rem;
+	padding-top: 1.5rem;
+}
+
+.digital-garden-related-notes__heading {
+	color: #64748b;
+	font-size: 0.8rem;
+	font-weight: 700;
+	letter-spacing: 0.06em;
+	margin: 0 0 0.75rem;
+	text-transform: uppercase;
+}
+
+.digital-garden-related-notes__list {
+	display: flex;
+	flex-direction: column;
+	gap: 0.4rem;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.digital-garden-related-notes__item {
+	margin: 0;
+}
+
+.digital-garden-related-notes__link {
+	color: #0073aa;
+	font-size: 0.95rem;
+	text-decoration: none;
+}
+
+.digital-garden-related-notes__link:hover {
+	text-decoration: underline;
+}
+
 /* [[Draft]] placeholder — shown instead of a link when the linked note
    hasn't been published yet, preventing 404s for visitors. */
 .digital-garden-note-link--draft {
