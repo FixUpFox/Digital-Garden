@@ -88,39 +88,6 @@ class Digital_Garden_Bidirectional_Linking {
 		}
 	}
 
-
-	/**
-	 * Display "Linked From" section in the note content.
-	 *
-	 * @param string $content Post content.
-	 * @return string Modified post content.
-	 */
-	public static function display_linked_from_section( $content ) {
-		// Only apply to 'note' post type.
-		if ( get_post_type() !== 'note' ) {
-			return $content;
-		}
-
-		// Get the current post ID.
-		$post_id = get_the_ID();
-
-		// Get the notes that link to this note.
-		$linked_from = get_post_meta( $post_id, '_linked_from', false );
-
-		if ( ! empty( $linked_from ) ) {
-			$linked_from = array_unique( $linked_from ); // Ensure there are no duplicate entries.
-			$content    .= '<div class="bidirectional-links"><div class="bidirectional-links-title">' . __( 'Linked From', 'digital-garden' ) . '</div><ul>';
-
-			foreach ( $linked_from as $linked_post_id ) {
-				$content .= '<li><a href="' . get_permalink( $linked_post_id ) . '">' . get_the_title( $linked_post_id ) . '</a></li>';
-			}
-
-			$content .= '</ul></div>';
-		}
-
-		return $content;
-	}
-
 	/**
 	 * Convert double bracket links to actual links in the post content.
 	 *
