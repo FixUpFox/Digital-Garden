@@ -1,9 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
 	const noteItems = document.querySelectorAll('.digital-garden-note-item');
-	const tagButtons = document.querySelectorAll('.digital-garden-tag-button');
-	const clearButton = document.createElement('button');
 	const params = new URLSearchParams(window.location.search);
-	let selectedTags = params.get('tags')
+	const selectedTags = params.get('tags')
 		? params.get('tags').split(',').map(Number)
 		: [];
 
@@ -11,47 +9,11 @@ document.addEventListener('DOMContentLoaded', function () {
 	if (document.body.classList.contains('single-note')) {
 		// Add current note to local storage
 		addCurrentNoteToLocalStorage({
-			title: document.querySelectorAll('.wp-block-post-title')[0].textContent,
+			title: document.querySelectorAll('.wp-block-post-title')[0]
+				.textContent,
 			url: window.location.href,
 		});
 	}
-
-	displayRecentNotes();
-
-	clearButton.textContent = 'Clear Tags';
-	clearButton.className = 'digital-garden-clear-button';
-
-	// Append the clear button after the last tag button
-	if (tagButtons.length > 0) {
-		tagButtons[tagButtons.length - 1].parentNode.appendChild(clearButton);
-	}
-
-	// Add event listeners to tag buttons
-	tagButtons.forEach((button) => {
-		button.addEventListener('click', function () {
-			const tagId = parseInt(this.getAttribute('data-tag-id'));
-			const index = selectedTags.indexOf(tagId);
-			if (index > -1) {
-				// Remove tag from array
-				selectedTags.splice(index, 1);
-				this.classList.remove('active');
-			} else {
-				// Add tag to array
-				selectedTags.push(tagId);
-				this.classList.add('active');
-			}
-			updateURL();
-			filterNotes();
-		});
-	});
-
-	// Clear all selected tags
-	clearButton.addEventListener('click', function () {
-		selectedTags = [];
-		tagButtons.forEach((button) => button.classList.remove('active'));
-		noteItems.forEach((item) => (item.style.display = ''));
-		updateURL();
-	});
 
 	// Update URL with a query string for selected tags
 	function updateURL() {
@@ -64,20 +26,9 @@ document.addEventListener('DOMContentLoaded', function () {
 		window.history.replaceState(
 			{},
 			'',
-			`${window.location.pathname}?${urlParams}`,
+			`${window.location.pathname}?${urlParams}`
 		);
 	}
-
-	// Ensures that tags in query string are filtered on page load
-	selectedTags.forEach((tag) => {
-		const tagElement = document.querySelector(
-			`.digital-garden-tag-button[data-tag-id="${tag}"]`,
-		);
-		if (tagElement) {
-			tagElement.classList.add('active');
-		}
-		filterNotes();
-	});
 
 	// Filter notes based on selected tags
 	function filterNotes() {
@@ -108,7 +59,8 @@ document.addEventListener('DOMContentLoaded', function () {
 			method: 'POST',
 			credentials: 'same-origin',
 			headers: {
-				'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+				'Content-Type':
+					'application/x-www-form-urlencoded; charset=UTF-8',
 			},
 			body:
 				'action=digital_garden_fetch_note_excerpt&note_id=' +
@@ -141,7 +93,9 @@ document.addEventListener('DOMContentLoaded', function () {
 		modal.style.left = `${rect.left + window.scrollX}px`;
 
 		link.addEventListener('mouseleave', function () {
-			const existingModal = document.querySelector('.digital-garden-modal');
+			const existingModal = document.querySelector(
+				'.digital-garden-modal'
+			);
 			if (existingModal) {
 				existingModal.remove();
 			}
@@ -174,7 +128,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 		// Check if the note already exists in the array
 		const existingNoteIndex = notes.findIndex(
-			(n) => n.title === note.title && n.url === note.url,
+			(n) => n.title === note.title && n.url === note.url
 		);
 
 		if (existingNoteIndex > -1) {
@@ -195,7 +149,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
 	function displayRecentNotes() {
 		// return if the div is not present.
-		if (!document.querySelector('.digital-garden-breadcrumbs-placeholder')) {
+		if (
+			!document.querySelector('.digital-garden-breadcrumbs-placeholder')
+		) {
 			return;
 		}
 
@@ -205,7 +161,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 		// Get the div with the class digital-garden-breadcrumbs-placeholder
 		const recentNotesContainer = document.querySelector(
-			'.digital-garden-breadcrumbs-placeholder',
+			'.digital-garden-breadcrumbs-placeholder'
 		);
 
 		// If the div is not found, exit the function
