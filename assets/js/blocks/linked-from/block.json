@@ -1,0 +1,19 @@
+{
+  "apiVersion": 2,
+  "name": "digital-garden/linked-from",
+  "title": "Linked From",
+  "category": "widgets",
+  "icon": "admin-links",
+  "description": "Displays notes that link to the current note.",
+  "supports": {
+    "html": false
+  },
+  "attributes": {
+    "heading": {
+      "type": "string",
+      "default": "Linked From"
+    }
+  },
+  "textdomain": "digital-garden",
+  "editorScript": "file:./index.js"
+}

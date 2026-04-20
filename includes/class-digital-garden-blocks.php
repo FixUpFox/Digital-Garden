@@ -338,6 +338,23 @@ class Digital_Garden_Blocks {
 			)
 		);
 
+		// Linked From Block.
+		$block_path = DIGITAL_GARDEN_PLUGIN_PATH . 'assets/js/blocks/linked-from';
+		wp_register_script(
+			'digital-garden-linked-from',
+			plugins_url( '../assets/js/blocks/linked-from/index.js', __FILE__ ),
+			array( 'wp-blocks', 'wp-element', 'wp-block-editor', 'wp-components', 'wp-i18n' ),
+			DIGITAL_GARDEN_VERSION,
+			false
+		);
+		register_block_type(
+			$block_path,
+			array(
+				'editor_script'   => 'digital-garden-linked-from',
+				'render_callback' => 'DigitalGarden\\render_linked_from',
+			)
+		);
+
 		// Related Notes Block.
 		$block_path = DIGITAL_GARDEN_PLUGIN_PATH . 'assets/js/blocks/related-notes';
 		wp_register_script(

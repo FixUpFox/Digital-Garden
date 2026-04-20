@@ -15,7 +15,6 @@ class Digital_Garden_Bidirectional_Linking {
 	 */
 	public static function init() {
 		add_action( 'save_post_note', array( __CLASS__, 'detect_links' ), 10, 2 );
-		add_filter( 'the_content', array( __CLASS__, 'display_linked_from_section' ) );
 		add_filter( 'the_content', array( __CLASS__, 'convert_double_brackets_to_links' ) );
 	}
 
