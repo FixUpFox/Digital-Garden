@@ -1,29 +1,6 @@
 /* Front-end styles for the Digital Garden Archive block */
 
-/* Preview Modal */
-.digital-garden-modal {
-	position: absolute;
-	z-index: 1000;
-	background-color: #fff;
-	border: 1px solid #ddd;
-	padding: 10px;
-	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-	border-radius: 5px;
-}
-
-.digital-garden-modal .modal-content {
-	max-width: 300px;
-	max-height: 300px;
-	overflow: auto;
-}
-
 /* Breadcrumbs */
-.digital-garden-breadcrumbs {
-	padding: 10px;
-	border: 1px solid #ddd;
-	border-radius: 5px;
-}
-
 .digital-garden-breadcrumb-title {
 	margin-top: 0;
 }

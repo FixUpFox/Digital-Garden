@@ -1,0 +1,23 @@
+{
+  "apiVersion": 2,
+  "name": "digital-garden/note-breadcrumbs",
+  "title": "Note Breadcrumbs",
+  "category": "widgets",
+  "icon": "list-view",
+  "description": "Displays recently visited notes as a navigation trail, stored in the visitor's browser.",
+  "supports": {
+    "html": false
+  },
+  "attributes": {
+    "heading": {
+      "type": "string",
+      "default": "Recently Viewed Notes"
+    },
+    "maxSteps": {
+      "type": "integer",
+      "default": 5
+    }
+  },
+  "textdomain": "digital-garden",
+  "editorScript": "file:./index.js"
+}

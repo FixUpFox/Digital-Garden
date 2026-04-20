@@ -17,7 +17,6 @@ class Digital_Garden_Frontend {
 	public static function init() {
 		add_filter( 'the_content', array( __CLASS__, 'convert_hashtags_to_links' ) );
 		add_filter( 'the_content', array( __CLASS__, 'display_timestamps' ) );
-		add_filter( 'the_content', array( __CLASS__, 'display_breadcrumbs' ) );
 	}
 
 	/**
@@ -86,24 +85,7 @@ class Digital_Garden_Frontend {
 		return $content;
 	}
 
-	/**
-	 * Display breadcrumbs in the content.
-	 *
-	 * @param string $content The post content.
-	 * @return string The modified post content.
-	 */
-	public static function display_breadcrumbs( $content ) {
-		// Check if breadcrumbs are enabled.
-		if ( ! get_option( 'digital_garden_enable_breadcrumbs', 1 ) ) {
-			return $content;
-		}
 
-		if ( ! is_singular( 'note' ) ) {
-			return $content;
-		}
-
-		return '<nav class="digital-garden-breadcrumbs-placeholder"></nav>' . $content;
-	}
 }
 
 // Initialize the class.

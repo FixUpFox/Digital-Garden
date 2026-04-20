@@ -44,6 +44,14 @@ class Digital_Garden_Blocks {
 				);
 			}
 		);
+		wp_register_script(
+			'digital-garden-breadcrumbs',
+			DIGITAL_GARDEN_PLUGIN_URL . 'assets/js/digital-garden-breadcrumbs.js',
+			array(),
+			DIGITAL_GARDEN_VERSION,
+			true
+		);
+
 		add_action(
 			'wp_enqueue_scripts',
 			function () {
@@ -55,6 +63,7 @@ class Digital_Garden_Blocks {
 						DIGITAL_GARDEN_VERSION
 					);
 					wp_enqueue_script( 'digital-garden-archive-frontend' );
+					wp_enqueue_script( 'digital-garden-breadcrumbs' );
 				}
 			}
 		);
@@ -335,6 +344,23 @@ class Digital_Garden_Blocks {
 			array(
 				'editor_script'   => 'digital-garden-note-modify-date',
 				'render_callback' => 'DigitalGarden\\render_note_modify_date',
+			)
+		);
+
+		// Note Breadcrumbs Block.
+		$block_path = DIGITAL_GARDEN_PLUGIN_PATH . 'assets/js/blocks/note-breadcrumbs';
+		wp_register_script(
+			'digital-garden-note-breadcrumbs',
+			plugins_url( '../assets/js/blocks/note-breadcrumbs/index.js', __FILE__ ),
+			array( 'wp-blocks', 'wp-element', 'wp-block-editor', 'wp-components', 'wp-i18n' ),
+			DIGITAL_GARDEN_VERSION,
+			false
+		);
+		register_block_type(
+			$block_path,
+			array(
+				'editor_script'   => 'digital-garden-note-breadcrumbs',
+				'render_callback' => 'DigitalGarden\\render_note_breadcrumbs',
 			)
 		);
 
