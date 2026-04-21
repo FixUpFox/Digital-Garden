@@ -6,8 +6,7 @@
  */
 
 /**
- * This class handles frontend modifications, including converting hashtags to links
- * and displaying timestamps for notes.
+ * This class handles frontend modifications, including converting hashtags to links.
  */
 class Digital_Garden_Frontend {
 
@@ -16,7 +15,6 @@ class Digital_Garden_Frontend {
 	 */
 	public static function init() {
 		add_filter( 'the_content', array( __CLASS__, 'convert_hashtags_to_links' ) );
-		add_filter( 'the_content', array( __CLASS__, 'display_timestamps' ) );
 	}
 
 	/**
@@ -58,32 +56,6 @@ class Digital_Garden_Frontend {
 		return $content;
 	}
 
-	/**
-	 * Display timestamps in the content.
-	 *
-	 * @param string $content The post content.
-	 * @return string The modified post content.
-	 */
-	public static function display_timestamps( $content ) {
-		// Only apply to 'note' post type.
-		if ( get_post_type() !== 'note' ) {
-			return $content;
-		}
-
-		// Display "last edited" timestamp.
-		if ( get_option( 'digital_garden_display_last_edited' ) ) {
-			$last_edited = get_the_modified_date();
-			$content    .= '<p><em>Last edited on: ' . esc_html( $last_edited ) . '</em></p>';
-		}
-
-		// Display "first created" timestamp.
-		if ( get_option( 'digital_garden_display_first_created' ) ) {
-			$first_created = get_the_date();
-			$content      .= '<p><em>First created on: ' . esc_html( $first_created ) . '</em></p>';
-		}
-
-		return $content;
-	}
 
 
 }

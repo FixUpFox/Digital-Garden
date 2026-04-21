@@ -25,7 +25,6 @@ require_once DIGITAL_GARDEN_PLUGIN_PATH . 'includes/class-digital-garden-meta.ph
 require_once DIGITAL_GARDEN_PLUGIN_PATH . 'includes/class-digital-garden-metabox.php';
 require_once DIGITAL_GARDEN_PLUGIN_PATH . 'includes/class-digital-garden-hashtags.php';
 require_once DIGITAL_GARDEN_PLUGIN_PATH . 'includes/class-digital-garden-frontend.php';
-require_once DIGITAL_GARDEN_PLUGIN_PATH . 'includes/class-digital-garden-settings.php';
 require_once DIGITAL_GARDEN_PLUGIN_PATH . 'includes/class-digital-garden-bidirectional-linking.php';
 require_once DIGITAL_GARDEN_PLUGIN_PATH . 'includes/class-digital-garden-blocks.php';
 require_once DIGITAL_GARDEN_PLUGIN_PATH . 'includes/class-digital-garden-notes-list-table.php';
