@@ -397,5 +397,17 @@ class Digital_Garden_Blocks {
 				'render_callback' => 'DigitalGarden\\render_related_notes',
 			)
 		);
+
+		// Single Note template.
+		// The namespace before '//' becomes $template->plugin in the registry.
+		register_block_template(
+			'digital-garden//digital-garden-single-note',
+			array(
+				'title'       => __( 'Single item: Digital Garden Note', 'digital-garden' ),
+				'description' => __( 'Displays a single note with breadcrumbs, linked-from, and related notes.', 'digital-garden' ),
+				'post_types'  => array( 'note' ),
+				'content'     => (string) file_get_contents( DIGITAL_GARDEN_PLUGIN_PATH . 'templates/single-note.html' ),
+			)
+		);
 	}
 }
