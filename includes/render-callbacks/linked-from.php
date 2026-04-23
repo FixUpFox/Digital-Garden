@@ -22,9 +22,6 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 function render_linked_from( $attributes ) {
 	$post_id = get_the_ID();
-	$heading = isset( $attributes['heading'] ) && '' !== $attributes['heading']
-		? $attributes['heading']
-		: \__( 'Linked From', 'digital-garden' );
 
 	if ( ! $post_id ) {
 		return '';
@@ -53,8 +50,7 @@ function render_linked_from( $attributes ) {
 	}
 
 	return sprintf(
-		'<section class="digital-garden-linked-from"><h2 class="digital-garden-linked-from__heading">%s</h2><ul class="digital-garden-linked-from__list">%s</ul></section>',
-		esc_html( $heading ),
+		'<section class="digital-garden-linked-from"><ul class="digital-garden-linked-from__list">%s</ul></section>',
 		$items
 	);
 }

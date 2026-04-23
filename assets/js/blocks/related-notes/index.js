@@ -1,7 +1,7 @@
 (function (wp) {
 	const { registerBlockType } = wp.blocks;
 	const { useBlockProps, InspectorControls } = wp.blockEditor;
-	const { PanelBody, RangeControl, TextControl } = wp.components;
+	const { PanelBody, RangeControl } = wp.components;
 	const el = wp.element.createElement;
 	const { __ } = wp.i18n;
 
@@ -11,12 +11,11 @@
 		category: 'widgets',
 		attributes: {
 			maxItems: { type: 'integer', default: 5 },
-			heading: { type: 'string', default: 'Related Notes' },
 		},
 
 		edit(props) {
 			const { attributes, setAttributes } = props;
-			const { maxItems, heading } = attributes;
+			const { maxItems } = attributes;
 
 			// eslint-disable-next-line react-hooks/rules-of-hooks
 			const blockProps = useBlockProps({
@@ -35,11 +34,6 @@
 							title: __('Related Notes Settings', 'digital-garden'),
 							initialOpen: true,
 						},
-						el(TextControl, {
-							label: __('Heading', 'digital-garden'),
-							value: heading,
-							onChange: (val) => setAttributes({ heading: val }),
-						}),
 						el(RangeControl, {
 							label: __('Maximum items', 'digital-garden'),
 							value: maxItems,
@@ -48,11 +42,6 @@
 							max: 20,
 						}),
 					),
-				),
-				el(
-					'h2',
-					{ className: 'digital-garden-related-notes__heading' },
-					heading,
 				),
 				el(
 					'p',

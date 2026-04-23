@@ -25,9 +25,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 function render_related_notes( $attributes ) {
 	$post_id   = get_the_ID();
 	$max_items = isset( $attributes['maxItems'] ) ? (int) $attributes['maxItems'] : 5;
-	$heading   = isset( $attributes['heading'] ) && '' !== $attributes['heading']
-		? $attributes['heading']
-		: \__( 'Related Notes', 'digital-garden' );
 
 	if ( ! $post_id ) {
 		return '';
@@ -118,8 +115,7 @@ function render_related_notes( $attributes ) {
 	}
 
 	return sprintf(
-		'<section class="digital-garden-related-notes"><h2 class="digital-garden-related-notes__heading">%s</h2><ul class="digital-garden-related-notes__list">%s</ul></section>',
-		esc_html( $heading ),
+		'<section class="digital-garden-related-notes"><ul class="digital-garden-related-notes__list">%s</ul></section>',
 		$items
 	);
 }

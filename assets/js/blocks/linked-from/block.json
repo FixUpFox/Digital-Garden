@@ -8,12 +8,7 @@
   "supports": {
     "html": false
   },
-  "attributes": {
-    "heading": {
-      "type": "string",
-      "default": "Linked From"
-    }
-  },
+  "attributes": {},
   "textdomain": "digital-garden",
   "editorScript": "file:./index.js"
 }

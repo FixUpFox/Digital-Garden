@@ -12,10 +12,6 @@
     "maxItems": {
       "type": "integer",
       "default": 5
-    },
-    "heading": {
-      "type": "string",
-      "default": "Related Notes"
     }
   },
   "textdomain": "digital-garden",
