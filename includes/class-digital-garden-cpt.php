@@ -15,6 +15,24 @@ class Digital_Garden_CPT {
 	 */
 	public static function init() {
 		add_action( 'init', array( __CLASS__, 'register_post_type' ) );
+		add_action( 'save_post_note', array( __CLASS__, 'set_default_template' ), 10, 3 );
+	}
+
+	/**
+	 * Set the plugin's single-note template as the default for newly created notes.
+	 *
+	 * Only runs on first save ($update === false) so users can override the
+	 * template later without it being reset on subsequent saves.
+	 *
+	 * @param int     $post_id Post ID.
+	 * @param WP_Post $post    Post object.
+	 * @param bool    $update  Whether this is an update.
+	 */
+	public static function set_default_template( $post_id, $post, $update ) {
+		if ( $update || wp_is_post_autosave( $post_id ) || wp_is_post_revision( $post_id ) ) {
+			return;
+		}
+		update_post_meta( $post_id, '_wp_page_template', 'digital-garden-single-note' );
 	}
 
 	/**

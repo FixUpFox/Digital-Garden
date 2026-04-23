@@ -2,9 +2,9 @@
 Contributors: wolfpaw, binarygary
 Donate link: https://david.garden
 Tags: notes, digital garden, custom post type, taxonomy, block editor
-Requires at least: 5.0
-Tested up to: 6.6.2
-Stable tag: 1.2.0
+Requires at least: 6.7
+Tested up to: 6.9
+Stable tag: 1.3.0
 Requires PHP: 7.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -13,14 +13,13 @@ A plugin to create a digital garden with notes and tags.
 
 == Description ==
 
-Digital Garden is a WordPress plugin that helps you create a digital garden with notes and tags. It provides a custom post type for notes, a custom taxonomy for tags, and a custom block for displaying an archive of notes. The plugin also includes functionality for bidirectional linking between notes and filtering notes by tags.
+Digital Garden is a WordPress plugin that helps you create a digital garden with notes and tags. It provides a custom post type for notes, a custom taxonomy for tags, and a fully customizable archive block built with WordPress inner blocks. The plugin also includes bidirectional linking between notes, filtering by tags and completeness, and dedicated single-note blocks for breadcrumbs, backlinks, and related notes.
 
 == Installation ==
 
 1. Upload the plugin files to the `/wp-content/plugins/digital-garden` directory, or install the plugin through the WordPress plugins screen directly.
 2. Activate the plugin through the 'Plugins' screen in WordPress.
 3. The plugin will automatically create a page called "Digital Garden" with the slug "garden". This page will display an archive of all notes.
-4. To update the title and slug of the "Digital Garden" page, go to the Digital Garden settings page under the Notes menu.
 
 == Frequently Asked Questions ==
 
@@ -36,7 +35,29 @@ The Digital Garden block is automatically added to the "Digital Garden" page cre
 
 On the "Digital Garden" page, click on the tag buttons at the top of the archive to filter notes by the selected tags. You can select multiple tags to display notes that match any of the selected tags. Click the "Clear" button to reset the filter.
 
+= How do I link between notes? =
+
+Type `[[` in the note editor to trigger the wikilink autocomplete. Search for an existing note to link to it, or select "Create draft" to create a new note with that title. Use `#` to autocomplete note tags.
+
+= How do I display backlinks and related notes on a single note? =
+
+Add the "Linked From" block and "Related Notes" block to your single note template in the Site Editor. A "Single item: Note" template is provided by the plugin and available in the Site Editor under Templates.
+
 == Changelog ==
+
+= 1.3.0 =
+* Adds [[wikilink]] double-bracket autocomplete in the note editor with "Create draft" option for new notes
+* Adds #hashtag autocomplete in the note editor
+* Adds Related Notes block — scores and displays related notes by shared tags, backlinks, and forward links
+* Adds Linked From block — displays notes that link to the current note (backlinks)
+* Adds Note Breadcrumbs block — browser-local recently visited notes trail, configurable via block settings
+* Adds Single item: Note block template for the Full Site Editor (requires a block theme)
+* Makes date blocks editable directly in the block editor
+* Limits allowed inner blocks in the Note card block for a cleaner editing experience
+* Removes timestamp display settings and the now-empty plugin settings page
+* Reduces custom CSS for Linked From and Related Notes blocks to defer to active theme styles
+* Fixes block rendering on plugin activation
+* Fixes permalink flush timing on activation
 
 = 1.2.0 =
 * Refactors archive to use WordPress inner blocks, making the note card template fully customizable in the editor
