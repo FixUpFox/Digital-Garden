@@ -4,7 +4,7 @@ Donate link: https://david.garden
 Tags: notes, digital garden, custom post type, taxonomy, block editor
 Requires at least: 6.7
 Tested up to: 6.9
-Stable tag: 1.3.0
+Stable tag: 1.3.1
 Requires PHP: 7.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -44,6 +44,13 @@ Type `[[` in the note editor to trigger the wikilink autocomplete. Search for an
 Add the "Linked From" block and "Related Notes" block to your single note template in the Site Editor. A "Single item: Note" template is provided by the plugin and available in the Site Editor under Templates.
 
 == Changelog ==
+
+= 1.3.1 =
+* Fixes wp_register_script notice by moving breadcrumb script registration inside wp_enqueue_scripts hook
+* Converts Note Completeness metabox to a block editor sidebar panel with a proper WordPress dropdown
+* Renames completeness meta key from _note_completeness to note_completeness to allow REST API writes
+* Adds custom-fields to note post type supports so block editor meta changes are persisted on save
+* Updates [[wikilink]] autocomplete to show recent notes immediately on [[ without requiring a search query
 
 = 1.3.0 =
 * Adds [[wikilink]] double-bracket autocomplete in the note editor with "Create draft" option for new notes
