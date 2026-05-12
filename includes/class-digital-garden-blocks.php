@@ -44,14 +44,6 @@ class Digital_Garden_Blocks {
 				);
 			}
 		);
-		wp_register_script(
-			'digital-garden-breadcrumbs',
-			DIGITAL_GARDEN_PLUGIN_URL . 'assets/js/digital-garden-breadcrumbs.js',
-			array(),
-			DIGITAL_GARDEN_VERSION,
-			true
-		);
-
 		add_action(
 			'wp_enqueue_scripts',
 			function () {
@@ -63,7 +55,13 @@ class Digital_Garden_Blocks {
 						DIGITAL_GARDEN_VERSION
 					);
 					wp_enqueue_script( 'digital-garden-archive-frontend' );
-					wp_enqueue_script( 'digital-garden-breadcrumbs' );
+					wp_enqueue_script(
+						'digital-garden-breadcrumbs',
+						DIGITAL_GARDEN_PLUGIN_URL . 'assets/js/digital-garden-breadcrumbs.js',
+						array(),
+						DIGITAL_GARDEN_VERSION,
+						true
+					);
 				}
 			}
 		);
