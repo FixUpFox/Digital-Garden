@@ -135,7 +135,7 @@ function render_note_block( $attributes = array(), $content = '' ) {
 				);
 			}
 
-			$note_completeness = get_post_meta( $note_id, '_note_completeness', true );
+			$note_completeness = get_post_meta( $note_id, 'note_completeness', true );
 			if ( empty( $note_completeness ) ) {
 				$note_completeness = $default_completeness;
 			}

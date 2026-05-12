@@ -101,7 +101,7 @@ class Digital_Garden_CPT {
 			'has_archive'         => true,
 			'hierarchical'        => false,
 			'menu_position'       => null,
-			'supports'            => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'comments' ),
+			'supports'            => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'comments', 'custom-fields' ),
 			'show_in_rest'        => true,
 			'can_export'          => true,
 			'exclude_from_search' => false,

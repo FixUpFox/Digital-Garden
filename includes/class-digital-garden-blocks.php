@@ -42,6 +42,26 @@ class Digital_Garden_Blocks {
 					DIGITAL_GARDEN_VERSION,
 					true
 				);
+
+				$completeness_options = array();
+				foreach ( completeness_list() as $slug => $label ) {
+					$completeness_options[] = array(
+						'value' => $slug,
+						'label' => $label,
+					);
+				}
+				wp_enqueue_script(
+					'digital-garden-note-completeness-panel',
+					DIGITAL_GARDEN_PLUGIN_URL . 'assets/js/note-completeness-panel.js',
+					array( 'wp-plugins', 'wp-editor', 'wp-components', 'wp-data', 'wp-element', 'wp-i18n' ),
+					DIGITAL_GARDEN_VERSION,
+					true
+				);
+				wp_localize_script(
+					'digital-garden-note-completeness-panel',
+					'digitalGardenCompleteness',
+					array( 'options' => $completeness_options )
+				);
 			}
 		);
 		add_action(

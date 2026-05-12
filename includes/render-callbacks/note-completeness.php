@@ -20,7 +20,7 @@ function render_note_completeness() {
 	$post_id = get_the_ID();
 
 	// Get the completeness meta for the post.
-	$completeness = get_post_meta( $post_id, '_note_completeness', true );
+	$completeness = get_post_meta( $post_id, 'note_completeness', true );
 
 	// Default message if no completeness is found.
 	if ( empty( $completeness ) ) {

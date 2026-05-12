@@ -30,7 +30,8 @@ class Digital_Garden_Metabox {
 			array( __CLASS__, 'render_meta_box' ),
 			'note',
 			'side',
-			'default'
+			'default',
+			array( '__back_compat_meta_box' => true )
 		);
 	}
 
@@ -44,11 +45,11 @@ class Digital_Garden_Metabox {
 		wp_nonce_field( 'digital_garden_save_meta_box', 'digital_garden_meta_box_nonce' );
 
 		// Retrieve an existing value from the database.
-		$value = get_post_meta( $post->ID, '_note_completeness', true );
+		$value = get_post_meta( $post->ID, 'note_completeness', true );
 
 		?>
 		<label for="digital_garden_note_completeness"><?php esc_html_e( 'Completeness:', 'digital-garden' ); ?></label>
-		<select name="digital_garden_note_completeness" id="digital_garden_note_completeness" class="postbox">
+		<select name="digital_garden_note_completeness" id="digital_garden_note_completeness" class="widefat">
 			<?php foreach ( completeness_list() as $completeness_key => $completeness_label ) : ?>
 				<option value="<?php echo esc_attr( $completeness_key ); ?>" <?php selected( $value, $completeness_key ); ?>><?php echo esc_html( $completeness_label ); ?></option>
 			<?php endforeach; ?>
@@ -86,7 +87,7 @@ class Digital_Garden_Metabox {
 		$new_value = isset( $_POST['digital_garden_note_completeness'] ) ? sanitize_text_field( wp_unslash( $_POST['digital_garden_note_completeness'] ) ) : '';
 
 		// Update the meta field in the database.
-		update_post_meta( $post_id, '_note_completeness', $new_value );
+		update_post_meta( $post_id, 'note_completeness', $new_value );
 	}
 }
 

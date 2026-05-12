@@ -47,7 +47,7 @@ class Digital_Garden_Notes_List_Table {
 	 * @param int    $post_id The post ID.
 	 */
 	public static function render_completeness_column( $column, $post_id ) {
-		$value = get_post_meta( $post_id, '_note_completeness', true );
+		$value = get_post_meta( $post_id, 'note_completeness', true );
 
 		if ( array_key_exists( $value, completeness_list() ) ) {
 			echo esc_html( completeness_list()[ $value ] );

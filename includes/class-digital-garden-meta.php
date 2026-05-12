@@ -25,13 +25,16 @@ class Digital_Garden_Meta {
 	public static function register_post_meta() {
 		register_post_meta(
 			'note',
-			'_note_completeness',
+			'note_completeness',
 			array(
-				'type'         => 'string',
-				'single'       => true,
-				'show_in_rest' => true,
-				'default'      => array_key_first( completeness_list() ),
-				'description'  => __( 'Note Completeness', 'digital-garden' ),
+				'type'          => 'string',
+				'single'        => true,
+				'show_in_rest'  => true,
+				'default'       => array_key_first( completeness_list() ),
+				'description'   => __( 'Note Completeness', 'digital-garden' ),
+				'auth_callback' => function() {
+					return current_user_can( 'edit_posts' );
+				},
 			)
 		);
 	}
