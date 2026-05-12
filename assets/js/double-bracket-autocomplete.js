@@ -46,18 +46,12 @@
 		 * @return {Promise<Array>} Resolved list of option objects.
 		 */
 		options: async function (query) {
-			if (!query) {
-				return [];
-			}
-
 			let notes = [];
 			try {
-				const result = await wp.apiFetch({
-					path:
-						'/wp/v2/note?search=' +
-						encodeURIComponent(query) +
-						'&per_page=10',
-				});
+				const path = query
+					? '/wp/v2/note?search=' + encodeURIComponent(query) + '&per_page=10'
+					: '/wp/v2/note?per_page=10&orderby=modified&order=desc';
+				const result = await wp.apiFetch({ path });
 				if (Array.isArray(result)) {
 					// Only surface published notes — draft stubs aren't ready to link to.
 					notes = result.filter(function (note) {
@@ -65,7 +59,7 @@
 					});
 				}
 			} catch {
-				// API failure — fall through so "Create draft" still appears.
+				// API failure — fall through so "Create draft" still appears when typing.
 			}
 
 			const options = notes.map(function (note) {
@@ -77,15 +71,17 @@
 				};
 			});
 
-			// Only show "Create draft" when the typed text doesn't exactly
-			// match an existing published note title.
-			const exactMatch = notes.some(function (n) {
-				const title = n.title.raw || n.title.rendered;
-				return title.toLowerCase() === query.toLowerCase();
-			});
+			// Only offer "Create draft" once the user has typed something,
+			// and only when the typed text doesn't exactly match an existing note.
+			if (query) {
+				const exactMatch = notes.some(function (n) {
+					const title = n.title.raw || n.title.rendered;
+					return title.toLowerCase() === query.toLowerCase();
+				});
 
-			if (!exactMatch) {
-				options.push({ title: query, isNew: true });
+				if (!exactMatch) {
+					options.push({ title: query, isNew: true });
+				}
 			}
 
 			return options;
